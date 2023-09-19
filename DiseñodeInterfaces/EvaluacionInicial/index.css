@@ -1,20 +1,26 @@
-
 body {
     background-color: #ffe4e1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 h1 {
-    font-size: larger;
-    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    text-align: center; /* Center the text horizontally */
+    margin: 0; /* Remove default margins */
+    padding: 10px; /* Add some padding for spacing */
 }
 
 #formulario {
     background-color: #f8edeb;
     box-sizing: border-box;
-    box-shadow: black
-    ;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add a box shadow */
+    width: 50vh;
+    padding: 20px; /* Add padding to the div for spacing */
+    text-align: center; /* Center the content horizontally */
 }
+
