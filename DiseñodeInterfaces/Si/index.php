@@ -36,9 +36,9 @@
     }*/
     $msj = "";
     echo $msj;
-    define('CENTRO', 'SAN VALERO');
+    define('CENTRO', 'Pon tu nombre');
     ?>
-    <br>(c) <?php echo CENTRO; ?> 2023
+    <br>(c) <?php echo CENTRO; ?> <input id="adivinarNumero" type="">
     <br>(c) <?=CENTRO?> 2023
 
 

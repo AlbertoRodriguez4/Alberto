@@ -1,0 +1,20 @@
+
+body {
+    background-color: #ffe4e1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    font-size: larger;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#formulario {
+    background-color: #f8edeb;
+    box-sizing: border-box;
+    box-shadow: black
+    ;
+}
