@@ -35,10 +35,10 @@
         echo '<br>' .$msj;
     }*/
     echo $msj;
-    define('PITO', 'SAN VALERO');
+    define('PITO', 'SAN PITO');
     ?>
     <br>(c) <?php echo PITO; ?> 2023
-    <br>(C) <?=PITO?> 2023
+    <br>(c) <?=PITO?> 2023
 
 
 
