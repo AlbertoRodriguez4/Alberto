@@ -34,11 +34,12 @@
     /*for ($cantidad = 0; $cantidad < 10; $cantidad++) {
         echo '<br>' .$msj;
     }*/
+    $msj = "";
     echo $msj;
-    define('PITO', 'SAN PITO');
+    define('CENTRO', 'SAN VALERO');
     ?>
-    <br>(c) <?php echo PITO; ?> 2023
-    <br>(c) <?=PITO?> 2023
+    <br>(c) <?php echo CENTRO; ?> 2023
+    <br>(c) <?=CENTRO?> 2023
 
 
 
