@@ -45,7 +45,7 @@
 
 
 
-    <h1>Voy a adivinar el numero que piensas</h1>
+    <!--<h1>Voy a adivinar el numero que piensas</h1>
     <input id="adivinarNumero" type="number">
     <button id="numeroSecreto" onclick="adivinarNumero()">Adivino tu Numero</button>
 </body>
@@ -60,6 +60,6 @@
             alert("tu numero es " + numero)
         }
     }
-</script>
+</script> -->
 
 </html>
