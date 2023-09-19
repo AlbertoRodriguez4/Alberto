@@ -1,0 +1,59 @@
+CREATE TABLE cliente (
+    Nombre VARCHAR(30),
+    Apellido VARCHAR(30),
+    DNI VARCHAR(10),
+    Direccion VARCHAR(30),
+    Fecha_Nac VARCHAR(30),
+    CONSTRAINT cliente_pk PRIMARY KEY (DNI)
+);
+
+CREATE TABLE proovedor (
+	NIF VARCHAR(20),
+	direccion VARCHAR(40),
+    	nombre VARCHAR(40),
+    	CONSTRAINT proovedor_pk PRIMARY KEY (NIF)
+);
+
+CREATE TABLE producto (
+    Nombre VARCHAR(30),
+    Codigo VARCHAR(30),
+    NIF VARCHAR(20),
+	CONSTRAINT producto_pk PRIMARY KEY (Codigo),
+    CONSTRAINT producto_fk FOREIGN KEY (NIF) REFERENCES proovedor(NIF)
+);
+CREATE TABLE comprar (
+	Fecha VARCHAR(30),
+    DNI VARCHAR(30),
+    Codigo VARCHAR(30),
+    CONSTRAINT Fecha_pk PRIMARY KEY (Fecha),
+    CONSTRAINT cliente_fk FOREIGN KEY (DNI) REFERENCES cliente(DNI),
+    CONSTRAINT comprar_fk FOREIGN KEY (Codigo) REFERENCES producto(Codigo)
+);
+
+-- Insert data into the "cliente" table
+INSERT INTO cliente (Nombre, Apellido, DNI, Direccion, Fecha_Nac)
+VALUES
+    ('John', 'Doe', '1234567890', '123 Main St', '1990-01-15'),
+    ('Jane', 'Smith', '9876543210', '456 Elm St', '1985-08-25'),
+    ('Alice', 'Johnson', '5555555555', '789 Oak St', '1995-03-10');
+
+-- Insert data into the "proovedor" table
+INSERT INTO proovedor (NIF, direccion, nombre)
+VALUES
+    ('ABC123', '123 Supplier St', 'SupplierCo'),
+    ('DEF456', '456 Vendor Rd', 'VendorInc'),
+    ('GHI789', '789 Distributor Ave', 'DistributorCorp');
+
+-- Insert data into the "producto" table
+INSERT INTO producto (Nombre, Codigo, NIF)
+VALUES
+    ('ProductA', 'P001', 'ABC123'),
+    ('ProductB', 'P002', 'DEF456'),
+    ('ProductC', 'P003', 'GHI789');
+
+-- Insert data into the "comprar" table
+INSERT INTO comprar (Fecha, DNI, Codigo)
+VALUES
+    ('2023-09-18', '1234567890', 'P001'),
+    ('2023-09-19', '9876543210', 'P002'),
+    ('2023-09-20', '5555555555', 'P003');
