@@ -10,14 +10,16 @@ public class MotorSQL implements IMotor {
     private ResultSet rs;
     private Statement st;
     private Connection cn;
-    private final String URL = "";
-    private final String USER = "Alberto";
-    private final String PASS = "1234";
+    private final String RDS_INSTANCE_HOSTNAME = "orcl.c2kaacxm5523.us-east-1.rds.amazonaws.com";
+    private final String RDS_INSTANCE_PORT = "1521";
+    private final String USER = "admin";
+    private final String PASS = "12341234";
+    private final String JDBC_URL = "jdbc:oracle:thin:@" + RDS_INSTANCE_HOSTNAME + ":" + RDS_INSTANCE_PORT + ":orcl";
 
     @Override
     public void connect() {
     try {
-        cn = DriverManager.getConnection(URL, USER, PASS);
+        cn = DriverManager.getConnection(JDBC_URL, USER, PASS);
         st = cn.createStatement();
     } catch (Exception e) {
         System.out.println(e);
