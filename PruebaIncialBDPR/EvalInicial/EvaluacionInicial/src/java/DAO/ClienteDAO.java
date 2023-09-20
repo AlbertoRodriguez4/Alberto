@@ -93,7 +93,4 @@ MotorSQL motorSQL = new MotorSQL();
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println("xd");
-    }
 }

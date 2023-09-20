@@ -62,4 +62,8 @@ public class clienteAction implements IAction {
     json = gson.toJson(filasModificadas);
     return json;
     }
+
+    public static void main(String[] args) {
+        System.out.println("ESTOPA");
+    }
 }
