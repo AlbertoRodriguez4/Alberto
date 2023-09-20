@@ -38,10 +38,10 @@ MotorSQL motorSQL = new MotorSQL();
     while (rs.next()) {
         Cliente cliente = new Cliente();
         cliente.setDNI(rs.getString("DNI"));
-        cliente.setName(rs.getString("NAME"));
-        cliente.setSurname(rs.getString("APELLIDO"));
-        cliente.setDireccion(rs.getString("DIRECCION"));
-        cliente.setFechaNac(rs.getString("FECHANAC"));
+        cliente.setName(rs.getString("Nombre"));
+        cliente.setSurname(rs.getString("Apellido"));
+        cliente.setDireccion(rs.getString("Direccion"));
+        cliente.setFechaNac(rs.getString("Fecha_Nac"));
         lstCliente.add(cliente);
     }
     motorSQL.disconnect();
@@ -56,7 +56,7 @@ MotorSQL motorSQL = new MotorSQL();
     public int add(Cliente bean) {
         try {
         motorSQL.connect();
-        String SQL = "INSERT INTO cliente WHERE nombre = '" + bean.getName() + "' AND Apellido = '"+ bean.getSurname()
+        String SQL = "INSERT INTO cliente WHERE Nombre = '" + bean.getName() + "' AND Apellido = '"+ bean.getSurname()
                 + "' AND DNI = '" +bean.getDNI() + "' AND Fecha_Nac = '" + bean.getFechaNac() + "' AND Direccion = "+bean.getDireccion() + "'";
         int filasModificadas = motorSQL.executeUpdate(SQL);
         return filasModificadas;
@@ -68,10 +68,11 @@ MotorSQL motorSQL = new MotorSQL();
 
     @Override
     public int delete(Cliente bean) {
+        int filasModificadas = 0;
     try {
         motorSQL.connect();
        String SQL = "DELETE FROM cliente WHERE DNI = '" +bean.getDNI() + "'";
-       int filasModificadas = motorSQL.executeUpdate(SQL);
+       filasModificadas = motorSQL.executeUpdate(SQL);
        return filasModificadas;
     } catch (Exception e) {
         System.out.println(e);

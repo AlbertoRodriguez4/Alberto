@@ -16,6 +16,9 @@ public class Cliente {
     }
     public Cliente () {}
 
+    public Cliente(String dni) {
+    }
+
     public String getDNI() {
         return DNI;
     }
