@@ -11,9 +11,9 @@ public class Main {
         try {
             Connection connection= DriverManager.getConnection(JDBC_URL,"admin","12341234");
             Statement stmt= connection.createStatement();
-            ResultSet rs=stmt.executeQuery("SELECT * FROM DUAL");
+            ResultSet rs=stmt.executeQuery("SELECT * FROM CLIENTE");
             while (rs.next()) {
-                String id = rs.getString(1);
+                String id = rs.getString(3);
                 System.out.println(id); //Should print "X"
             }
             stmt.close();
