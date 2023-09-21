@@ -11,8 +11,6 @@ function recibirDatos() {
     var formulario2 = document.getElementById("formulario2");
 
 
-    console.log(nombre, apellidos, fechaDeNac, correo, password1, password2, vivir, chechbox);
-
     var divElement = document.getElementById('formulario');
     if (nombre == "" || apellidos == "" || fechaDeNac == ""||correo == "" || password1 == "" || password2 == "" || vivir == "" || chechbox == "" ) {
         alert("Todos los campos son requeridos")
@@ -29,12 +27,15 @@ function recibirDatos() {
     <p class = "asdf"> Fecha de nacimiento: ${fechaDeNac} </p>
     <p class = "asdf"> Correo de contacto: ${correo} </p>
     <p class = "asdf" > País donde vive: ${vivir}</p>
+    <button class="Botonformulario" onclick="EditarDatos()">Editar</button>
+
     `
         } else {
             alert("Las contraseñas no coinciden")
             window.location.reload();
         }
     }
-
+}
+function EditarDatos() {
 
 }

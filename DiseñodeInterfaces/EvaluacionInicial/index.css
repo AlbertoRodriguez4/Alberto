@@ -52,7 +52,7 @@ h2 {
     border: 10px outset black;
 }
 
-#Botonformulario {
+.Botonformulario {
     background-color: #ffffff;
     color: black;
     border: none;
@@ -64,7 +64,7 @@ h2 {
     margin: 10px;
 }
 
-#Botonformulario:hover {
+.Botonformulario:hover {
     background-color: black;
     color: #ffffff;
 }
