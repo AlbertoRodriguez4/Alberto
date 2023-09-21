@@ -8,6 +8,7 @@ function recibirDatos() {
     let password2 = document.getElementById('password2').value
     let vivir = document.getElementById('vivir').value
     let chechbox = document.getElementById('terminosYCondiciones').value;
+    var formulario2 = document.getElementById("formulario2");
 
 
     console.log(nombre, apellidos, fechaDeNac, correo, password1, password2, vivir, chechbox);
@@ -20,6 +21,7 @@ function recibirDatos() {
     else {
         if (password1 == password2) {
             alert("Enviado satisfactoriamente, ahora se verá tu información personal")
+            formulario2.style.display = "none";
 
             divElement.innerHTML = `
     <h1>Comprobación de datos</h1>

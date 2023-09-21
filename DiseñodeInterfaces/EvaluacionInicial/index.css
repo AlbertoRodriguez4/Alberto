@@ -23,11 +23,12 @@ body {
 }
 
 h1 {
-    font-size: 25px;
+    font-size: 30px;
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 10px;
+    color: white;
 }
 
 h2 {
