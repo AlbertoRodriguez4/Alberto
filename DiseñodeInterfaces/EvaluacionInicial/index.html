@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -7,20 +8,48 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
 </head>
+
 <body>
-    <div id="formulario">
-    <h1>Introduce tu nombre</h1>
-    <input id="nombre" type="text">
-    <h1>Introduce tus apellidos</h1> 
-    <input id="apellidos" type="text">
-    <h1>Introduce tu fecha de nacimiento</h1> 
-    <input id="edad" type="date">
-    <h1>Introduce tu correo electrónico</h1>
-     <input id="correo" type="text">
-     <br>
-     <button id="Botonformulario" onclick="recibirDatos()">Enviar</button>
+    <div id="contenido">
+    <div id="formulario2">
+        <h3>FORMULARIO</h3>
     </div>
 
+    <div id="formulario">
+        <h2>Introduce tu nombre</h2>
+        <input id="nombre" type="text" />
+        <h2>Introduce tus apellidos</h2>
+        <input id="apellidos" type="text">
+        <h2>Introduce tu fecha de nacimiento</h2>
+        <input id="edad" type="date">
+        <h2>Introduce tu correo electrónico</h2>
+        <input id="correo" type="email">
+        <h2>Selecciona tu zona de residencia</h2>
+        <select name="pais" id="vivir">
+            <option value=""></option>
+            <option value="Argentina">Argentina</option>
+            <option value="España">España</option>
+            <option value="México">México</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Honduras">Honduras</option>
+            <option value="El Salvador">El Salvador</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Uruguay">Uruguay</option>
+        </select>
+        <h2>Crea una contraseña</h2>
+        <input id="password1" type="password">
+        <h2>Confirma una contraseña</h2>
+        <input id="password2" type="password">
+        <h2>Aceptar términos y condiciones</h2>
+        <input id="terminosYCondiciones" type="checkbox" value="1">
+        <br>
+        <button id="Botonformulario" onclick="recibirDatos()">Enviar</button>
+    </div>
+</div>
 </body>
 <script src='index.js'></script>
 

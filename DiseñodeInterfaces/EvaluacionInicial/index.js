@@ -4,21 +4,35 @@ function recibirDatos() {
     let apellidos = document.getElementById('apellidos').value;
     let fechaDeNac = document.getElementById('edad').value;
     let correo = document.getElementById('correo').value;
+    let password1 = document.getElementById('password1').value
+    let password2 = document.getElementById('password2').value
+    let vivir = document.getElementById('vivir').value
+    let chechbox = document.getElementById('terminosYCondiciones').value;
 
-    console.log(nombre, apellidos, fechaDeNac, correo);
+
+    console.log(nombre, apellidos, fechaDeNac, correo, password1, password2, vivir, chechbox);
 
     var divElement = document.getElementById('formulario');
+    if (nombre == "" || apellidos == "" || fechaDeNac == ""||correo == "" || password1 == "" || password2 == "" || vivir == "" || chechbox == "" ) {
+        alert("Todos los campos son requeridos")
+        window.location.reload();
+    }
+    else {
+        if (password1 == password2) {
+            alert("Enviado satisfactoriamente, ahora se verá tu información personal")
 
-    alert("Enviado satisfactoriamente, ahora se verá tu información personal")
-    
-    divElement.innerHTML = `
+            divElement.innerHTML = `
     <h1>Comprobación de datos</h1>
-    <p >Nombre: ${nombre} </p>
-    <p> Apellidos: ${apellidos} </p>
-    <p> Fecha de nacimiento: ${fechaDeNac} </p>
-    <p> Correo de contacto: ${correo} </p>
-
+    <p class = "asdf" >Nombre: ${nombre} ${apellidos} </p>
+    <p class = "asdf"> Fecha de nacimiento: ${fechaDeNac} </p>
+    <p class = "asdf"> Correo de contacto: ${correo} </p>
+    <p class = "asdf" > País donde vive: ${vivir}</p>
     `
-    
-    
+        } else {
+            alert("Las contraseñas no coinciden")
+            window.location.reload();
+        }
+    }
+
+
 }
