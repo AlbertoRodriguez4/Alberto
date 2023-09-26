@@ -17,6 +17,13 @@
                 };
                 let parametros = "usuario=" + usuario + "&pass=" + pass;
                 fetch("validarUsuario.php"+parametros, opciones)
+                .then(res => {
+                    if(res.ok) {
+                        console.log('respuesta ok');
+                    }
+                })
+                .then()
+                .catch();
             }
             document.getElementById("msj").innerHTML = mensaje;
         }
