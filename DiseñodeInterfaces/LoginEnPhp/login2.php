@@ -1,20 +1,6 @@
-<?php session_start();
-$usuario = "";
-$pass = "";
-extract($_POST);
-if ($usuario == '' || $pass == '') {
-    $mensa = 'Debe completar todos los campos';
-} else {
-    if ($usuario == 'Cristiano Ronaldo' && $pass == '123') {
-        $_SESSION['usuario']=$usuario;
-        header('Location: index.php');
-    } else {
-        $mensa = 'Los datos son incorrectos';
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script type="text/javascript">
         console.log("Funciona");
@@ -26,25 +12,29 @@ if ($usuario == '' || $pass == '') {
             if (usuario.value == '' || pass.value == '') {
                 mensaje = 'Debes completar todos los campos'
             } else {
-                document.getElementById("formularioLogin").submit();
+                let opciones = {
+                    method: "GET"
+                };
+                let parametros = "usuario=" + usuario + "&pass=" + pass;
+                fetch("validarUsuario.php"+parametros, opciones)
             }
             document.getElementById("msj").innerHTML = mensaje;
         }
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 
 <body>
     <form id="formularioLogin" name="formularioLogin" method="post" action="login.php">
         <label for="usuario">Usuario:</label><br>
-        <input type="text" id="usuario" name="usuario" value="<?php echo $usuario; ?>"><br>
+        <input type="text" id="usuario" name="usuario"><br>
 
         <label for="pass">Contraseña:</label><br>
-        <input type="password" id="pass" name="pass" value="<?php echo $pass; ?>"><br>
+        <input type="password" id="pass" name="pass"><br>
         <button type="button" id="aceptar" onclick="validar()">Aceptar</button><br>
-        <span id = "msj"><?php echo $mensa; ?></span>
+        <span id="msj"></span>
     </form>
 
 </body>
