@@ -27,8 +27,6 @@ function recibirDatos() {
     <p class = "asdf"> Fecha de nacimiento: ${fechaDeNac} </p>
     <p class = "asdf"> Correo de contacto: ${correo} </p>
     <p class = "asdf" > País donde vive: ${vivir}</p>
-    <button class="Botonformulario" onclick="EditarDatos()">Editar</button>
-
     `
         } else {
             alert("Las contraseñas no coinciden")
