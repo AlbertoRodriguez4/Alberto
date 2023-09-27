@@ -6,5 +6,48 @@
         android:orientation="vertical"
         android:background="#AAA239"
         >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="500px"
+        android:background="#FFFF">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="30"
+        android:background="@drawable/asdf"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_margin="10dp"
+        android:layout_weight="25"
+        android:background="#AAAAAA"
+        android:orientation="horizontal"
+        android:padding="20px"
+        android:weightSum="100">
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Escribe tu usuario" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="User:" />
+
+    </LinearLayout>
+
 </LinearLayout>
+
 
