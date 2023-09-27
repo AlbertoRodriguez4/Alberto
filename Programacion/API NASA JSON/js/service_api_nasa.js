@@ -18,7 +18,11 @@ fetch(apiUrl)
     // Los datos de las fotos se encuentran en el objeto 'data'
     console.log(data);
     // Aquí puedes procesar los datos o mostrar las imágenes en tu aplicación
+    for (var i = 1; i < 100; i++) {
+      console.log("hola")
+    }
   })
+
   .catch((error) => {
     console.error('Cristiano Ronaldo:', "siuuu");
   });
