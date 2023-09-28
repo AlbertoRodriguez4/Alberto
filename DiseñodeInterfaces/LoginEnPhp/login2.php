@@ -8,7 +8,7 @@
         function validar() {
             const usuario = document.getElementById("usuario");
             const pass = document.getElementById("pass");
-            let mensaje = '';
+            let msj = '';
             if (usuario.value == '' || pass.value == '') {
                 mensaje = 'Debes completar todos los campos'
             } else {
@@ -16,21 +16,31 @@
                     method: "GET"
                 };
                 let parametros = "usuario=" + usuario + "&pass=" + pass;
-                fetch("validarUsuario.php"+parametros, opciones)
+                fetch("validarUsuario.php?"+parametros, opciones)
                 .then(res => {
                     if(res.ok) {
                         console.log('respuesta ok');
+                        return res.json;
                     }
                 })
-                .then()
-                .catch();
+                .then(respuestaJson => {
+                    console.log(respuestaJson);
+                    if(respuestaJson.valido == 'SI') {
+                        location.href = "index.php";
+                    } else {
+                        document.getElementById("msj").innerHTML = respuestaJson.msj;
+                    }
+                })
+                .catch(err => {
+                    document.getElementById("msj");
+                });
             }
             document.getElementById("msj").innerHTML = mensaje;
         }
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login V2</title>
 </head>
 
 <body>
