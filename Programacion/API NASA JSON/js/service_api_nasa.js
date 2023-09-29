@@ -1,6 +1,6 @@
 const apiKey = 'HLW89LSRtdoBhfq5C5WewIIk88VbPkx7IZCqp56w';
-const sol = 1000; // El número de sol que deseas consultar
-
+const sol = 1000; 
+// El número de sol que deseas consultar
 // URL del API de la NASA
 const apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&api_key=${apiKey}`;
 console.log(apiUrl)
@@ -19,7 +19,6 @@ fetch(apiUrl)
       var earth_date = json.photos[i].earth_date;
       var rover = json.photos[i].rover.name;
       var status = json.photos[i].rover.status;
-
       fotosHTML += `
         <div class="card">
           <img src="${fotos}" alt="Mars Rover Image"/>
@@ -32,18 +31,9 @@ fetch(apiUrl)
         </div>
       `;
     }
-
     divElement.innerHTML = fotosHTML;
   })
   .catch((error) => {
     console.error('Error:', error);
   });
-
-/*
-<p>ID: 102693</p>
-                <p>Sol: 1000</p>
-                <p>Camera: Front Hazard Avoidance Camera</p>
-                <p>Earth Date: 2015-05-30</p>
-                <p>Rover: Curiosity</p>
-                <p>Status: Active</p>*/ 
-  //    
+   
