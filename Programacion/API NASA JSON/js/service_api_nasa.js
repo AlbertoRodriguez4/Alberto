@@ -8,15 +8,14 @@ const apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?
 
 // Realizar una solicitud GET utilizando Fetch API
 fetch(apiUrl)
-.then(response => response.json())
-.then(json => {
-  console.log(json)
- json.array.forEach(element => {
-  console.log(element)
-  
- });
-})
+  .then(response => response.json())
+  .then(json => {
+    console.log(json)
+    for(var i = 1; i < json.photos.length; i++) {
+      console.log(json.photos[i].img_src)
+    }
 
+  })
   .catch((error) => {
     console.error('Cristiano Ronaldo:', "siuuu");
   });
