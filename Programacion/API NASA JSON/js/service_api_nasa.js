@@ -10,7 +10,7 @@ fetch(apiUrl)
   .then((json) => {
     var divElement = document.getElementById("container");
     var fotosHTML = '';
-    console.log(json)
+  //  console.log(json)
     for (var i = 0; i < json.photos.length; i++) {
       var fotos = json.photos[i].img_src;
       var name = json.photos[i].camera.name;
