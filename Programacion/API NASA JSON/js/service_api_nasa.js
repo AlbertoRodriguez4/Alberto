@@ -10,9 +10,10 @@ fetch(apiUrl)
   .then((json) => {
     var divElement = document.getElementById("container");
     var fotosHTML = '';
-
+    console.log(json)
     for (var i = 0; i < json.photos.length; i++) {
       var fotos = json.photos[i].img_src;
+      var name = json.photos[i].camera.name;
       var id = json.photos[i].id;
       var sol = json.photos[i].sol;
       var camera = json.photos[i].camera.full_name;
@@ -24,6 +25,7 @@ fetch(apiUrl)
           <img src="${fotos}" alt="Mars Rover Image"/>
           <h1>Id: ${id}</h1>
           <h1>Sol: ${sol}</h1>
+          <h1>Name: ${name}</h1>
           <h1>Camera: ${camera}</h1>
           <h1>Earth Date: ${earth_date}</h1>
           <h1>Rover: ${rover}</h1>
