@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initComponents();
-        edtEmail = findViewById(R.id.edtEmail);
+        /*edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtEmail);
-        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.btnLogin);*/
     }
 
     private void initComponents() {
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
     }
