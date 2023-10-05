@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author altf4
  */
-public interface IDao<E, I> {
+public interface IDao<E> {
 
     public ArrayList<E> findall();
 

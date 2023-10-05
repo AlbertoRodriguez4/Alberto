@@ -10,6 +10,7 @@ package model;
  * @author altf4
  */
 public class Juguete {
+
     private int jugueteId;
     private int cantidad;
     private String precioUnidad;
@@ -20,6 +21,9 @@ public class Juguete {
         this.cantidad = cantidad;
         this.precioUnidad = precioUnidad;
         this.nombre = nombre;
+    }
+
+    public Juguete() {
     }
 
     public int getJugueteId() {
@@ -58,5 +62,5 @@ public class Juguete {
     public String toString() {
         return "Juguete{" + "jugueteId=" + jugueteId + ", cantidad=" + cantidad + ", precioUnidad=" + precioUnidad + ", nombre=" + nombre + '}';
     }
-    
+
 }
