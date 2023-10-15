@@ -13,11 +13,12 @@ import java.util.ArrayList;
 import model.Juguete;
 
 public class Main {
-    public static void main(String[] args) {
-        JugueteDAO jugueteDAO = new JugueteDAO();
-
+        public static void main(String[] args) {
+        JugueteDAO jugueteDAO = new JugueteDAO();   
+        System.out.println("asdfg");
         ArrayList<Juguete> juguetes = jugueteDAO.findall();
-
+        int numero = 1;
+            System.out.println(numero);
         if (juguetes != null) {
             for (Juguete juguete : juguetes) {
                 System.out.println("Nombre: " + juguete.getNombre());
