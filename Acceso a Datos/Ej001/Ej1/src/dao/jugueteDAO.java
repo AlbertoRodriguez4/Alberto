@@ -13,7 +13,7 @@ public class jugueteDAO implements IDAO {
 public void ejectuar(String asdf) {
     motorDAO.connect();
     switch (asdf) {
-        case "JUGUETES":
+        case "JUGUETE":
             findall();
     }
 }
