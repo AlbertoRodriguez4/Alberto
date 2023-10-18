@@ -74,6 +74,9 @@ Created with Workflow PetriNet Designer Version 3.2.0 (woped.org)-->
         <position x="10" y="250"/>
         <dimension x="40" y="40"/>
       </graphics>
+      <initialMarking>
+        <text>1</text>
+      </initialMarking>
     </place>
     <place id="p3">
       <name>
@@ -317,9 +320,6 @@ Created with Workflow PetriNet Designer Version 3.2.0 (woped.org)-->
         <position x="1480" y="280"/>
         <dimension x="40" y="40"/>
       </graphics>
-      <initialMarking>
-        <text>1</text>
-      </initialMarking>
     </place>
     <place id="p44">
       <name>
@@ -1460,7 +1460,7 @@ Created with Workflow PetriNet Designer Version 3.2.0 (woped.org)-->
       <scale>70</scale>
       <treeWidthRight>1888</treeWidthRight>
       <overviewPanelVisible>false</overviewPanelVisible>
-      <treeHeightOverview>1</treeHeightOverview>
+      <treeHeightOverview>100</treeHeightOverview>
       <treePanelVisible>false</treePanelVisible>
       <verticalLayout>false</verticalLayout>
       <resources/>
