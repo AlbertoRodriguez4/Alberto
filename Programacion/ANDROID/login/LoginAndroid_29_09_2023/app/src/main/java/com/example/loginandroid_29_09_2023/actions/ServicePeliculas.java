@@ -1,9 +1,9 @@
 package com.example.loginandroid_29_09_2023.actions;
 
-import android.view.View;
-import android.widget.Toast;
+import com.example.loginandroid_29_09_2023.lst_films.model.entities.MovieResponse;
+import com.example.loginandroid_29_09_2023.retrofit.RetrofitClient;
 
-import com.example.loginandroid_29_09_2023.MainActivity;
+import retrofit2.Call;
 
 public class ServicePeliculas {
 
@@ -14,16 +14,13 @@ public class ServicePeliculas {
     }
 
     void getDatosPeliculas() {
-        // Voy a por los datos
-        // VIAJOOOOOOOOO A POR LOS DATOS!!!!!!!!!!!!
-        // THREADS!!!!!!!!!!!!!!!!!!!!
-        // RETROFIT!!!!!!!!!!!!
-        // Toast.makeText(MainActivity.getInstance(), "Welcome To Miami!!!", Toast.LENGTH_SHORT).show();
+        Call<MovieResponse> call = RetrofitClient.getInstance().getPopularMovies();
         view.showPeliculas("Los datos han ido bien: ['films': {''}]");
 
         // fetch ("url=http://")-->
         // json
-
+        /*@Override
+        public void*/
 
     }
 }
