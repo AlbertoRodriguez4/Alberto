@@ -1,10 +1,13 @@
 <?php
     require_once 'controladores/Controlador.php';
     require_once 'vistas/Vista.php';
-    
+    require 'modelos/M_Usuarios.php';
     class C_Usuarios extends Controlador{
+        private $modelo;
+
         public function __construct(){
             parent::__construct();
+            $   this->modelo = new M_Usuarios();
         }
 
         public function validarUsuario($datos){
@@ -22,6 +25,9 @@
         public function getVistaUsuarios(){
             Vista::render('vistas/Usuarios/V_Usuarios.php');
         }
-
+        public function buscarUsuarios() {
+            $usuarios = $this->modelo->buscarUsuarios();
+            echo json_encode($usuarios);
+        }
     }
 ?>
