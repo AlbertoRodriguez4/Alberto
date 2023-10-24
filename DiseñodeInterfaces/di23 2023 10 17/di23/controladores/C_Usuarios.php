@@ -7,7 +7,7 @@
 
         public function __construct(){
             parent::__construct();
-            $   this->modelo = new M_Usuarios();
+               $this->modelo = new M_Usuarios();
         }
 
         public function validarUsuario($datos){
@@ -27,7 +27,9 @@
         }
         public function buscarUsuarios() {
             $usuarios = $this->modelo->buscarUsuarios();
-            echo json_encode($usuarios);
+            //echo json_encode($usuarios);
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php');
+            array('usuarios'=>$usuarios);
         }
     }
 ?>
