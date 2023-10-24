@@ -13,7 +13,10 @@ public function __construct() {
     $b_texto = '';
     extract($filtros);
     if($b_texto != '') {
-        
+       $aTexto = explode(' ', $b_texto);
+       foreach($aTexto as $palabra) {
+        $SQL.=" apellido_1 LIKE '"+$palabra+"'";
+       }
     }
     $SQL = "SELECT * FROM usuarios WHERE 1=1";
     $usuarios = $this->DAO->consultar($SQL);
