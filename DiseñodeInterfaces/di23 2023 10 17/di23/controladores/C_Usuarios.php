@@ -28,8 +28,7 @@
         public function buscarUsuarios() {
             $usuarios = $this->modelo->buscarUsuarios();
             //echo json_encode($usuarios);
-            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php');
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
             array('usuarios'=>$usuarios);
         }
     }
-?>
