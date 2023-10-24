@@ -12,12 +12,12 @@
 
         public function validarUsuario($datos){
             $usuario='';
-            $pass='srfdvsvwrt';
+            $pass='';
             extract($datos);
-            $valido='N';
-            if($usuario=='javier' && $pass=='123'){
+            $valido='Error al loguear';
+            if($usuario=='alberto' && $pass=='1234'){
                 $_SESSION['usuario']=$usuario;
-                $valido='S';   
+                $valido='Logueado correctamente';   
             }
             echo $valido;
         }
@@ -25,10 +25,10 @@
         public function getVistaUsuarios(){
             Vista::render('vistas/Usuarios/V_Usuarios.php');
         }
-        public function buscarUsuarios() {
-            $usuarios = $this->modelo->buscarUsuarios();
+        public function buscarUsuarios($filtros = array()) {
+            $usuarios = $this->modelo->buscarUsuarios($filtros);
             //echo json_encode($usuarios);
-            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
-            array('usuarios'=>$usuarios);
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios, array('usuarios'=>$usuarios)));
         }
     }
+?>
