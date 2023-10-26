@@ -10,7 +10,7 @@ if ($usuario == '' || $pass == '') {
     $objUsuarios = new C_Usuarios();
     $datos['usuario'] = $usuario;
     $datos['pass'] = $pass;
-    $resultado = $objUsuarios->validarUsuario($datos);
+    //$resultado = $objUsuarios->validarUsuario($datos);
 
     $resultado = $objUsuarios->validarUsuario(array(
         'usuario' => $usuario,

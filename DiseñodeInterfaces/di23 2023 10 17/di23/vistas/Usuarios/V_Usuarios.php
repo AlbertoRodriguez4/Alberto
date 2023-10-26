@@ -7,6 +7,7 @@ echo 'Hola desde usuarios';
         <input type="text" id="b_texto" name="b_texto">
     </label>
     <button type="button" onclick="buscarUsuarios()">Buscar</button>
+    <button type="button" onclick="buscarPorSexo()">Buscar Género</button>
 </form>
 <div id="capaResultadoBusqueda">
 
