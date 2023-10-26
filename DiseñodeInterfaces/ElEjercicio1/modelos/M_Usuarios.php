@@ -17,7 +17,6 @@ class M_Usuarios extends Modelo
         $usuario = '';
         $pass = '';
         extract($filtros);
-
         $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
 
         if ($usuario != "" && $pass != "") {
@@ -34,6 +33,24 @@ class M_Usuarios extends Modelo
                 $SQL .= " OR nombre LIKE  '%$palabra%'";
             }
             $SQL .= ' ) ';
+        }
+
+
+
+        echo "";
+        echo $SQL;
+        //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
+    public function buscarPorSexo($filtros = array())
+    {
+        
+        extract($filtros);
+        $genero = '';
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
+        if ($genero != '') {
+            $SQL .= "AND sexo ='$genero'";
         }
         echo "";
         echo $SQL;
