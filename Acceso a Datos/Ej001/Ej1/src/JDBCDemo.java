@@ -5,16 +5,17 @@ import java.sql.Statement;
 
 public class JDBCDemo {
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/nosque";
+        String url = "jdbc:mysql://localhost:3306/jdbcdemo";
         String username = "root";
         String password = "";
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM JUGUETE");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM JUGUETES");
+
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2) + " " + resultSet.getInt(3) + "u" + " " + resultSet.getInt(4) + "€/U");
+                System.out.println(resultSet.getInt(1)+" "+resultSet.getString(2)+resultSet.getInt(3));
             }
             connection.close();
         } catch (Exception e) {
