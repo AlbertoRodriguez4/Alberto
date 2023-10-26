@@ -10,20 +10,14 @@
                $this->modelo = new M_Usuarios();
         }
 
-        public function validarUsuario($filtros){
-            //$usuario='';
-            //$pass='';
-            //extract($datos);
-            //$valido='Error al loguear';
-            //if($usuario=='alberto' && $pass=='1234'){
-               // $_SESSION['usuario']=$usuario;
-                //$valido='Logueado correctamente';   
-            //}
-            $valido = "N";
-            $usuarios =$this->modelo->buscarUsuarios($filtros);
-            if(!empty($usuarios)){
-                $valido = "S";
-                $_SESSION['usuario'] = $usuarios[0]['login'];
+        public function validarUsuario($datos){
+            $usuario='';
+            $pass='';
+            extract($datos);
+            $valido='Error al loguear';
+            if($usuario=='alberto' && $pass=='1234'){
+                $_SESSION['usuario']=$usuario;
+                $valido='Logueado correctamente';   
             }
             echo $valido;
         }
@@ -37,3 +31,4 @@
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios, array('usuarios'=>$usuarios)));
         }
     }
+?>
