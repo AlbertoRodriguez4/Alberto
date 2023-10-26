@@ -23,7 +23,7 @@ class M_Usuarios extends Modelo
         if ($usuario != "" && $pass != "") {
             $usuario = addslashes($usuario);
             $pass = addslashes($pass);
-            $SQL .= "AND login = '$usuario' AND pass = MD5('$pass')";
+            $SQL .= "AND login = '$usuario' AND pass = '$pass'";
         }
         if ($b_texto != '') {
             $aTexto = explode(' ', $b_texto);
@@ -35,6 +35,7 @@ class M_Usuarios extends Modelo
             }
             $SQL .= ' ) ';
         }
+        echo "";
         echo $SQL;
         //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
         $usuarios = $this->DAO->consultar($SQL);
