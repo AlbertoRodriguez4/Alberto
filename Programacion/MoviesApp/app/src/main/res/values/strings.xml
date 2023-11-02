@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Movies app</string>
+    <string name="search_movies">Search movies...</string>
+    <string name="category">Category</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="best_movies">Best Movies</string>
+</resources>
