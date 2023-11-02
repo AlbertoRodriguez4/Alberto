@@ -37,8 +37,8 @@
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios, array('usuarios'=>$usuarios)));
         }
         public function buscarPorSexo($filtros = array()) {
-            $genero = $this->modelo->buscarPorSexo($filtros);
+            $usuarios = $this->modelo->buscarPorSexo($filtros);
             //echo json_encode($usuarios);
-            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('genero'=>$genero, array('genero'=>$genero)));
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
         }
     }
