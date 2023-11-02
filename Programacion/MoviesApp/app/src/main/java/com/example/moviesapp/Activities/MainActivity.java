@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
+private RecyclerView.Adapter adapterNewMovies, AdapterUpComing, adapterCategory;
+private RecyclerView recyclerViewBestMovies, recyclerViewUpComming, recyclerviewCategory;
+private RequestQueue mRequestQueue;
+private StringRequest mStringRequest, mStringRequest2, mStringRequest3;
+private ProgressBar loading1, loading2, loading3;
 private ViewPager2 viewPager2;
 private Handler slideHandler = new Handler();
     @Override
@@ -58,6 +63,16 @@ private Handler slideHandler = new Handler();
         slideHandler.postDelayed(sliderRunnable, 2000);
     }
     private void InitView() {
-        viewPager2 = findViewById(R.id.viewpagerSlider)
+        viewPager2 = findViewById(R.id.viewpagerSlider);
+        recyclerViewBestMovies = findViewById(R.id.view1);
+        recyclerViewBestMovies.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewUpcomming = findViewById(R.id.view2);
+        recyclerViewUpcomming.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerViewCategory = findViewById(R.id.view3);
+        recyclerViewCategory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        loading1=findViewById(R.id.progressBar1);
+        loading2=findViewById(R.id.progressBar2);
+        loading3=findViewById(R.id.progressBar3);
+        
     }
 }
