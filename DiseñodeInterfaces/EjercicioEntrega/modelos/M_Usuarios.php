@@ -35,10 +35,6 @@ class M_Usuarios extends Modelo
             $SQL .= ' ) ';
         }
 
-
-
-        echo "";
-        echo $SQL;
         //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
@@ -68,10 +64,19 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-    public function añadirUsuario($filtros = array())
-    {
-        $b_texto = '';
+    public function buscarPorSexoMasculino($filtros = array()) {
         extract($filtros);
-        $SQL = "INSERT INTO usuariosINSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sexo`, `fecha_Alta`, `mail`, `movil`, `login`, `pass`, `activo`) VALUES ('','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]','[value-10]','[value-11]') ";
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 AND (1=2 OR sexo LIKE 'H' ) ";
+
+        //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
+    public function buscarPorSexoFemenino($filtros = array()) {
+        extract($filtros);
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 AND (1=2 OR sexo LIKE 'M' ) ";
+        //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
     }
 }

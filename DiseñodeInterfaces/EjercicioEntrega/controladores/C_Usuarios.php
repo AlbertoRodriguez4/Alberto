@@ -25,7 +25,6 @@
                 $valido = "S";
                 $_SESSION['usuario'] = $usuarios[0]['login'];
             }
-            echo $valido;
         }
 
         public function getVistaUsuarios(){
@@ -41,8 +40,12 @@
             //echo json_encode($usuarios);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
         }
-        public function añadirUsuarios($filtros = array()) {
-            $usuarios = $this->modelo->buscarPorSexo($filtros);
+        public function buscarPorSexoMasculino($filtros = array()) {
+            $usuarios = $this->modelo->buscarPorSexoMasculino($filtros);
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
+        }
+        public function buscarPorSexoFemenino($filtros = array()) {
+            $usuarios = $this->modelo->buscarPorSexoFemenino($filtros);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
         }
     }
