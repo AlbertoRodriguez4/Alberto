@@ -64,7 +64,8 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-    public function buscarPorSexoMasculino($filtros = array()) {
+    public function buscarPorSexoMasculino($filtros = array())
+    {
         extract($filtros);
         $SQL = "SELECT * FROM usuarios WHERE 1=1 AND (1=2 OR sexo LIKE 'H' ) ";
 
@@ -72,9 +73,44 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-    public function buscarPorSexoFemenino($filtros = array()) {
+    public function buscarPorSexoFemenino($filtros = array())
+    {
         extract($filtros);
         $SQL = "SELECT * FROM usuarios WHERE 1=1 AND (1=2 OR sexo LIKE 'M' ) ";
+        //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
+    public function buscarTelefono($filtros = array())
+    {
+        $b_texto2 = "";
+        $telefono = "";
+        extract($filtros);
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
+        if ($b_texto2 != '') {
+            $aTexto = explode(' ', $b_texto2);
+            $SQL .= "AND (1=2";
+            foreach ($aTexto as $telefono) {
+                $SQL .= " OR movil LIKE '$telefono'";
+            }
+            $SQL .= ' ) ';
+        }
+         $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
+    public function buscarPorSiActividad($filtros = array())
+    {
+        extract($filtros);
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 AND (1=2 OR activo LIKE 'S' ) ";
+
+        //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
+    public function buscarPorNoActividad($filtros = array())
+    {
+        extract($filtros);
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 AND (1=2 OR activo LIKE 'N' ) ";
         //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;

@@ -35,11 +35,6 @@
             //echo json_encode($usuarios);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios, array('usuarios'=>$usuarios)));
         }
-        public function buscarPorSexo($filtros = array()) {
-            $usuarios = $this->modelo->buscarPorSexo($filtros);
-            //echo json_encode($usuarios);
-            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
-        }
         public function buscarPorSexoMasculino($filtros = array()) {
             $usuarios = $this->modelo->buscarPorSexoMasculino($filtros);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
@@ -48,4 +43,17 @@
             $usuarios = $this->modelo->buscarPorSexoFemenino($filtros);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
         }
+        public function buscarTelefono($filtros = array()) {
+            $usuarios = $this->modelo->buscarTelefono($filtros);
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
+        }
+        public function buscarPorSiActividad($filtros = array()) {
+            $usuarios = $this->modelo->buscarPorSiActividad($filtros);
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
+        }
+        public function buscarPorNoActividad($filtros = array()) {
+            $usuarios = $this->modelo->buscarPorNoActividad($filtros);
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
+        }
+        
     }

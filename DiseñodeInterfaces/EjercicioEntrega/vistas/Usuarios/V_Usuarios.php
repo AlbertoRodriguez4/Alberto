@@ -80,7 +80,20 @@
         <label>
             <input type="radio" name="opciones" value="opcion2" onclick="buscarPorSexoFemenino()">Mujer
         </label>
+        <p>Buscar por número de telefono</p>
+        <label for="b_textp2">
+            <input type="text" id="b_texto2" name="b_texto2">
+        </label>
+        <button type="button" onclick="buscarTelefono()">Buscar</button>
+        <p>Buscar por actividad o inactividad</p>
+        <label>
+            <input type="radio" name="opciones" value="opcion1" onclick="buscarPorSiActividad()">Activos
+        </label>
+        <label>
+            <input type="radio" name="opciones" value="opcion2" onclick="buscarPorNoActividad()">Inactivos
+        </label>
     </form>
+
     <div id="capaResultadoBusqueda" class="resultado-busqueda">
     </div>
 </body>
