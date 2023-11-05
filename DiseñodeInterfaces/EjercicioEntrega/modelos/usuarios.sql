@@ -1,13 +1,12 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2023 a las 21:26:49
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Tiempo de generación: 05-11-2023 a las 13:38:07
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -21,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `di23`
 --
-CREATE DATABASE IF NOT EXISTS `di23` DEFAULT CHARACTER SET latin1 COLLATE latin1_spanish_ci;
-USE `di23`;
 
 -- --------------------------------------------------------
 
@@ -42,15 +39,15 @@ CREATE TABLE `usuarios` (
   `login` varchar(40) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `pass` varchar(32) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `activo` char(1) NOT NULL DEFAULT 'N'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sexo`, `fecha_Alta`, `mail`, `movil`, `login`, `pass`, `activo`) VALUES
-(1, 'javier', 'xxxx', 'xx', 'H', '2020-10-01', 'javier@2si2023.es', '976466599', 'javier', 'e9dbd0ab151d5957cd9869a142ba2fd1', 'S'),
-(2, 'admin', 'ad', 'ad', 'H', '2020-10-02', 'admin@2si2023.es', '976466590', 'admin', 'e9dbd0ab151d5957cd9869a142ba2fd1', 'S'),
+(1, 'javier', 'xxxx', 'xx', 'H', '2020-10-01', 'javier@2si2023.es', '976466599', 'alberto', '1234', 'S'),
+(2, 'admin', 'ad', 'ad', 'H', '2020-10-02', 'admin@2si2023.es', '976466590', 'joder', 'porque', 'S'),
 (7, 'Maria', 'Fernandez', 'Castro', 'H', '0000-00-00', 'mfernandez@2si2023.es', '2342423', 'safdfa', 'e10adc3949ba59abbe56e057f20f883e', 'S'),
 (8, 'Felipe', 'Smit', 'Fernandez', 'H', '2020-11-23', 'fsmit@2si2023.com', '976466599', 'fperez', 'e10adc3949ba59abbe56e057f20f883e', 'S'),
 (103, 'Carine ', 'Schmitt', '', 'M', '2020-02-15', 'Schmitt@2si2023.es', '64103103', 'Schmitt', '202cb962ac59075b964b07152d234b70', 'S'),
@@ -175,7 +172,8 @@ INSERT INTO `usuarios` (`id_Usuario`, `nombre`, `apellido_1`, `apellido_2`, `sex
 (489, 'Thomas ', 'Smith', '', 'H', '2020-02-15', 'Smith@2si2023.es', '64489489', 'Smith', '202cb962ac59075b964b07152d234b70', 'S'),
 (495, 'Valarie', 'Franco', '', 'M', '2020-02-15', 'Franco2@2si2023.es', '64495495', 'Franco2', '202cb962ac59075b964b07152d234b70', 'S'),
 (496, 'Tony', 'Snowden', '', 'H', '2020-02-15', 'Snowden@2si2023.es', '64496496', 'Snowden', '202cb962ac59075b964b07152d234b70', 'N'),
-(497, 'ss', 'ss', '', 'H', '2022-12-07', 'asfsdf@sfsd.es', '', 'javier22', '25d55ad283aa400af464c76d713c07ad', 'S');
+(497, 'ss', 'ss', '', 'H', '2022-12-07', 'asfsdf@sfsd.es', '', 'javier22', '25d55ad283aa400af464c76d713c07ad', 'S'),
+(498, 'charly', 'Fernandez', 'Tercero', '1', '0000-00-00', 'si', 'no', 'asdf', 'asdf', 'a');
 
 --
 -- Índices para tablas volcadas
@@ -196,8 +194,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_Usuario` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=498;
-SET FOREIGN_KEY_CHECKS=1;
+  MODIFY `id_Usuario` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=499;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
