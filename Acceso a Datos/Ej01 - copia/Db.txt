@@ -1,0 +1,186 @@
+
+
+CREATE TABLE Clientes (
+    ClienteID INT PRIMARY KEY,
+    Nombre VARCHAR(50),
+    Apellido VARCHAR(50),
+    Usuario VARCHAR(50),  
+    Contraseña VARCHAR(50), 
+    CorreoElectronico VARCHAR(100),
+    Telefono VARCHAR(15),
+);
+
+CREATE TABLE DireccionesEnvio (
+    DireccionID INT PRIMARY KEY,
+    ClienteID INT,
+    Direccion VARCHAR(100),
+    CodigoPostal VARCHAR(10),
+    Ciudad VARCHAR(50),
+    Provincia VARCHAR(50),
+    Pais VARCHAR(50),
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+);
+
+CREATE TABLE DatosFacturacion (
+    FacturacionID INT PRIMARY KEY,
+    ClienteID INT,
+    CIF VARCHAR(15),
+    DireccionFacturacion VARCHAR(100),
+    NombreEmpresa VARCHAR(50),
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+);
+
+CREATE TABLE JuguetesEmpresa (
+    ArticuloID INT PRIMARY KEY,
+    NombreArticulo VARCHAR(100),
+    StockDisponible INT
+);
+
+CREATE TABLE CarritoCompra (
+    CarritoID INT PRIMARY KEY,
+    ClienteID INT,
+    ArticuloID INT,
+    CantidadReservada INT,
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID),
+    FOREIGN KEY (ArticuloID) REFERENCES Articulos(ArticuloID)
+);
+
+CREATE TABLE Empresa (
+    EmpresaID INT PRIMARY KEY,
+    Nombre VARCHAR(255) NOT NULL,
+    DireccionPostal VARCHAR(255),
+    DireccionWeb VARCHAR(255),
+    Telefono VARCHAR(20),
+    CIF VARCHAR(20)
+);
+
+CREATE TABLE Particular (
+    ClienteID INT PRIMARY KEY,
+    DNI VARCHAR(20) NOT NULL,
+    Nombre VARCHAR(255) NOT NULL,
+    Telefono VARCHAR(20),
+    Direccion VARCHAR(255)
+);
+
+CREATE TABLE Juguete (
+    JugueteID INT PRIMARY KEY,
+    Nombre VARCHAR(255) NOT NULL,
+    Cantidad INT,
+    PrecioUnidad DECIMAL(10, 2)
+);
+
+CREATE TABLE Nota (
+    NotaID INT PRIMARY KEY,
+    FechaTransaccion DATE,
+    FirmaParticular VARCHAR(255),
+    ClienteID INT, 
+    FOREIGN KEY (ClienteID) REFERENCES Particular(ClienteID)
+);
+
+CREATE TABLE DetalleNota (
+    DetalleID INT PRIMARY KEY,
+    NombreObjeto VARCHAR(255),
+    Cantidad INT,
+    PrecioUnidad DECIMAL(10, 2),
+    PrecioTotal DECIMAL(10, 2),
+    NotaID INT, 
+    FOREIGN KEY (NotaID) REFERENCES Nota(NotaID)
+);
+
+CREATE TABLE Proveedor (
+    ProveedorID INT PRIMARY KEY,
+    NombreEmpresa VARCHAR(255) NOT NULL,
+    CIF VARCHAR(20),
+    DireccionPostal VARCHAR(255),
+    DireccionWeb VARCHAR(255),
+    Telefono VARCHAR(20),
+    PersonaContacto VARCHAR(255)
+);
+
+CREATE TABLE Pedido (
+    PedidoID INT PRIMARY KEY,
+    FechaPedido DATE,
+    DireccionEnvio VARCHAR(255),
+    PrecioTotal DECIMAL(10, 2),
+    ProveedorID INT, 
+    FOREIGN KEY (ProveedorID) REFERENCES Proveedor(ProveedorID)
+);
+
+CREATE TABLE DetalleEnvio (
+    DetallePedidoID INT PRIMARY KEY,
+    NombreReferenciaObjeto VARCHAR(255),
+    Cantidad INT,
+    PrecioUnidad DECIMAL(10, 2),
+    PrecioTotal DECIMAL(10, 2),
+    PedidoID INT, 
+    FOREIGN KEY (PedidoID) REFERENCES Pedido(PedidoID)
+);
+
+CREATE TABLE Albaran (
+    AlbaranID INT PRIMARY KEY,
+    FechaPedido DATE,
+    FechaEnvio DATE,
+    NombreEmpresa VARCHAR(255),
+    NombreCliente VARCHAR(255),
+    DireccionEnvio VARCHAR(255),
+    FirmaReceptora VARCHAR(255),
+    PedidoID INT, 
+    FOREIGN KEY (PedidoID) REFERENCES Pedido(PedidoID)
+);
+
+CREATE TABLE DetalleAlbaran (
+    DetalleAlbaranID INT PRIMARY KEY,
+    NombreReferenciaObjeto VARCHAR(255),
+    Cantidad INT,
+    PrecioUnidad DECIMAL(10, 2),
+    PrecioTotal DECIMAL(10, 2),
+    AlbaranID INT, 
+    FOREIGN KEY (AlbaranID) REFERENCES Albaran(AlbaranID)
+);
+
+CREATE TABLE RecepcionEnvio (
+    RecepcionID INT PRIMARY KEY,
+    ValidacionEnvio BOOLEAN, 
+    AlbaranID INT, 
+    FOREIGN KEY (AlbaranID) REFERENCES Albaran(AlbaranID)
+);
+
+INSERT INTO `juguetes` (`JugueteID`, `Nombre`, `cantidad`, `precioUnidad`) VALUES ('1', 'Spiderman', '20', '5'), ('2', 'Pocoyo', '120', '3');
+
+INSERT INTO `juguetes` (`JugueteID`, `Nombre`, `cantidad`, `precioUnidad`) VALUES ('2', 'Pocoyo', '120', '3');
+
+
+CREATE TABLE VentasTienda (
+    VentaID INT PRIMARY KEY,
+    FechaVenta DATE,
+    TipoPago VARCHAR(50),
+    TotalVenta DECIMAL(10, 2)
+);
+
+CREATE TABLE DetallesVenta (
+    DetalleID INT PRIMARY KEY,
+    VentaID INT,
+    ArticuloID INT,
+    CantidadVendida INT,
+    PrecioTotalLinea DECIMAL(10, 2),
+    FOREIGN KEY (VentaID) REFERENCES VentasTienda(VentaID),
+    FOREIGN KEY (ArticuloID) REFERENCES Articulos(ArticuloID)
+);
+
+
+
+
+CREATE TABLE DetallesVentaEnLinea (
+    DetalleEnLineaID INT PRIMARY KEY,
+    VentaEnLineaID INT,
+    ArticuloID INT,
+    CantidadVendida INT,
+    PrecioTotalLinea DECIMAL(10, 2),
+    FOREIGN KEY (VentaEnLineaID) REFERENCES VentasEnLinea(VentaEnLineaID),
+    FOREIGN KEY (ArticuloID) REFERENCES Articulos(ArticuloID)
+);
+
+CREATE TABLE MediosPago (
+    MedioPagoID INT PRIMARY KEY,
+    NombreMedioPago VARCHAR(50)
+);

@@ -1,0 +1,14 @@
+<ListaJuguetes>
+    <Juguetes>
+		<jugueteid>1</jugueteid>
+        <nombre>SpiderMan</nombre>
+        <cantidad>20</cantidad>
+        <precioUnidad>5.00</precioUnidad>
+    </Juguetes>
+    <Juguetes>
+		<jugueteid>2</jugueteid>
+        <nombre>Pocoyo</nombre>
+        <cantidad>150</cantidad>
+        <precioUnidad>3.00</precioUnidad>
+    </Juguetes>
+</ListaJuguetes>

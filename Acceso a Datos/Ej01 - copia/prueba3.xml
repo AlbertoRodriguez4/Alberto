@@ -1,0 +1,15 @@
+<VentasTienda>
+    <LasVentasTienda>
+		<VentaId>1<VentaId>
+        <FechaVenta>2023-11-05</FechaVenta>
+        <TipoPago>Efectivo</TipoPago>
+        <TotalVenta>30.00</TotalVenta>
+	</LasVentasTienda>
+    <LasVentasTienda>
+	<DetalleId>2<DetalleId>
+       <VentaId>2<VentaId>
+        <FechaVenta>2023-12-05</FechaVenta>
+        <TipoPago>Tarjeta</TipoPago>
+        <TotalVenta>35.00</TotalVenta>
+	</LasVentasTienda>
+</detallesVenta>

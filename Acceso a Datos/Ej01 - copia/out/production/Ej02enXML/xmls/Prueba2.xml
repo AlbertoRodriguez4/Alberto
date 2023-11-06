@@ -1,0 +1,16 @@
+<detallesVenta>
+    <LosDetallesVentaLinea>
+	<DetalleId>1<DetalleId>
+        <VentaId>1</VentaId>
+        <JugueteId>1</JugueteId>
+        <CantidadVendida>3</CantidadVendida>
+		<precioTotalLínea>15.00</precioTotalLínea>
+	</LosDetallesVentaLinea>
+    <LosDetallesVentaLinea>
+	<DetalleId>2<DetalleId>
+        <VentaId>1</VentaId>
+        <JugueteId>2</JugueteId>
+        <CantidadVendida>5</CantidadVendida>
+		<precioTotalLínea>15.00</precioTotalLínea>
+	</LosDetallesVentaLinea>
+</detallesVenta>

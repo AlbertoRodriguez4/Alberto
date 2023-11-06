@@ -1,0 +1,14 @@
+<detallesVentaenLínea>
+    <DetallesVentaLinea>
+		<DetalleEnLíneaId>1<DetalleEnLíneaId>
+        <VentaEnLíneaId>4</VentaEnLíneaId>
+        <CantidadVendida>1</CantidadVendida>
+        <precioTotalLínea>5.00</precioTotalLínea>
+		    </DetallesVentaLinea>
+    <DetallesVentaLinea>
+		<DetalleEnLíneaId>2<DetalleEnLíneaId>
+        <VentaEnLíneaId>4</VentaEnLíneaId>
+        <CantidadVendida>1</CantidadVendida>
+        <precioTotalLínea>20.00</precioTotalLínea>
+				    </DetallesVentaLinea>
+   </detallesVentaenLínea>
