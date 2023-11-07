@@ -15,6 +15,9 @@ public class Main {
             case "2":
                 accion = "EXPORTAR";
                 break;
+            case "3":
+                accion = "IMPORTAR";
+                break;
         }
         System.out.println("¿Que tabla deseas " + accion + "?");
         System.out.println("1 - Clientes.");
