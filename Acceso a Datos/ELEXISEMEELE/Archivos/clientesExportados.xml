@@ -1,0 +1,11 @@
+<lista_usuarios>
+	<cliente>
+		<idCliente>1</idCliente>
+		<nombre>Juan</nombre>
+		<apellido>Pérez</apellido>
+		<usuario>juanperez</usuario>
+		<contraseña>contraseña123</contraseña>
+		<correo>juanperez@example.com</correo>
+		<telefono>1234567890</telefono>
+	</cliente>
+</lista_usuarios>

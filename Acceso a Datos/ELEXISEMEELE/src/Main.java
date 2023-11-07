@@ -12,6 +12,9 @@ public class Main {
         switch (systemAction) {
             case "1":
                 accion = "MOSTRAR";
+            case "2":
+                accion = "EXPORTAR";
+                break;
         }
         System.out.println("¿Que tabla deseas " + accion + "?");
         System.out.println("1 - Clientes.");
@@ -24,6 +27,8 @@ public class Main {
         switch (systemAction2) {
             case "1":
                 tabla = "clientes";
+                break;
+
         }
         Controller.ejecutar(tabla, accion);
     }

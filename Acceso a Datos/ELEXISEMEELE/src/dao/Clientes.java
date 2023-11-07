@@ -3,6 +3,8 @@ package dao;
 import interfaces.IDao;
 import interfaces.ITablas;
 import motor.MotorSQL;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.sql.ResultSet;
@@ -24,12 +26,12 @@ public class Clientes implements IDao, ITablas {
                 break;
             case "EXPORTAR":
                 String XMLExp = traducir();
-                //exportar(XMLExp, "clientes");
+                exportar(XMLExp, "clientes");
                 break;
             case "IMPORTAR":
                 String XMLImp = traducir();
-                //NodeList lista = XmlToSQL(XMLImp, "clientes", "cliente");
-                //insertar(lista);
+                NodeList lista = XMLtoSQL(XMLImp, "clientes", "cliente");
+                insertar(lista);
                 break;
         }
         motorSQL.desconectar();
@@ -68,6 +70,26 @@ public class Clientes implements IDao, ITablas {
 
     @Override
     public void insertar(NodeList lista) {
-
+        String sentencia = "";
+        for (int i = 0; i < lista.getLength(); i++) {
+            Node particularNode = lista.item(i);
+            if (particularNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element articulo = (Element) particularNode;
+                Node idNode = articulo.getElementsByTagName("Cliente_ID").item(0);
+                String ClienteId = (idNode != null) ? idNode.getTextContent() : "";
+                String nombre = articulo.getElementsByTagName("Nombre").item(0).getTextContent();
+                String apellido = articulo.getElementsByTagName("Apellido").item(0).getTextContent();
+                String usuario = articulo.getElementsByTagName("Usuario").item(0).getTextContent();
+                String contraseña = articulo.getElementsByTagName("Contraseña").item(0).getTextContent();
+                String correo = articulo.getElementsByTagName("CorreoElectronico").item(0).getTextContent();
+                if (idNode != null) {
+                    sentencia = "INSERT INTO `clientes`(`Nombre`, `Apellido`, `Usuario`, `Contraseña`, `CorreoElectronico`) VALUES ('" + nombre + "','" + apellido + "','" + usuario + "','" + contraseña + "','" + correo + "')";
+                    System.out.println(sentencia);
+                    motorSQL.modificar(sentencia);
+                } else {
+                    System.out.println("no se ha podido hacer la insercion");
+                }
+            }
+        }
     }
 }
