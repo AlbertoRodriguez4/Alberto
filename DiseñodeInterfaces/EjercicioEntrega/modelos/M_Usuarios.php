@@ -95,7 +95,7 @@ class M_Usuarios extends Modelo
             }
             $SQL .= ' ) ';
         }
-         $usuarios = $this->DAO->consultar($SQL);
+        $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
     public function buscarPorSiActividad($filtros = array())
@@ -114,5 +114,26 @@ class M_Usuarios extends Modelo
         //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
+    }
+    public function añadirUsuarios($filtros = array())
+    {
+        $nombre = "";
+        $apellido_1 = "";
+        $apellido_2 = "";
+        $sexo = "";
+        $activo = "";
+
+        extract($filtros);
+        $SQL = "INSERT INTO `usuarios`(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`)";
+        if ($nombre != "" & $apellido_1 != "" & $apellido_2 != "" & $sexo != "" & $activo != "") {
+            $nombre = addslashes($nombre);
+            $apellido_1 = addslashes($apellido_1);
+            $apellido_2 = addslashes($apellido_2);
+            $sexo = addslashes($sexo);
+            $activo = addslashes($activo);
+            $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo')";
+        }
+        $insertUsuarios = $this->DAO->insertar($SQL);
+        return $insertUsuarios;
     }
 }

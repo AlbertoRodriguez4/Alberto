@@ -70,7 +70,7 @@
     <form id="formularioBuscar" name="formularioBuscar">
         <p>Buscar usuarios</p>
         <label for="b_textp">
-            <input type="text" id="b_texto" name="b_texto">
+            <input type="text" id="b_texto" oninput="buscarUsuarios()" name="b_texto">
         </label>
         <button type="button" onclick="buscarUsuarios()">Buscar</button>
         <p>Buscar por género</p>
@@ -92,6 +92,13 @@
         <label>
             <input type="radio" name="opciones" value="opcion2" onclick="buscarPorNoActividad()">Inactivos
         </label>
+        <p>Añadir usuarios</p>
+        <label for="b_textp2">
+            <input type="text" id="b_texto2" name="b_texto2">
+            <input type="text" id="b_texto2" name="b_texto2">
+            <input type="text" id="b_texto2" name="b_texto2">
+        </label>
+        <button type="button" onclick="añadirUsuarios()">Añadir</button>
     </form>
 
     <div id="capaResultadoBusqueda" class="resultado-busqueda">
