@@ -1,0 +1,9 @@
+<datosfacturacion>
+    <datosfacturacioness>
+        <FacturacionID>3</FacturacionID>
+        <ClienteID>2</ClienteID>
+        <CIF>ABC123456</CIF>
+        <DireccionFacturacion>CallePrincipal123</DireccionFacturacion>
+        <NombreEmpresa>Mi Empresa S.L.</NombreEmpresa>
+    </datosfacturacioness>
+</datosfacturacion>

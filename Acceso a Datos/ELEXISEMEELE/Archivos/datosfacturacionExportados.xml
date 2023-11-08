@@ -1,14 +1,16 @@
 <direccion_envio>
-	<DirecciónFacturación>
+	<NoseQue>
 		<FacturacionID>1</FacturacionID>
 		<ClienteID>1</ClienteID>
 		<CIF>123456789A</CIF>
 		<DirecciónFacturación>Calle Principal 123</DirecciónFacturación>
 		<NombreEmpresa>Mi Empresa S.L.</NombreEmpresa>
-	<DirecciónFacturación>
+	</NoseQue>
+	<NoseQue>
 		<FacturacionID>2</FacturacionID>
 		<ClienteID>2</ClienteID>
 		<CIF>987654321B</CIF>
 		<DirecciónFacturación>Avenida Secundaria 456</DirecciónFacturación>
 		<NombreEmpresa>Empresa de María</NombreEmpresa>
+	</NoseQue>
 </direccion_envio>

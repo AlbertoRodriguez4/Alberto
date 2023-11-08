@@ -29,7 +29,7 @@ public class Datosfacturacion implements IDao, ITablas {
                 break;
             case "IMPORTAR":
                 String XMLImp = traducir();
-                NodeList lista = XMLtoSQL(XMLImp, "clientes", "cliente");
+                NodeList lista = XMLtoSQL(XMLImp, "datosfacturacion", "datosfacturacioness");
                 insertar(lista);
                 break;
         }
@@ -39,7 +39,7 @@ public class Datosfacturacion implements IDao, ITablas {
     @Override
     public String traducir() {
         String xml = "";
-        xml += "<direccion_envio>\n";
+        xml += "<datosfacturacion>\n";
         try {
             ResultSet resultados = motorSQL.consultar("SELECT * FROM datosfacturacion");
             while (resultados.next()) {
@@ -48,12 +48,13 @@ public class Datosfacturacion implements IDao, ITablas {
                 String CIF = resultados.getString("CIF");
                 String DireccionFacturacion = resultados.getString("DireccionFacturacion");
                 String NombreEmpresa = resultados.getString("NombreEmpresa");
-                xml += "\t<DirecciónFacturación>\n";
+                xml += "\t<datosfacturacioness>\n";
                 xml += "\t\t<FacturacionID>" + FacturacionID + "</FacturacionID>\n";
                 xml += "\t\t<ClienteID>" + ClienteID + "</ClienteID>\n";
                 xml += "\t\t<CIF>" + CIF + "</CIF>\n";
                 xml += "\t\t<DirecciónFacturación>" + DireccionFacturacion + "</DirecciónFacturación>\n";
                 xml += "\t\t<NombreEmpresa>" + NombreEmpresa + "</NombreEmpresa>\n";
+                xml += "\t</datosfacturacion>\n";
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -67,18 +68,17 @@ public class Datosfacturacion implements IDao, ITablas {
         String sentencia = "";
         for (int i = 0; i < lista.getLength(); i++) {
             Node particularNode = lista.item(i);
+            System.out.println(lista);
             if (particularNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element articulo = (Element) particularNode;
-                Node idNode = articulo.getElementsByTagName("Cliente_ID").item(0);
-                String ClienteId = (idNode != null) ? idNode.getTextContent() : "";
-                String nombre = articulo.getElementsByTagName("Nombre").item(0).getTextContent();
-                String apellido = articulo.getElementsByTagName("Apellido").item(0).getTextContent();
-                String usuario = articulo.getElementsByTagName("Usuario").item(0).getTextContent();
-                String contraseña = articulo.getElementsByTagName("Contraseña").item(0).getTextContent();
-                String correo = articulo.getElementsByTagName("CorreoElectronico").item(0).getTextContent();
-                int telefono = Integer.parseInt(articulo.getElementsByTagName("Telefono").item(0).getTextContent());
+                Element datosfacturacion = (Element) particularNode;
+                Node idNode = datosfacturacion.getElementsByTagName("FacturacionID").item(0);
+                String FacturacionID = (idNode != null) ? idNode.getTextContent() : "";
+                int ClienteID = Integer.parseInt(datosfacturacion.getElementsByTagName("ClienteID").item(0).getTextContent());
+                String CIF = datosfacturacion.getElementsByTagName("CIF").item(0).getTextContent();
+                String DireccionFacturacion = datosfacturacion.getElementsByTagName("DireccionFacturacion").item(0).getTextContent();
+                String NombreEmpresa = datosfacturacion.getElementsByTagName("NombreEmpresa").item(0).getTextContent();
                 if (idNode != null) {
-                    sentencia = "INSERT INTO clientes(ClienteId, Nombre, Apellido, Usuario, Contraseña, CorreoElectronico, Telefono) VALUES (" + ClienteId + ",'" + nombre + "','" + apellido + "','" + usuario + "','" + contraseña + "','" + correo + "','" + telefono + "')";
+                    sentencia = "INSERT INTO datosfacturacion(FacturacionID, ClienteID, CIF, DireccionFacturacion, NombreEmpresa) VALUES ("+FacturacionID+","+ClienteID+",'"+CIF+"','"+DireccionFacturacion+"','"+NombreEmpresa+"')";
                     System.out.println(sentencia);
                     motorSQL.modificar(sentencia);
                 } else {
