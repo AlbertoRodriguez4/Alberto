@@ -129,3 +129,25 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO `clientes` (`ClienteID`, `Nombre`, `Apellido`, `Usuario`, `Contraseña`, `CorreoElectronico`, `Telefono`)
+VALUES
+(1, 'Juan', 'Pérez', 'juanperez', 'contraseña123', 'juanperez@example.com', '1234567890'),
+(2, 'María', 'Gómez', 'mariagomez', 'clave456', 'mariagomez@example.com', '9876543210');
+-- Agrega más filas según sea necesario
+INSERT INTO `datosfacturacion` (`FacturacionID`, `ClienteID`, `CIF`, `DireccionFacturacion`, `NombreEmpresa`)
+VALUES
+(1, 1, '123456789A', 'Calle Principal 123', 'Mi Empresa S.L.'),
+(2, 2, '987654321B', 'Avenida Secundaria 456', 'Empresa de María');
+-- Agrega más filas según sea necesario
+INSERT INTO `direccionesenvio` (`DireccionID`, `ClienteID`, `Direccion`, `CodigoPostal`, `Ciudad`, `Provincia`, `Pais`)
+VALUES
+(1, 1, 'Calle Envío 1', '54321', 'Ciudad A', 'Provincia X', 'País 1'),
+(2, 2, 'Avenida Envío 2', '98765', 'Ciudad B', 'Provincia Y', 'País 2');
+-- Agrega más filas según sea necesario
+INSERT INTO `juguetesempresa` (`ArticuloID`, `NombreArticulo`, `StockDisponible`)
+VALUES
+(1, 'Juguete 1', 100),
+(2, 'Juguete 2', 50),
+(3, 'Juguete 3', 75);
+-- Agrega más filas según sea necesario

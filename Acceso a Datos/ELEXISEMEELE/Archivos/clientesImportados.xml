@@ -1,0 +1,11 @@
+<lista_usuarios>
+    <cliente>
+        <Cliente_ID>3</Cliente_ID>
+        <Nombre>Juaasdasdn</Nombre>
+        <Apellido>Péasdasdasdrez</Apellido>
+        <Usuario>juaasdasdasnperez</Usuario>
+        <Contraseña>abcdefg</Contraseña>
+        <CorreoElectronico>juanperez@mismuertos.com</CorreoElectronico>
+        <Telefono>786859876</Telefono>
+    </cliente>
+</lista_usuarios>

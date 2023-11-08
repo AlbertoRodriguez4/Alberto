@@ -82,8 +82,9 @@ public class Clientes implements IDao, ITablas {
                 String usuario = articulo.getElementsByTagName("Usuario").item(0).getTextContent();
                 String contraseña = articulo.getElementsByTagName("Contraseña").item(0).getTextContent();
                 String correo = articulo.getElementsByTagName("CorreoElectronico").item(0).getTextContent();
+                int telefono = Integer.parseInt(articulo.getElementsByTagName("Telefono").item(0).getTextContent());
                 if (idNode != null) {
-                    sentencia = "INSERT INTO `clientes`(`Nombre`, `Apellido`, `Usuario`, `Contraseña`, `CorreoElectronico`) VALUES ('" + nombre + "','" + apellido + "','" + usuario + "','" + contraseña + "','" + correo + "')";
+                    sentencia = "INSERT INTO clientes(ClienteId, Nombre, Apellido, Usuario, Contraseña, CorreoElectronico, Telefono) VALUES ("+ClienteId+",'" + nombre + "','" + apellido + "','" + usuario + "','" + contraseña + "','" + correo + "','" +telefono+"')";
                     System.out.println(sentencia);
                     motorSQL.modificar(sentencia);
                 } else {

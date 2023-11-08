@@ -12,6 +12,7 @@ public class Main {
         switch (systemAction) {
             case "1":
                 accion = "MOSTRAR";
+                break;
             case "2":
                 accion = "EXPORTAR";
                 break;
@@ -31,7 +32,6 @@ public class Main {
             case "1":
                 tabla = "clientes";
                 break;
-
         }
         Controller.ejecutar(tabla, accion);
     }
