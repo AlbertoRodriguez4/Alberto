@@ -32,8 +32,8 @@ public interface ITablas {
         try {
             DocumentBuilderFactory dBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dBuilderFactory.newDocumentBuilder();
-            System.out.println("Leyendo el archivo 'Archivos/clientesImportados.xml'");
-            Document doc = dBuilder.parse("Archivos/clientesImportados.xml");
+            System.out.println("Leyendo el archivo 'Archivos/"+tabla+"clientesImportados.xml'");
+            Document doc = dBuilder.parse("Archivos/"+tabla+"Importados.xml");
             doc.getDocumentElement().normalize();
             listaDatos = doc.getElementsByTagName(item);
 

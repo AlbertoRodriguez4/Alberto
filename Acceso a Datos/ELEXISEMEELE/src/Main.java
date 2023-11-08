@@ -32,6 +32,15 @@ public class Main {
             case "1":
                 tabla = "clientes";
                 break;
+            case "2":
+                tabla = "datosfacturacion";
+                break;
+            case "3":
+                tabla = "direccionesenvio";
+                break;
+            case "4":
+                tabla = "juguetesempresa";
+                break;
         }
         Controller.ejecutar(tabla, accion);
     }
