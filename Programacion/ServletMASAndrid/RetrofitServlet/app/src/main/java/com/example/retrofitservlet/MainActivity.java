@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 // Realizar la solicitud al Servlet
         // Call<MyData> call = apiService.getMyData("1");
+        //Las etiquetas son clave en el archivo MyData
         Call<MyData> call = apiService.getMyDataMovies("MOVIE.LIST_ALL");
         //Solicitud a la API
         call.enqueue(new Callback<MyData>() {
@@ -42,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
                     //String message = myData.getMessage();
 
                     ArrayList<User> lstUsers = myData.getLstUsers();
+                        Toast.makeText(MainActivity.this, lstUsers.get(0).getUsername(), Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(MainActivity.this, lstUsers.get(0).getUsername(), Toast.LENGTH_SHORT).show();
                     // Actualizar la interfaz de usuario con el mensaje recibido
                 } else {
                     // Manejar una respuesta no exitosa

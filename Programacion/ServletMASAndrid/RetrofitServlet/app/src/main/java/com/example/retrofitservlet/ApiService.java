@@ -26,6 +26,7 @@ public interface ApiService {
         Call<MyData> getMyDataMovies(@Query("ACTION") String action);
 
 
+
         @GET("MyServlet/{id}")
         Call<MyData> getMyDataURL(@Path("id") String id);
 
