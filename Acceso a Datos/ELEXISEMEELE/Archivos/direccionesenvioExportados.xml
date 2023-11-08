@@ -1,0 +1,20 @@
+<direcciones_envio>
+	<direccionesenvio>
+		<DireccionID>1</DireccionID>
+		<ClienteID>1</ClienteID>
+		<Direccion>Calle Envío 1</Direccion>
+		<CodigoPostal>54321</CodigoPostal>
+		<Ciudad>Ciudad A</Ciudad>
+		<Provincia>Provincia X</Provincia>
+		<Pais>País 1</Pais>
+	</direccionesenvio>
+	<direccionesenvio>
+		<DireccionID>2</DireccionID>
+		<ClienteID>2</ClienteID>
+		<Direccion>Avenida Envío 2</Direccion>
+		<CodigoPostal>98765</CodigoPostal>
+		<Ciudad>Ciudad B</Ciudad>
+		<Provincia>Provincia Y</Provincia>
+		<Pais>País 2</Pais>
+	</direccionesenvio>
+</direcciones_envio>

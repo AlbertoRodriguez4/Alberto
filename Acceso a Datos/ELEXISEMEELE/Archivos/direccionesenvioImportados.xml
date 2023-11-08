@@ -1,0 +1,11 @@
+<direcciones_envio>
+    <direccionesenvio>
+        <DireccionID>3</DireccionID>
+        <ClienteID>2</ClienteID>
+        <Direccion>asdaasdasda </Direccion>
+        <CodigoPostal>9123912</CodigoPostal>
+        <Ciudad>asdasdad</Ciudad>
+        <Provincia>asdwasdw</Provincia>
+        <Pais>Pqweqweqwe</Pais>
+    </direccionesenvio>
+</direcciones_envio>
