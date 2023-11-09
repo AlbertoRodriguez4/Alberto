@@ -168,25 +168,49 @@ function textoAñadirUsuarios() {
     // Añadir campos al formulario
     formulario.innerHTML = `
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br>
+        <input type="text" id="nombre" name="nombre" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
+        <label for="apellido_1">apellido_1:</label>
+        <input type="text" id="apellido_1" name="apellido_1" required>
 
-        <label for="edad">Edad:</label>
-        <input type="number" id="edad" name="edad" required><br>
+        <label for="apellido_2">apellido_2:</label>
+        <input type="text" id="apellido_2" name="apellido_2" required>
 
-        <input type="submit" value="Agregar Usuario">
+        <label for="sexo">sexo:</label>
+        <input type="text" id="sexo" name="sexo" required>
+
+        <label for="activo">activo:</label>
+        <input type="text" id="activo" name="activo" required>
+
+        <input type="submit" id="botonAñadirUsuarios" onclick="botonAñadirUsuarios()" value="Agregar Usuario">
     `;
 
     // Agregar el formulario al cuerpo del documento
     document.body.appendChild(formulario);
     var divParaOcultar = document.getElementById('consultar');
     divParaOcultar.style.display = "none";
-    // Manejar el evento submit del formulario
-    formulario.addEventListener('submit', function (event) {
-        event.preventDefault(); // Evitar que el formulario se envíe
-        // Aquí puedes realizar acciones con los datos del formulario, como enviarlos a un servidor
+    var divoculto2 = document.getElementById('capaResultadoBusqueda');
+    divoculto2.style.display = "none";
+    
         
-    });
+    };
+    
+
+function botonAñadirUsuarios() {
+    let opciones = { method: "GET" };
+    let parametros = "controlador=Usuarios&metodo= botonAñadirUsuarios";
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log("respuesta ok");
+                return res.text();
+            }
+        })
+        .then(vista => {
+            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        })
 }

@@ -115,7 +115,7 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-    public function añadirUsuarios($filtros = array())
+    public function botonAñadirUsuarios($filtros = array())
     {
         $nombre = "";
         $apellido_1 = "";
@@ -124,14 +124,14 @@ class M_Usuarios extends Modelo
         $activo = "";
 
         extract($filtros);
-        $SQL = "INSERT INTO `usuarios`(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`)";
+        $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`)";
         if ($nombre != "" & $apellido_1 != "" & $apellido_2 != "" & $sexo != "" & $activo != "") {
             $nombre = addslashes($nombre);
             $apellido_1 = addslashes($apellido_1);
             $apellido_2 = addslashes($apellido_2);
             $sexo = addslashes($sexo);
             $activo = addslashes($activo);
-            $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo')";
+            $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$nombre')";
         }
         $insertUsuarios = $this->DAO->insertar($SQL);
         return $insertUsuarios;

@@ -55,5 +55,8 @@
             $usuarios = $this->modelo->buscarPorNoActividad($filtros);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
         }
+        public function botonAñadirUsuarios($filtros = array()) {
+            $usuarios = $this->modelo->botonAñadirUsuarios($filtros);
+        }
         
     }
