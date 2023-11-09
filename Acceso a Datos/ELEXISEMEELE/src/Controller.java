@@ -1,6 +1,7 @@
 import dao.Clientes;
 import dao.Datosfacturacion;
 import dao.Direccionesenvio;
+import dao.Juguetesempresa;
 
 public class Controller {
     public static void ejecutar(String tabla, String action) {
@@ -13,6 +14,9 @@ public class Controller {
                 break;
             case "direccionesenvio":
                 new Direccionesenvio().ejecutar(action);
+                break;
+            case "juguetesempresa":
+                new Juguetesempresa().ejecutar(action);
                 break;
         }
     }

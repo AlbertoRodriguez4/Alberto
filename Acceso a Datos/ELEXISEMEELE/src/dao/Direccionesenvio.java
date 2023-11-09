@@ -29,7 +29,7 @@ public class Direccionesenvio implements IDao, ITablas {
                 break;
             case "IMPORTAR":
                 String XMLImp = traducir();
-                NodeList lista = XMLtoSQL(XMLImp, "direccionesenvio", "direccionesenvios");
+                NodeList lista = XMLtoSQL(XMLImp, "direccionesenvio", "direccionesenvioss"); //la segunda parte de la tabla
                 insertar(lista);
                 break;
         }
@@ -50,7 +50,7 @@ public class Direccionesenvio implements IDao, ITablas {
                 String Ciudad = resultados.getString("Ciudad");
                 String Provincia = resultados.getString("Provincia");
                 String Pais = resultados.getString("Pais");
-                xml += "\t<direccionesenvio>\n";
+                xml += "\t<direccionesenvioss>\n";
                 xml += "\t\t<DireccionID>" + DireccionID + "</DireccionID>\n";
                 xml += "\t\t<ClienteID>" + ClienteID + "</ClienteID>\n";
                 xml += "\t\t<Direccion>" + Direccion + "</Direccion>\n";
@@ -69,20 +69,21 @@ public class Direccionesenvio implements IDao, ITablas {
 
     @Override
     public void insertar(NodeList lista) {
+        System.out.println(lista);
         String sentencia = "";
         for (int i = 0; i < lista.getLength(); i++) {
             Node particularNode = lista.item(i);
             System.out.println(lista);
             if (particularNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element datosfacturacion = (Element) particularNode;
-                Node idNode = datosfacturacion.getElementsByTagName("DireccionID").item(0);
+                Element direccionesenvio = (Element) particularNode;
+                Node idNode = direccionesenvio.getElementsByTagName("DireccionID").item(0);
                 String DireccionID = (idNode != null) ? idNode.getTextContent() : "";
-                int ClienteID = Integer.parseInt(datosfacturacion.getElementsByTagName("ClienteID").item(0).getTextContent());
-                String Direccion = datosfacturacion.getElementsByTagName("Direccion").item(0).getTextContent();
-                String CodigoPostal = datosfacturacion.getElementsByTagName("CodigoPostal").item(0).getTextContent();
-                String Ciudad = datosfacturacion.getElementsByTagName("Ciudad").item(0).getTextContent();
-                String Provincia = datosfacturacion.getElementsByTagName("Provincia").item(0).getTextContent();
-                String Pais = datosfacturacion.getElementsByTagName("Pais").item(0).getTextContent();
+                int ClienteID = Integer.parseInt(direccionesenvio.getElementsByTagName("ClienteID").item(0).getTextContent());
+                String Direccion = direccionesenvio.getElementsByTagName("Direccion").item(0).getTextContent();
+                String CodigoPostal = direccionesenvio.getElementsByTagName("CodigoPostal").item(0).getTextContent();
+                String Ciudad = direccionesenvio.getElementsByTagName("Ciudad").item(0).getTextContent();
+                String Provincia = direccionesenvio.getElementsByTagName("Provincia").item(0).getTextContent();
+                String Pais = direccionesenvio.getElementsByTagName("Pais").item(0).getTextContent();
                 if (idNode != null) {
                     sentencia = "INSERT INTO direccionesenvio(DireccionID, ClienteID, Direccion, CodigoPostal, Ciudad, Provincia, Pais) VALUES ("+DireccionID+","+ClienteID+",'"+Direccion+"','"+CodigoPostal+"','"+Ciudad+"','"+Provincia+"','"+Pais+"')";
                     System.out.println(sentencia);

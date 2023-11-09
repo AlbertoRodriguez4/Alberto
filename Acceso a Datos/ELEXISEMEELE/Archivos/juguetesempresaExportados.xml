@@ -1,0 +1,17 @@
+<jueguetesempresa>
+	<jueguetesempresass>
+		<ArticuloID>1</ArticuloID>
+		<NombreArticulo>Juguete 1</NombreArticulo>
+		<StockDisponible>100</StockDisponible>
+	</jueguetesempresass>
+	<jueguetesempresass>
+		<ArticuloID>2</ArticuloID>
+		<NombreArticulo>Juguete 2</NombreArticulo>
+		<StockDisponible>50</StockDisponible>
+	</jueguetesempresass>
+	<jueguetesempresass>
+		<ArticuloID>3</ArticuloID>
+		<NombreArticulo>Juguete 3</NombreArticulo>
+		<StockDisponible>75</StockDisponible>
+	</jueguetesempresass>
+</jueguetesempresa>
