@@ -39,7 +39,7 @@ public class Juguetesempresa implements IDao, ITablas {
     @Override
     public String traducir() {
         String xml = "";
-        xml += "<jueguetesempresa>\n";
+        xml += "<juguetesempresa>\n";
         try {
             ResultSet resultados = motorSQL.consultar("SELECT * FROM juguetesempresa");
             while (resultados.next()) {
@@ -50,7 +50,7 @@ public class Juguetesempresa implements IDao, ITablas {
                 xml += "\t\t<ArticuloID>" + ArticuloID + "</ArticuloID>\n";
                 xml += "\t\t<NombreArticulo>" + NombreArticulo + "</NombreArticulo>\n";
                 xml += "\t\t<StockDisponible>" + StockDisponible + "</StockDisponible>\n";
-                xml += "\t</jueguetesempresass>\n";
+                xml += "\t</juguetesempresa>\n";
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -72,7 +72,7 @@ public class Juguetesempresa implements IDao, ITablas {
                 String NombreArticulo = juguetesempresa.getElementsByTagName("NombreArticulo").item(0).getTextContent();
                 int StockDisponible = Integer.parseInt(juguetesempresa.getElementsByTagName("StockDisponible").item(0).getTextContent());
                 if (idNode != null) {
-                    sentencia = "INSERT INTO juguetesempresa(ArticuloID, 'NombreArticulo', StockDisponible) VALUES ("+ArticuloID+",'"+NombreArticulo+"',"+StockDisponible+"')";
+                    sentencia = "INSERT INTO juguetesempresa(ArticuloID, NombreArticulo, StockDisponible) VALUES ("+ArticuloID+",'"+NombreArticulo+"',"+StockDisponible+")";
                     System.out.println(sentencia);
                     motorSQL.modificar(sentencia);
                 } else {
