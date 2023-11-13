@@ -9,9 +9,14 @@ $usuarios = $datos['usuarios'];
         border-collapse: collapse;
     }
 
-    th, td {
-        padding: 10px;
-        border: none;
+    th,
+    td {
+        padding: 15px;
+        /* Aumentar el padding para ocupar más espacio */
+        border: 1px solid #ddd;
+        /* Añadir borde para separar las celdas */
+        text-align: left;
+        /* Alinear el texto a la izquierda */
     }
 
     th {
@@ -31,6 +36,7 @@ $usuarios = $datos['usuarios'];
             <th>Nombre</th>
             <th>Sexo</th>
             <th>Activo</th>
+            <th>Editar Usuarios</th>
         </tr>
     </thead>
     <tbody>
@@ -41,9 +47,9 @@ $usuarios = $datos['usuarios'];
                 <td><?php echo $fila['nombre']; ?></td>
                 <td><?php echo $fila['sexo']; ?></td>
                 <td><?php echo $fila['activo']; ?></td>
-            </tr>
-            <tr>
-                <td colspan="5" style="border-bottom: 1px solid #000;"></td>
+                <td>
+                    <a href="../../imagenes/editar.png"></a>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
