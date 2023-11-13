@@ -23,7 +23,21 @@ class M_Usuarios extends Modelo
             $usuario = addslashes($usuario);
             $pass = addslashes($pass);
             $SQL .= "AND login = '$usuario' AND pass = '$pass'";
+            // Mostrar alerta
+            $alerta = "Se ha logueado de forma correcta, bienvenido de nuevo $usuario";
+            echo "<script>
+                alert('$alerta');
+                window.location.href = 'index.php';
+            </script>";
+        } else {
+            // Mostrar alerta
+            $alerta2 = "Usuario o contraseña incorrecta, inténtelo de nuevo";
+            echo "<script>
+                alert('$alerta2');
+                window.location.href = 'login.php';
+            </script>";
         }
+
         if ($b_texto != '') {
             $aTexto = explode(' ', $b_texto);
             $SQL .= "AND (1=2";
@@ -115,7 +129,7 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-    public function botonAñadirUsuarios($filtros = array())
+    public function botonMeterla($filtros = array())
     {
         $nombre = "";
         $apellido_1 = "";
@@ -133,7 +147,7 @@ class M_Usuarios extends Modelo
             $activo = addslashes($activo);
             $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$nombre')";
         }
-        $insertUsuarios = $this->DAO->insertar($SQL);
-        return $insertUsuarios;
+        
     }
+
 }

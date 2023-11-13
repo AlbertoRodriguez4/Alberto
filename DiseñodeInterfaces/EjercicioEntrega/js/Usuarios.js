@@ -160,11 +160,12 @@ function añadirUsuarios() {
             console.log("Error al realizar la petición", err.message);
         })
 }
-function textoAñadirUsuarios() {
-    // Crear un formulario
-    var formulario = document.createElement('form');
-    formulario.setAttribute('id', 'formularioBuscar');
+var formulario = document.createElement('form');
+    formulario.setAttribute('id', 'formularioBuscar2');
 
+function textoMeterUsuarios() {
+    // Crear un formulario
+    
     // Añadir campos al formulario
     formulario.innerHTML = `
         <label for="nombre">Nombre:</label>
@@ -182,24 +183,44 @@ function textoAñadirUsuarios() {
         <label for="activo">activo:</label>
         <input type="text" id="activo" name="activo" required>
 
-        <input type="submit" id="botonAñadirUsuarios" onclick="botonAñadirUsuarios()" value="Agregar Usuario">
-    `;
+        <button type="button" id="textoAñadirUsuarios" onclick="botonMeterla()">Añadirlos</button>
+        `;
 
-    // Agregar el formulario al cuerpo del documento
+
+    formulario.style.display = "block";
     document.body.appendChild(formulario);
     var divParaOcultar = document.getElementById('consultar');
     divParaOcultar.style.display = "none";
     var divoculto2 = document.getElementById('capaResultadoBusqueda');
     divoculto2.style.display = "none";
-    
-        
-    };
-    
 
-function botonAñadirUsuarios() {
+
+};
+
+function botonMeterla() {
+    formulario.style.display = "none";
     let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo= botonAñadirUsuarios";
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
+    let parametros = "controlador=Usuarios&metodo=botonMeterla";
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar2"))).toString();
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log("respuesta lol ok");
+                return res.text();
+            }
+        })
+        .then(vista => {
+            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        })
+}
+
+/*function botonAñadirUsuarios() {
+    let opciones = { method: "GET" };
+    let parametros = "controlador=Usuarios&metodo=botonAñadirUsuarios";
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar2"))).toString();
     fetch("C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
@@ -213,4 +234,4 @@ function botonAñadirUsuarios() {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         })
-}
+}*/
