@@ -19,7 +19,7 @@ class M_Usuarios extends Modelo
         extract($filtros);
         $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
 
-        if ($usuario != '' && $pass != '') {
+        if ($usuario != "" && $pass != "") {
             $usuario = addslashes($usuario);
             $pass = addslashes($pass);
             $SQL .= "AND login = '$usuario' AND pass = '$pass'";
@@ -72,7 +72,7 @@ class M_Usuarios extends Modelo
             }
             $SQL .= ' ) ';
         }
-        echo '';
+        echo "";
         echo $SQL;
         //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
         $usuarios = $this->DAO->consultar($SQL);
@@ -97,8 +97,8 @@ class M_Usuarios extends Modelo
     }
     public function buscarTelefono($filtros = array())
     {
-        $b_texto2 = '';
-        $telefono = '';
+        $b_texto2 = "";
+        $telefono = "";
         extract($filtros);
         $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
         if ($b_texto2 != '') {
@@ -129,17 +129,17 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-    public function add($filtros = array())
+    public function botonMeterla($filtros = array())
     {
-        $nombre = '';
-        $apellido_1 = '';
-        $apellido_2 = '';
-        $sexo = '';
-        $activo = '';
+        $nombre = "";
+        $apellido_1 = "";
+        $apellido_2 = "";
+        $sexo = "";
+        $activo = "";
 
         extract($filtros);
         $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`)";
-        if ($nombre != '' & $apellido_1 != '' & $apellido_2 != '' & $sexo != '' & $activo != '') {
+        if ($nombre != "" & $apellido_1 != "" & $apellido_2 != "" & $sexo != "" & $activo != "") {
             $nombre = addslashes($nombre);
             $apellido_1 = addslashes($apellido_1);
             $apellido_2 = addslashes($apellido_2);
@@ -147,7 +147,7 @@ class M_Usuarios extends Modelo
             $activo = addslashes($activo);
             $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$nombre')";
         }
-        $usuarios = $this->DAO->insertar($SQL);
-        echo $SQL;
+        
     }
+
 }

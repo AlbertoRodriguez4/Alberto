@@ -36,6 +36,7 @@ $usuarios = $datos['usuarios'];
             <th>Nombre</th>
             <th>Sexo</th>
             <th>Activo</th>
+            <th>Editar Usuarios</th>
         </tr>
     </thead>
     <tbody>
@@ -46,6 +47,9 @@ $usuarios = $datos['usuarios'];
                 <td><?php echo $fila['nombre']; ?></td>
                 <td><?php echo $fila['sexo']; ?></td>
                 <td><?php echo $fila['activo']; ?></td>
+                <td>
+                    <a href="../../imagenes/editar.png"></a>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>

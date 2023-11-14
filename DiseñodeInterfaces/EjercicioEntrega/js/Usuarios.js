@@ -183,7 +183,7 @@ function textoMeterUsuarios() {
         <label for="activo">activo:</label>
         <input type="text" id="activo" name="activo" required>
 
-        <button type="button" id="textoAñadirUsuarios" onclick="add()">Add</button>
+        <button type="button" id="textoAñadirUsuarios" onclick="botonMeterla()">Añadirlos</button>
         `;
 
 
@@ -191,23 +191,21 @@ function textoMeterUsuarios() {
     document.body.appendChild(formulario);
     var divParaOcultar = document.getElementById('consultar');
     divParaOcultar.style.display = "none";
-    
+    var divoculto2 = document.getElementById('capaResultadoBusqueda');
+    divoculto2.style.display = "none";
 
 
 };
 
-
-function add() {
+function botonMeterla() {
     formulario.style.display = "none";
     let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=add";
+    let parametros = "controlador=Usuarios&metodo=botonMeterla";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar2"))).toString();
     fetch("C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
-                // console.log("Estoy cagandome en mis puto0s muertos");
-                console.log(parametros);
-                console.log(opciones);
+                console.log("respuesta lol ok");
                 return res.text();
             }
         })
@@ -218,6 +216,7 @@ function add() {
             console.log("Error al realizar la petición", err.message);
         })
 }
+
 /*function botonAñadirUsuarios() {
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=botonAñadirUsuarios";
