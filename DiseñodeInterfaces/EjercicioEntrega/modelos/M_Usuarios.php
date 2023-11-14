@@ -129,24 +129,30 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-    public function botonMeterla($filtros = array())
+    public function add($filtros = array())
     {
         $nombre = "";
         $apellido_1 = "";
         $apellido_2 = "";
         $sexo = "";
         $activo = "";
+        $correo = "";
+        $password = "";
 
         extract($filtros);
-        $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`)";
+        $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `pass`)";
         if ($nombre != "" & $apellido_1 != "" & $apellido_2 != "" & $sexo != "" & $activo != "") {
             $nombre = addslashes($nombre);
             $apellido_1 = addslashes($apellido_1);
             $apellido_2 = addslashes($apellido_2);
             $sexo = addslashes($sexo);
             $activo = addslashes($activo);
-            $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$nombre')";
+            $correo = addslashes($correo);
+            $password = addslashes($password);
+
+            $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$nombre','$password')";
         }
+        $usuarios = $this->DAO->insertar($SQL);
         
     }
 

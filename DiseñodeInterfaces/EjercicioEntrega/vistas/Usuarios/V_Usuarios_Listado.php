@@ -12,11 +12,8 @@ $usuarios = $datos['usuarios'];
     th,
     td {
         padding: 15px;
-        /* Aumentar el padding para ocupar más espacio */
         border: 1px solid #ddd;
-        /* Añadir borde para separar las celdas */
-        text-align: left;
-        /* Alinear el texto a la izquierda */
+        text-align: center;
     }
 
     th {
@@ -25,6 +22,10 @@ $usuarios = $datos['usuarios'];
 
     tr:nth-child(even) {
         background-color: #f9f9f9;
+    }
+    #ola {
+        width: 10%;
+        height: 10%;
     }
 </style>
 
@@ -48,7 +49,7 @@ $usuarios = $datos['usuarios'];
                 <td><?php echo $fila['sexo']; ?></td>
                 <td><?php echo $fila['activo']; ?></td>
                 <td>
-                    <a href="../../imagenes/editar.png"></a>
+                <img id="ola" src="../../imagenes/editar.png" onclick="editarUsuarios(); otraFuncion(<?php echo $fila['id_Usuario']?>);" alt="">
                 </td>
             </tr>
         <?php endforeach; ?>

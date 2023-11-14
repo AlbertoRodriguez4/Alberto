@@ -15,6 +15,8 @@ function buscarUsuarios() {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
+    var divParaOcultar = document.getElementById('formularioBuscar2');
+    divParaOcultar.style.display = "none";
 }
 function buscarPorSexo() {
     let opciones = { method: "GET" };
@@ -141,32 +143,15 @@ function buscarPorNoActividad() {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         })
+
 }
-function añadirUsuarios() {
-    let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=añadirUsuarios";
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
-    fetch("C_Ajax.php?" + parametros, opciones)
-        .then(res => {
-            if (res.ok) {
-                console.log("respuesta ok");
-                return res.text();
-            }
-        })
-        .then(vista => {
-            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
-        })
-        .catch(err => {
-            console.log("Error al realizar la petición", err.message);
-        })
-}
+
 var formulario = document.createElement('form');
-    formulario.setAttribute('id', 'formularioBuscar2');
+formulario.setAttribute('id', 'formularioBuscar2');
+var formulario2 = document.createElement('form');
+formulario2.setAttribute('id', 'formularioBuscar3');
 
 function textoMeterUsuarios() {
-    // Crear un formulario
-    
-    // Añadir campos al formulario
     formulario.innerHTML = `
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
@@ -183,11 +168,16 @@ function textoMeterUsuarios() {
         <label for="activo">activo:</label>
         <input type="text" id="activo" name="activo" required>
 
-        <button type="button" id="textoAñadirUsuarios" onclick="botonMeterla()">Añadirlos</button>
+        <label for="correo">correo:</label>
+        <input type="email" id="correo" name="correo" required>
+
+        <label for="password">password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="button" id="textoAñadirUsuarios" onclick="add()">Añadirlos</button>
         `;
 
 
-    formulario.style.display = "block";
     document.body.appendChild(formulario);
     var divParaOcultar = document.getElementById('consultar');
     divParaOcultar.style.display = "none";
@@ -196,16 +186,15 @@ function textoMeterUsuarios() {
 
 
 };
-
-function botonMeterla() {
+function add() {
     formulario.style.display = "none";
     let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=botonMeterla";
+    let parametros = "controlador=Usuarios&metodo=add";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar2"))).toString();
     fetch("C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
-                console.log("respuesta lol ok");
+                console.log("Entre porfin");
                 return res.text();
             }
         })
@@ -215,23 +204,45 @@ function botonMeterla() {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         })
+    var divParaOcultar = document.getElementById('formularioBuscar2');
+    divParaOcultar.style.display = "none";
 }
 
-/*function botonAñadirUsuarios() {
-    let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=botonAñadirUsuarios";
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar2"))).toString();
-    fetch("C_Ajax.php?" + parametros, opciones)
-        .then(res => {
-            if (res.ok) {
-                console.log("respuesta ok");
-                return res.text();
-            }
-        })
-        .then(vista => {
-            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
-        })
-        .catch(err => {
-            console.log("Error al realizar la petición", err.message);
-        })
-}*/
+function editarUsuarios() {
+    formulario2.innerHTML = `
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="apellido_1">apellido_1:</label>
+    <input type="text" id="apellido_1" name="apellido_1" required>
+
+    <label for="apellido_2">apellido_2:</label>
+    <input type="text" id="apellido_2" name="apellido_2" required>
+
+    <label for="sexo">sexo:</label>
+    <input type="text" id="sexo" name="sexo" required>
+
+    <label for="activo">activo:</label>
+    <input type="text" id="activo" name="activo" required>
+
+    <label for="correo">correo:</label>
+    <input type="email" id="correo" name="correo" required>
+
+    <label for="password">password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="button" id="textoAñadirUsuarios" onclick="Editar()">Editar Usuarios</button>
+    `;
+
+
+    document.body.appendChild(formulario2);
+    var divParaOcultar = document.getElementById('consultar');
+    divParaOcultar.style.display = "none";
+    var divoculto2 = document.getElementById('capaResultadoBusqueda');
+    divoculto2.style.display = "none";
+
+}
+function otraFuncion(id_Usuario) {
+
+    console.log(id_Usuario)
+}

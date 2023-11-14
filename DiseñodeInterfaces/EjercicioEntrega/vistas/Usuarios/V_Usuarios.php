@@ -3,6 +3,8 @@
 
 <head>
     <style>
+        body {}
+
         p {
             font-size: 18px;
             color: #333;
@@ -23,7 +25,7 @@
             height: 5vh;
         }
 
-        form {
+        #formularioBuscar {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -83,6 +85,7 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         #textoMeterUsuarios:hover {
             background-color: black;
 
@@ -101,6 +104,38 @@
 
         button:hover {
             background-color: #00578c;
+        }
+
+        #formularioBuscar2 {
+            display: block;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #formularioBuscar2 input {
+            width: 350px;
+        }
+
+        #formularioBuscar3 {
+            display: block;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #formularioBuscar3 input {
+            width: 350px;
         }
     </style>
 </head>

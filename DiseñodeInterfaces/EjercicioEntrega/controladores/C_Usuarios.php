@@ -55,8 +55,8 @@
             $usuarios = $this->modelo->buscarPorNoActividad($filtros);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));
         }
-        public function botonMeterla($filtros = array()) {
-            $usuarios = $this->modelo->botonMeterla($filtros);
+        public function add($filtros = array()) {
+            $usuarios = $this->modelo->add($filtros);
         }
         
     }
