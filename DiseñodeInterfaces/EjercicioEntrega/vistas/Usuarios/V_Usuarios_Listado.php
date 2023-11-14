@@ -49,7 +49,7 @@ $usuarios = $datos['usuarios'];
                 <td><?php echo $fila['sexo']; ?></td>
                 <td><?php echo $fila['activo']; ?></td>
                 <td>
-                <img id="ola" src="../../imagenes/editar.png" onclick="editarUsuarios(); otraFuncion(<?php echo $fila['id_Usuario']?>);" alt=""> me imprime la ip en la otra funcion 
+                <img id="ola" src="../../imagenes/editar.png" onclick="editarUsuarios(<?php echo $fila['id_Usuario']?>)" alt="">
                 </td>
             </tr>
         <?php endforeach; ?>

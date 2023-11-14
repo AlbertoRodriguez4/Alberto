@@ -15,8 +15,7 @@ function buscarUsuarios() {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
-    var divParaOcultar = document.getElementById('formularioBuscar2');
-    divParaOcultar.style.display = "none";
+
 }
 function buscarPorSexo() {
     let opciones = { method: "GET" };
@@ -207,8 +206,10 @@ function add() {
     var divParaOcultar = document.getElementById('formularioBuscar2');
     divParaOcultar.style.display = "none";
 }
-
-function editarUsuarios() {
+var eliDDelUsuario = ""
+function editarUsuarios(id_Usuario) {
+    eliDDelUsuario = id_Usuario
+    console.log(id_Usuario)
     formulario2.innerHTML = `
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" required>
@@ -229,7 +230,13 @@ function editarUsuarios() {
     <input type="email" id="correo" name="correo" required>
 
     <label for="password">password:</label>
-    <input type="password" id="password" name="password" required>
+    <input type="text" id="password" name="password" required>
+
+    <div id="hiden">
+    <label for="password" id="hiden" ></label>
+    <input type="text" id="modId" name="modId" value="${eliDDelUsuario}" required>
+    </div>
+
 
     <button type="button" id="textoAñadirUsuarios" onclick="Editar()">Editar Usuarios</button>
     `;
@@ -240,9 +247,30 @@ function editarUsuarios() {
     divParaOcultar.style.display = "none";
     var divoculto2 = document.getElementById('capaResultadoBusqueda');
     divoculto2.style.display = "none";
-
+    var divoculto3 = document.getElementById('hiden');
+    divoculto3.style.display = "none";
 }
-function otraFuncion(id_Usuario) {
 
-    console.log(id_Usuario)
+function Editar() {
+    formulario.style.display = "none";
+    let opciones = { method: "GET" };
+    let parametros = "controlador=Usuarios&metodo=Editar";
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar3"))).toString();
+    fetch("C_Ajax.php?" + parametros, opciones, eliDDelUsuario)
+        .then(res => {
+            if (res.ok) {
+                console.log("Entre");
+                return res.text();
+            }
+        })
+        .then(vista => {
+            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        })
+    var divParaOcultar = document.getElementById('formularioBuscar3');
+    divParaOcultar.style.display = "none";
+    alert(eliDDelUsuario)
+    console.log(parametros)
 }

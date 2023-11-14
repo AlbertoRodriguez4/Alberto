@@ -58,5 +58,8 @@
         public function add($filtros = array()) {
             $usuarios = $this->modelo->add($filtros);
         }
+        public function Editar($filtros = array()) {
+            $usuario = $this->modelo->Editar($filtros);
+        }
         
     }

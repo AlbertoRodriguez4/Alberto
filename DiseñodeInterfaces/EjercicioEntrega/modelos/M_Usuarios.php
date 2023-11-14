@@ -153,7 +153,23 @@ class M_Usuarios extends Modelo
             $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$nombre','$password')";
         }
         $usuarios = $this->DAO->insertar($SQL);
+        echo $filtros;
+    }
+    public function Editar($filtros = array()) {
+        $modId = "";
+        $nombre = "";
+        $apellido_1 = "";
+        $apellido_2 = "";
+        $sexo = "";
+        $activo = "";
+        $correo = "";
+        $password = "";
+        extract($filtros);
+        $usuarioId = addslashes($usuarioId);
+        $SQL = "UPDATE `usuarios` SET `nombre`='$nombre',`apellido_1`='$apellido_1',`apellido_2`='$apellido_2',`sexo`='$sexo',`mail`='$correo',`login`='$correo',`pass`='$password',`activo`='$activo' WHERE id_Usuario=$modId";
+        $usuarios = $this->DAO->actualizar($SQL);
         
+
     }
 
 }
