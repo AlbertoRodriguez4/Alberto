@@ -1,9 +1,5 @@
-CREATE SEQUENCE seq_id_increment
-START WITH 1
-INCREMENT BY 1;
-
 CREATE TABLE usuario (
-  id_usuario INT NOT NULL DEFAULT nextval('seq_id_increment') PRIMARY KEY,
+  id_usuario INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(20) NOT NULL,
   apellido_1 VARCHAR(20) NOT NULL,
   apellido_2 VARCHAR(20) NOT NULL,
@@ -14,103 +10,73 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE valoracion (
-  id_valoracion INT NOT NULL DEFAULT nextval('seq_id_increment') PRIMARY KEY,
+  id_valoracion INT AUTO_INCREMENT PRIMARY KEY,
   estrellas INT(5) NOT NULL,
-  comentario VARCHAR(40) NOT NULL
+  comentario VARCHAR(40) NOT NULL,
+  id_usuario INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
 );
 
 CREATE TABLE direccion_cliente (
-  id_direccion_cliente INT NOT NULL DEFAULT nextval('seq_id_increment') PRIMARY KEY,
+  id_direccion_cliente INT AUTO_INCREMENT PRIMARY KEY,
   pais VARCHAR(20) NOT NULL,
   provincia VARCHAR(20) NOT NULL,
   ciudad VARCHAR(20) NOT NULL,
   cp VARCHAR(20) NOT NULL,
-  direccion VARCHAR(20) NOT NULL
+  direccion VARCHAR(20) NOT NULL,
+  id_usuario INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
 );
 
 CREATE TABLE venta (
-  id_venta INT NOT NULL DEFAULT nextval('seq_id_increment') PRIMARY KEY,
+  id_venta INT AUTO_INCREMENT PRIMARY KEY,
   fecha_venta VARCHAR(20) NOT NULL,
-  hora_venta VARCHAR(20) NOT NULL
+  hora_venta VARCHAR(20) NOT NULL,
+  id_usuario INT NOT NULL,
+  id_direccion_cliente INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
+  FOREIGN KEY (id_direccion_cliente) REFERENCES direccion_cliente (id_direccion_cliente)
 );
 
 CREATE TABLE favoritos (
-  id_favoritos INT NOT NULL DEFAULT nextval('seq_id_increment') PRIMARY KEY
+  id_favoritos INT AUTO_INCREMENT PRIMARY KEY,
+  id_usuario INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
 );
 
 CREATE TABLE productos (
-  id_producto INT NOT NULL DEFAULT nextval('seq_id_increment') PRIMARY KEY,
+  id_producto INT AUTO_INCREMENT PRIMARY KEY,
   marca_producto VARCHAR(20) NOT NULL,
   precio_producto VARCHAR(20) NOT NULL,
   imagen_producto VARCHAR(20) NOT NULL,
   nombre_producto VARCHAR(20) NOT NULL,
   descripcion_producto VARCHAR(20) NOT NULL,
   fecha_subida_producto VARCHAR(20) NOT NULL,
-  estado VARCHAR(20) NOT NULL
-);
-
-CREATE TABLE producto_categoria (
-  id_producto_categoria INT NOT NULL DEFAULT nextval('seq_id_increment') PRIMARY KEY
+  estado VARCHAR(20) NOT NULL,
+  id_usuario INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
 );
 
 CREATE TABLE categoria (
-  id_categoria INT NOT NULL DEFAULT nextval('seq_id_increment') PRIMARY KEY,
+  id_categoria INT AUTO_INCREMENT PRIMARY KEY,
   nombre_categoria VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE producto_color (
-  id_producto_color INT NOT NULL DEFAULT nextval('seq_id_increment') PRIMARY KEY
+CREATE TABLE producto_categoria (
+  id_producto_categoria INT AUTO_INCREMENT PRIMARY KEY,
+  id_producto INT NOT NULL,
+  id_categoria INT NOT NULL,
+  FOREIGN KEY (id_producto) REFERENCES productos (id_producto),
+  FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria)
 );
-
 CREATE TABLE color (
-  id_color INT NOT NULL DEFAULT nextval('seq_id_increment') PRIMARY KEY,
+  id_color INT AUTO_INCREMENT PRIMARY KEY,
   nombre_color VARCHAR(20) NOT NULL
 );
-
-ALTER TABLE valoracion
-ADD CONSTRAINT fk_usuario_id
-FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
-
-ALTER TABLE direccion_cliente
-ADD CONSTRAINT fk_usuario_id
-FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
-
-ALTER TABLE venta
-ADD CONSTRAINT fk_usuario_id
-FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
-
-ALTER TABLE producto
-ADD CONSTRAINT fk_usuario_id
-FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario);
-
-ALTER TABLE venta
-ADD CONSTRAINT fk_id_direccion_cliente
-FOREIGN KEY (id_direccion_cliente) REFERENCES direccion_cliente (id_direccion_cliente);
-
-ALTER TABLE producto
-ADD CONSTRAINT fk_id_venta
-FOREIGN KEY (id_venta) REFERENCES venta (id_venta);
-
-ALTER TABLE favoritos
-ADD CONSTRAINT fk_usuario_id
-FOREIGN KEY (fk_usuario_id) REFERENCES usuario (usuario_id);
-
-ALTER TABLE producto
-ADD CONSTRAINT fk_id_producto
-FOREIGN KEY (fk_id_producto) REFERENCES producto (id_producto);
-
-ALTER TABLE producto_color
-ADD CONSTRAINT fk_id_producto
-FOREIGN KEY (fk_id_producto) REFERENCES producto (id_producto);
-
-ALTER TABLE producto_color
-ADD CONSTRAINT fk_id_color
-FOREIGN KEY (fk_id_color) REFERENCES producto (id_color);
-
-ALTER TABLE producto_categoria
-ADD CONSTRAINT fk_id_producto
-FOREIGN KEY (fk_id_producto) REFERENCES producto (id_producto);
-
-ALTER TABLE producto_categoria
-ADD CONSTRAINT fk_id_categoria
-FOREIGN KEY (fk_id_categoria) REFERENCES producto (id_categoria);
+CREATE TABLE producto_color (
+  id_producto_color INT AUTO_INCREMENT PRIMARY KEY,
+  id_producto INT NOT NULL,
+  id_color INT NOT NULL,
+  FOREIGN KEY (id_producto) REFERENCES productos (id_producto),
+  FOREIGN KEY (id_color) REFERENCES color (id_color)
+);
