@@ -208,8 +208,13 @@ function add() {
 }
 var eliDDelUsuario = ""
 function editarUsuarios(id_Usuario) {
-    eliDDelUsuario = id_Usuario
-    console.log(id_Usuario)
+    eliDDelUsuario = id_Usuario;
+    console.log(id_Usuario);
+
+    // Mover la declaración del formulario dentro de la función
+    var formulario2 = document.createElement('form');
+    formulario2.setAttribute('id', 'formularioBuscar3');
+
     formulario2.innerHTML = `
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" required>
@@ -231,16 +236,13 @@ function editarUsuarios(id_Usuario) {
 
     <label for="password">password:</label>
     <input type="text" id="password" name="password" required>
-
     <div id="hiden">
-    <label for="password" id="hiden" ></label>
-    <input type="text" id="modId" name="modId" value="${eliDDelUsuario}" required>
+        <label for="password" id="hiden" ></label>
+        <input type="text" id="modId" name="modId" value="${eliDDelUsuario}" required>
     </div>
-
 
     <button type="button" id="textoAñadirUsuarios" onclick="Editar()">Editar Usuarios</button>
     `;
-
 
     document.body.appendChild(formulario2);
     var divParaOcultar = document.getElementById('consultar');
@@ -249,6 +251,7 @@ function editarUsuarios(id_Usuario) {
     divoculto2.style.display = "none";
     var divoculto3 = document.getElementById('hiden');
     divoculto3.style.display = "none";
+
 }
 
 function Editar() {
@@ -268,9 +271,13 @@ function Editar() {
         })
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
-        })
+        });
+
     var divParaOcultar = document.getElementById('formularioBuscar3');
     divParaOcultar.style.display = "none";
-    alert(eliDDelUsuario)
-    console.log(parametros)
+    var divoculto3 = document.getElementById('hiden');
+    divoculto3.style.display = "none";
+    console.log(eliDDelUsuario);
+    console.log(parametros);
+    location.reload(true)
 }
