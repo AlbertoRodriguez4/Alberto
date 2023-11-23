@@ -137,9 +137,6 @@
         #formularioBuscar3 input {
             width: 350px;
         }
-        #hiden {
-            display: none;
-        }
     </style>
 </head>
 

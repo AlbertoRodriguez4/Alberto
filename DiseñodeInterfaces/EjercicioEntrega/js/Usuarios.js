@@ -15,7 +15,8 @@ function buscarUsuarios() {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
-
+    var divParaOcultar = document.getElementById('formularioBuscar3');
+    divParaOcultar.style.display = "none";
 }
 function buscarPorSexo() {
     let opciones = { method: "GET" };
@@ -216,6 +217,7 @@ function editarUsuarios(id_Usuario) {
     formulario2.setAttribute('id', 'formularioBuscar3');
 
     formulario2.innerHTML = `
+    
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" required>
 
