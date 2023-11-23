@@ -20,4 +20,5 @@ function getVistaMenuSeleccionado(controlador, metodo) {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
+       // location.reload(true)
 }

@@ -244,6 +244,8 @@ function editarUsuarios(id_Usuario) {
     </div>
 
     <button type="button" id="textoAñadirUsuarios" onclick="Editar()">Editar Usuarios</button>
+    <button type="button" id="volverInicio" onclick="volverInicio()">Volver</button>
+
     `;
 
     document.body.appendChild(formulario2);
@@ -257,29 +259,58 @@ function editarUsuarios(id_Usuario) {
 }
 
 function Editar() {
-    formulario.style.display = "none";
-    let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=Editar";
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar3"))).toString();
-    fetch("C_Ajax.php?" + parametros, opciones, eliDDelUsuario)
-        .then(res => {
-            if (res.ok) {
-                console.log("Entre");
-                return res.text();
-            }
-        })
-        .then(vista => {
-            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
-        })
-        .catch(err => {
-            console.log("Error al realizar la petición", err.message);
-        });
 
-    var divParaOcultar = document.getElementById('formularioBuscar3');
-    divParaOcultar.style.display = "none";
-    var divoculto3 = document.getElementById('hiden');
-    divoculto3.style.display = "none";
-    console.log(eliDDelUsuario);
-    console.log(parametros);
-    location.reload(true)
+    var nombre = document.getElementById("nombre").value;
+    var apellido1 = document.getElementById("apellido_1").value;
+    var apellido2 = document.getElementById("apellido_2").value;
+    var sexo = document.getElementById("sexo").value;
+    var activo = document.getElementById("activo").value;
+    var correo = document.getElementById("correo").value;
+    var password = document.getElementById("password").value;
+
+    // También puedes obtener el valor del campo oculto
+    var modId = document.getElementById("modId").value;
+
+    // Verifica que todos los campos de texto no sean números
+    let sonTextos = isNaN(parseFloat(nombre)) && isNaN(parseFloat(apellido1)) && isNaN(parseFloat(apellido2))
+        && isNaN(parseFloat(sexo)) && isNaN(parseFloat(activo)) && isNaN(parseFloat(correo)) && isNaN(parseFloat(password));
+
+    // Verifica que el correo contenga el símbolo '@'
+    let correoValido = /@/.test(correo);
+
+    // Realiza la lógica según la validación
+    if (sonTextos && correoValido) {
+        formulario.style.display = "none";
+        let opciones = { method: "GET" };
+        let parametros = "controlador=Usuarios&metodo=Editar";
+        parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar3"))).toString();
+        fetch("C_Ajax.php?" + parametros, opciones, eliDDelUsuario)
+            .then(res => {
+                if (res.ok) {
+                    console.log("Entre");
+                    return res.text();
+                }
+            })
+            .then(vista => {
+                document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+            })
+            .catch(err => {
+                console.log("Error al realizar la petición", err.message);
+            });
+
+        var divParaOcultar = document.getElementById('formularioBuscar3');
+        divParaOcultar.style.display = "none";
+        var divoculto3 = document.getElementById('hiden');
+        divoculto3.style.display = "none";
+        console.log(eliDDelUsuario);
+        console.log(parametros);
+        location.reload(true)
+    } else {
+        // Al menos un campo es un número o el correo no es válido
+        alert("Por favor, verifica que todos los campos sean texto y que el correo contenga '@'.");
+    }
+}
+function volverInicio() {
+    alert("HOLA")
+    window.location("http://localhost/#")
 }
