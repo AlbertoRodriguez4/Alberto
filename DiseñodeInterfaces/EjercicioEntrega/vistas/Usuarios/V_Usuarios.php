@@ -136,6 +136,73 @@
         #formularioBuscar3 .hiden {
             display: none;
         }
+        
+        #formularioBuscar2 {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #formularioBuscar2 label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #formularioBuscar2 input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #formularioBuscar2 button {
+            background-color: #0074b9;
+            color: #fff;
+            border: 1px solid #00578c;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #formularioBuscar2 button:hover {
+            background-color: #00578c;
+        }
+
+        #formularioBuscar2 .hiden {
+            display: none;
+        }
+
+        #horizontal {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            margin-right: 40px;
+            margin-top: 50px;
+
+        }
+
+        #xd {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            margin-right: 40px;
+            margin-bottom: 40px;
+
+        }
+
+
+        button#volver {
+            background-color: #f44336;
+        }
+
+        button#volver:hover {
+            background-color: #d32f2f;
+        }
     </style>
 </head>
 

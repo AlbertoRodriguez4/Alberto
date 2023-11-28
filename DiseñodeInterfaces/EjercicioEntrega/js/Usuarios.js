@@ -17,7 +17,7 @@ function buscarUsuarios() {
         });
     var divParaOcultar = document.getElementById('formularioBuscar3');
     divParaOcultar.style.display = "none";
-    
+
 }
 function buscarPorSexo() {
     let opciones = { method: "GET" };
@@ -163,11 +163,18 @@ function textoMeterUsuarios() {
         <label for="apellido_2">apellido_2:</label>
         <input type="text" id="apellido_2" name="apellido_2" required>
 
-        <label for="sexo">sexo:</label>
-        <input type="text" id="sexo" name="sexo" required>
-
-        <label for="activo">activo:</label>
-        <input type="text" id="activo" name="activo" required>
+        <div id="horizontal"
+    <label id="generos">
+    <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
+  <input type="radio" name="sexo" id="sexoFemenino" value="M">Mujer
+    </label>
+    </div>
+    <div id="horizontal"
+    <label id="xd">
+    <input type="radio" name="activo" id="EstaActivo" value="S">Activo
+    <input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
+    </label>
+    </div>
 
         <label for="correo">correo:</label>
         <input type="email" id="correo" name="correo" required>
@@ -175,8 +182,8 @@ function textoMeterUsuarios() {
         <label for="password">password:</label>
         <input type="text" id="password" name="password" required>
 
-        <button type="button" id="volver" onclick="Volver()">Volver</button>
         <button type="button" id="textoAñadirUsuarios" onclick="add()">Añadirlos</button>
+        <button type="button" id="volver" onclick="Volver()">Volver</button>
         `;
 
 
@@ -185,19 +192,37 @@ function textoMeterUsuarios() {
     divParaOcultar.style.display = "none";
     var divoculto2 = document.getElementById('capaResultadoBusqueda');
     divoculto2.style.display = "none";
-
+    var divoculto3 = document.getElementById('formularioBuscar');
+    divoculto3.style.display = "none";
 
 };
 function add() {
+
+
+
     var nombre = document.getElementById("nombre").value;
     var apellido1 = document.getElementById("apellido_1").value;
     var apellido2 = document.getElementById("apellido_2").value;
-    var sexo = document.getElementById("sexo").value;
-    var activo = document.getElementById("activo").value;
     var correo = document.getElementById("correo").value;
-    var password = document.getElementById("password").value;
+    var EstaActivo = document.getElementById("EstaActivo");
+    var EstaInactivo = document.getElementById("EstaInactivo");
+    var sexoMasculino = document.getElementById("sexoMasculino");
+    var sexoFemenino = document.getElementById("sexoFemenino");
 
-    // Verifica que todos los campos de texto no sean números
+    var sexo;
+    var activo;
+    if (EstaActivo.checked) {
+        activo = "S";
+    } else if (EstaInactivo.checked) {
+        activo = "N";
+    }
+
+    if (sexoMasculino.checked) {
+        sexo = "h";
+    } else if (sexoFemenino.checked) {
+        sexo = "m";
+    }
+
     let sonTextos = isNaN(parseFloat(nombre)) && isNaN(parseFloat(apellido1)) && isNaN(parseFloat(apellido2))
         && isNaN(parseFloat(sexo)) && isNaN(parseFloat(activo)) && isNaN(parseFloat(correo));
 
@@ -255,18 +280,19 @@ function editarUsuarios(id_Usuario) {
 
     <label for="apellido_2">apellido_2:</label>
     <input type="text" id="apellido_2" name="apellido_2" required>
+
     <div id="horizontal"
     <label id="generos">
     <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
   <input type="radio" name="sexo" id="sexoFemenino" value="M">Mujer
-</label>
-</div>
-<div id="horizontal"
-<label id="xd">
-<input type="radio" name="activo" id="EstaActivo" value="S">Activo
-<input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
-</label>
-</div>
+    </label>
+    </div>
+    <div id="horizontal"
+    <label id="xd">
+    <input type="radio" name="activo" id="EstaActivo" value="S">Activo
+    <input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
+    </label>
+    </div>
 
     <label for="correo">correo:</label>
     <input type="email" id="correo" name="correo" required>
@@ -277,8 +303,8 @@ function editarUsuarios(id_Usuario) {
         <label for="password" id="hiden" ></label>
         <input type="text" id="modId" name="modId" value="${eliDDelUsuario}" required>
     </div>
-    <button type="button" id="volver" onclick="Volver()">Volver</button>
     <button type="button" id="textoAñadirUsuarios" onclick="Editar()">Editar Usuarios</button>
+    <button type="button" id="volver" onclick="Volver()">Volver</button>
 
     `;
 
