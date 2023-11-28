@@ -255,11 +255,10 @@ function editarUsuarios(id_Usuario) {
     <label for="apellido_2">apellido_2:</label>
     <input type="text" id="apellido_2" name="apellido_2" required>
 
-    <label>
-    <input type="radio" name="opciones" id="sexoMasculino" value="H">Hombre
-    <input type="radio" name="opciones" id="sexoFemenino" value="M" >Mujer
-  </label>
-
+    <label id="generos">
+  <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
+  <input type="radio" name="sexo" id="sexoFemenino" value="M">Mujer
+</label>
     <label for="activo">activo:</label>
     <input type="text" id="activo" name="activo" required>
 
@@ -299,14 +298,17 @@ function Editar() {
     var apellido2 = document.getElementById("apellido_2").value;
     var activo = document.getElementById("activo").value;
     var correo = document.getElementById("correo").value;
+    
     var sexoMasculino = document.getElementById("sexoMasculino");
-  var sexoFemenino = document.getElementById("sexoFemenino");
-    var password = document.getElementById("password").value;
+    var sexoFemenino = document.getElementById("sexoFemenino");
+
+    var sexo; 
+    
     if (sexoMasculino.checked) {
         sexo = "h";
-      } else if (sexoFemenino.checked) {
+    } else if (sexoFemenino.checked) {
         sexo = "m";
-      }
+    }
     var formularioBuscar = document.getElementById('formularioBuscar');
     formularioBuscar.style.display = "none";
 
@@ -315,7 +317,7 @@ function Editar() {
 
     // Verifica que todos los campos de texto no sean números
     let sonTextos = isNaN(parseFloat(nombre)) && isNaN(parseFloat(apellido1)) && isNaN(parseFloat(apellido2))
-        && isNaN(parseFloat(sexo)) && isNaN(parseFloat(activo)) && isNaN(parseFloat(correo));
+        && isNaN(parseFloat(activo)) && isNaN(parseFloat(correo));
 
     // Verifica que el correo contenga el símbolo '@'
     let correoValido = /@/.test(correo);
@@ -327,6 +329,7 @@ function Editar() {
         let parametros = "controlador=Usuarios&metodo=Editar";
         parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar3"))).toString();
         fetch("C_Ajax.php?" + parametros, opciones, eliDDelUsuario)
+        alert(parametros)
             .then(res => {
                 if (res.ok) {
                     console.log("Entre");
