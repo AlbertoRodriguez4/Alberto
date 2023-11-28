@@ -3,139 +3,123 @@
 
 <head>
     <style>
-        body {}
-
-        p {
-            font-size: 18px;
-            color: #333;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
+        body {
+            font-family: sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            background-color: #f0f0f0;
         }
 
         h1 {
             font-size: 24px;
-            color: #333;
+            font-weight: 600;
             text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 5vh;
+            margin-bottom: 20px;
         }
 
-        #formularioBuscar {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-        }
-
-        label {
-            margin: 10px;
-            flex: 1 1 33%;
-            color: #333;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="number"],
-        input[type="submit"] {
-            flex: 1 1 100%;
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        input[type="submit"] {
-            background-color: #0074b9;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #00578c;
-        }
-
-        .resultado-busqueda {
-            margin: 20px;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            border: 1px solid black;
-            width: 90%;
-            /* Ajustado el ancho */
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        #textoMeterUsuarios {
-            padding: 10px 20px;
-            border: none;
+        form {
+            width: auto;
+            padding: 20px;
             background-color: #fff;
-            color: #0074b9;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        #textoMeterUsuarios:hover {
-            background-color: black;
-
-        }
-
-        button {
-            padding: 10px 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #0074b9;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        }
+        #consultar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
         }
 
-        button:hover {
+        .consulta {
+            margin-bottom: 20px;
+        }
+
+        .titulo-consulta {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .campo-texto {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .boton {
+            background-color: #0074b9;
+            color: #fff;
+            border: 1px solid #00578c;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .boton:hover {
             background-color: #00578c;
         }
 
-        #formularioBuscar2 {
-            display: block;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            align-items: center;
-            justify-content: center;
+        .boton-primario {
+            background-color: #00578c;
+            color: #fff;
+            border: 1px solid #00456b;
+            padding: 10px 20px;
+            cursor: pointer;
         }
 
-        #formularioBuscar2 input {
-            width: 350px;
+        .boton-primario:hover {
+            background-color: #003d5a;
+        }
+
+        .radio {
+            margin-right: 10px;
+        }
+
+        .radio-activo {
+            background-color: #ccc;
+            border-color: #ccc;
         }
 
         #formularioBuscar3 {
-            display: block;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
-            padding: 10px;
-            background-color: #f0f0f0;
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
             border-radius: 5px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+        }
+
+        #formularioBuscar3 label {
+            display: block;
+            margin-bottom: 5px;
         }
 
         #formularioBuscar3 input {
-            width: 350px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #formularioBuscar3 button {
+            background-color: #0074b9;
+            color: #fff;
+            border: 1px solid #00578c;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #formularioBuscar3 button:hover {
+            background-color: #00578c;
+        }
+
+        #formularioBuscar3 .hiden {
+            display: none;
         }
     </style>
 </head>
@@ -144,7 +128,6 @@
     <h1>Página para hacer consultas</h1>
     <form id="formularioBuscar" name="formularioBuscar">
         <div id="consultar">
-            <p>Buscar usuarios</p>
             <label for="b_textp">
                 <input type="text" id="b_texto" oninput="buscarUsuarios()" name="b_texto">
             </label>
