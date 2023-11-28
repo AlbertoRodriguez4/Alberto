@@ -22,37 +22,59 @@ class M_Usuarios extends Modelo
         if ($usuario != "" && $pass != "") {
             $usuario = addslashes($usuario);
             $pass = addslashes($pass);
-            $SQL .= "AND login = '$usuario' AND pass = '$pass'";
-            // Mostrar alerta
-            $alerta = "Se ha logueado de forma correcta, bienvenido de nuevo $usuario";
-            echo "<script>
-                alert('$alerta');
-                window.location.href = 'index.php';
-            </script>";
+
+            $SQL .= " AND login = '$usuario' AND pass = '$pass'";
+
+            $usuarios = $this->DAO->consultar($SQL);
+
+            if (empty($usuarios)) {
+                // Usuario no encontrado
+                $alerta = "Usuario no encontrado. Por favor, inténtelo de nuevo.";
+                echo "<script>
+                    alert('$alerta');
+                  </script>";
+            } else {
+                // Usuario encontrado
+                $alerta = "Se ha logueado de forma correcta, bienvenido de nuevo $usuario";
+                echo "<script>
+                    alert('$alerta');
+                    window.location.href = 'http://localhost';
+                  </script>";
+                return $usuarios; // No es necesario continuar con la búsqueda si se encuentra el usuario
+            }
         } else {
-            // Mostrar alerta
+            // Mostrar alerta si los campos están vacíos
             $alerta2 = "Usuario o contraseña incorrecta, inténtelo de nuevo";
             echo "<script>
                 alert('$alerta2');
-                window.location.href = 'login.php';
-            </script>";
+              </script>";
         }
 
         if ($b_texto != '') {
             $aTexto = explode(' ', $b_texto);
-            $SQL .= "AND (1=2";
+            $SQL .= " AND (1=2";
             foreach ($aTexto as $palabra) {
-                $SQL .= " OR apellido_1 LIKE  '%$palabra%'";
-                $SQL .= " OR apellido_2 LIKE  '%$palabra%'";
-                $SQL .= " OR nombre LIKE  '%$palabra%'";
+                $SQL .= " OR apellido_1 LIKE '%$palabra%'";
+                $SQL .= " OR apellido_2 LIKE '%$palabra%'";
+                $SQL .= " OR nombre LIKE '%$palabra%'";
             }
             $SQL .= ' ) ';
         }
 
-        //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
         $usuarios = $this->DAO->consultar($SQL);
+
+        if (empty($usuarios)) {
+            // No se encontraron usuarios
+            $alerta = "No se encontraron usuarios con los filtros especificados.";
+            echo "<script>
+                alert('$alerta');
+              </script>";
+        }
+
         return $usuarios;
     }
+
+
 
     public function buscarPorSexo($filtros = array())
     {
@@ -155,7 +177,8 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->insertar($SQL);
         echo $filtros;
     }
-    public function Editar($filtros = array()) {
+    public function Editar($filtros = array())
+    {
         $modId = "";
         $nombre = "";
         $apellido_1 = "";
@@ -168,8 +191,5 @@ class M_Usuarios extends Modelo
         $usuarioId = addslashes($usuarioId);
         $SQL = "UPDATE `usuarios` SET `nombre`='$nombre',`apellido_1`='$apellido_1',`apellido_2`='$apellido_2',`sexo`='$sexo',`mail`='$correo',`login`='$correo',`pass`='$password',`activo`='$activo' WHERE id_Usuario=$modId";
         $usuarios = $this->DAO->actualizar($SQL);
-        
-
     }
-
 }

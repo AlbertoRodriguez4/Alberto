@@ -17,6 +17,7 @@ function buscarUsuarios() {
         });
     var divParaOcultar = document.getElementById('formularioBuscar3');
     divParaOcultar.style.display = "none";
+    
 }
 function buscarPorSexo() {
     let opciones = { method: "GET" };
@@ -254,13 +255,18 @@ function editarUsuarios(id_Usuario) {
 
     <label for="apellido_2">apellido_2:</label>
     <input type="text" id="apellido_2" name="apellido_2" required>
-
+    <div id="horizontal"
     <label id="generos">
-  <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
+    <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
   <input type="radio" name="sexo" id="sexoFemenino" value="M">Mujer
 </label>
-    <label for="activo">activo:</label>
-    <input type="text" id="activo" name="activo" required>
+</div>
+<div id="horizontal"
+<label id="xd">
+<input type="radio" name="activo" id="EstaActivo" value="S">Activo
+<input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
+</label>
+</div>
 
     <label for="correo">correo:</label>
     <input type="email" id="correo" name="correo" required>
@@ -292,18 +298,23 @@ function Volver() {
 }
 
 function Editar() {
-
     var nombre = document.getElementById("nombre").value;
     var apellido1 = document.getElementById("apellido_1").value;
     var apellido2 = document.getElementById("apellido_2").value;
-    var activo = document.getElementById("activo").value;
     var correo = document.getElementById("correo").value;
-    
+    var EstaActivo = document.getElementById("EstaActivo");
+    var EstaInactivo = document.getElementById("EstaInactivo");
     var sexoMasculino = document.getElementById("sexoMasculino");
     var sexoFemenino = document.getElementById("sexoFemenino");
 
-    var sexo; 
-    
+    var sexo;
+    var activo;
+    if (EstaActivo.checked) {
+        activo = "S";
+    } else if (EstaInactivo.checked) {
+        activo = "N";
+    }
+
     if (sexoMasculino.checked) {
         sexo = "h";
     } else if (sexoFemenino.checked) {
@@ -329,7 +340,6 @@ function Editar() {
         let parametros = "controlador=Usuarios&metodo=Editar";
         parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar3"))).toString();
         fetch("C_Ajax.php?" + parametros, opciones, eliDDelUsuario)
-        alert(parametros)
             .then(res => {
                 if (res.ok) {
                     console.log("Entre");

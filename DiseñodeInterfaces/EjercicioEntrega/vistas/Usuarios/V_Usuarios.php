@@ -52,17 +52,16 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+
         }
 
-        #generos {
+        #horizontal {
             display: flex;
-            flex-direction: row;
-            /* Alineación horizontal */
+
         }
 
-        #generos input {
-            margin-right: 10px;
-            /* Espacio entre los elementos */
+        #generos>* {
+            margin-right: 40px;
         }
 
         .boton {
