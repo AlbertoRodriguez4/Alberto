@@ -154,6 +154,8 @@ formulario2.setAttribute('id', 'formularioBuscar3');
 
 function textoMeterUsuarios() {
     formulario.innerHTML = `
+    <h1 for="nombre">AÑADIR USUARIO:</h1>
+
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
 
@@ -162,23 +164,29 @@ function textoMeterUsuarios() {
 
         <label for="apellido_2">apellido_2:</label>
         <input type="text" id="apellido_2" name="apellido_2" required>
+        <div id="horizontal">
+        <label id="generos">
+            <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
+        </label>
 
-        <div id="horizontal"
-    <label id="generos">
-    <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
-  <input type="radio" name="sexo" id="sexoFemenino" value="M">Mujer
-    </label>
+        <label id="generos">
+            <input type="radio" name="sexo" id="sexoFemenino" value="M">Mujer
+        </label>
     </div>
-    <div id="horizontal"
-    <label id="xd">
-    <input type="radio" name="activo" id="EstaActivo" value="S">Activo
-    <input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
-    </label>
-    </div>
+
+    
 
         <label for="correo">correo:</label>
         <input type="email" id="correo" name="correo" required>
+        <div id="horizontal">
+        <label id="xd">
+            <input type="radio" name="activo" id="EstaActivo" value="S">Activo
+        </label>
 
+        <label id="xd">
+            <input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
+        </label>
+    </div>
         <label for="password">password:</label>
         <input type="text" id="password" name="password" required>
 
@@ -271,41 +279,50 @@ function editarUsuarios(id_Usuario) {
     formulario2.setAttribute('id', 'formularioBuscar3');
 
     formulario2.innerHTML = `
-    
+    <h1 for="nombre">EDITAR USUARIO:</h1>
+
     <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required>
+        <input type="text" id="nombre" name="nombre" required>
 
-    <label for="apellido_1">apellido_1:</label>
-    <input type="text" id="apellido_1" name="apellido_1" required>
+        <label for="apellido_1">Apellido 1:</label>
+        <input type="text" id="apellido_1" name="apellido_1" required>
 
-    <label for="apellido_2">apellido_2:</label>
-    <input type="text" id="apellido_2" name="apellido_2" required>
+        <label for="apellido_2">Apellido 2:</label>
+        <input type="text" id="apellido_2" name="apellido_2" required>
 
-    <div id="horizontal"
-    <label id="generos">
-    <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
-  <input type="radio" name="sexo" id="sexoFemenino" value="M">Mujer
-    </label>
-    </div>
-    <div id="horizontal"
-    <label id="xd">
-    <input type="radio" name="activo" id="EstaActivo" value="S">Activo
-    <input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
-    </label>
-    </div>
+        <div id="horizontal">
+            <label id="xd">
+                <input type="radio" name="activo" id="EstaActivo" value="S">Activo
+            </label>
 
-    <label for="correo">correo:</label>
-    <input type="email" id="correo" name="correo" required>
+            <label id="xd">
+                <input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
+            </label>
+        </div>
 
-    <label for="password">password:</label>
-    <input type="text" id="password" name="password" required>
-    <div id="hiden">
-        <label for="password" id="hiden" ></label>
-        <input type="text" id="modId" name="modId" value="${eliDDelUsuario}" required>
-    </div>
-    <button type="button" id="textoAñadirUsuarios" onclick="Editar()">Editar Usuarios</button>
-    <button type="button" id="volver" onclick="Volver()">Volver</button>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required>
 
+        <div id="horizontal">
+            <label id="generos">
+                <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
+            </label>
+
+            <label id="generos">
+                <input type="radio" name="sexo" id="sexoFemenino" value="M">Mujer
+            </label>
+        </div>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+
+        <div id="hiden">
+            <label for="modId">ID de Modificación:</label>
+            <input type="text" id="modId" name="modId" value="${eliDDelUsuario}" required>
+        </div>
+
+        <button type="button" id="textoAñadirUsuarios" onclick="Editar()">Editar Usuarios</button>
+        <button type="button" id="volver" onclick="Volver()">Volver</button>
     `;
 
     document.body.appendChild(formulario2);

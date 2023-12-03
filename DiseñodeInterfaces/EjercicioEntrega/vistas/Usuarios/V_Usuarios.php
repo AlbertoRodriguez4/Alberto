@@ -55,10 +55,6 @@
 
         }
 
-        #horizontal {
-            display: flex;
-
-        }
 
         #generos>* {
             margin-right: 40px;
@@ -136,7 +132,7 @@
         #formularioBuscar3 .hiden {
             display: none;
         }
-        
+
         #formularioBuscar2 {
             width: 500px;
             margin: 0 auto;
@@ -179,22 +175,27 @@
 
         #horizontal {
             display: flex;
-            flex-direction: row;
-            gap: 40px;
-            margin-right: 40px;
-            margin-top: 50px;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
 
+        #horizontal label {
+            margin-right: 10px;
+            /* Ajusta el espacio entre los elementos */
         }
 
         #xd {
             display: flex;
-            flex-direction: row;
-            gap: 40px;
-            margin-right: 40px;
-            margin-bottom: 40px;
-
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 20px;
         }
 
+        #xd label {
+            margin-right: 10px;
+            /* Ajusta el espacio entre los elementos */
+        }
 
         button#volver {
             background-color: #f44336;

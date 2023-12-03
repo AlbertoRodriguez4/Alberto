@@ -63,14 +63,8 @@ class M_Usuarios extends Modelo
 
         $usuarios = $this->DAO->consultar($SQL);
 
-        if (empty($usuarios)) {
-            // No se encontraron usuarios
-            $alerta = "No se encontraron usuarios con los filtros especificados.";
-            echo "<script>
-                alert('$alerta');
-              </script>";
-        }
 
+        
         return $usuarios;
     }
 
@@ -172,7 +166,7 @@ class M_Usuarios extends Modelo
             $correo = addslashes($correo);
             $password = addslashes($password);
 
-            $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$nombre','$password')";
+            $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$correo','$password')";
         }
         $usuarios = $this->DAO->insertar($SQL);
         echo $filtros;
@@ -191,5 +185,16 @@ class M_Usuarios extends Modelo
         $usuarioId = addslashes($usuarioId);
         $SQL = "UPDATE `usuarios` SET `nombre`='$nombre',`apellido_1`='$apellido_1',`apellido_2`='$apellido_2',`sexo`='$sexo',`mail`='$correo',`login`='$correo',`pass`='$password',`activo`='$activo' WHERE id_Usuario=$modId";
         $usuarios = $this->DAO->actualizar($SQL);
+    }
+    private function verificarUsuarioExistente($usuario, $pass)
+    {
+        // Lógica para verificar si el usuario existe en la base de datos
+        $usuario = addslashes($usuario);
+        $pass = addslashes($pass);
+
+        $SQL = "SELECT * FROM usuarios WHERE login = '$usuario' AND pass = '$pass'";
+        $usuarioEncontrado = $this->DAO->consultar($SQL);
+
+        return !empty($usuarioEncontrado);
     }
 }
