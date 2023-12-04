@@ -189,6 +189,7 @@ function textoMeterUsuarios() {
     </div>
         <label for="password">password:</label>
         <input type="password" id="password" name="password" required>
+
         <div id="mensaje2"></div>
 
         <button type="button" id="textoAñadirUsuarios" onclick="add()">Añadirlos</button>
@@ -266,11 +267,12 @@ function add() {
     } else {
         // Al menos un campo es un número o el correo no es válido
         var mensajeDiv = document.getElementById('mensaje2');
-        var mensaje = ("Por favor, verifica que todos los campos sean texto y que el correo contenga '@'.");
+        var mensaje = ("Por favor, verifica que todos los campos sean texto, que el correo contenga '@' y que no haya ningun campo vacio");
         mensajeDiv.innerText = mensaje;
         mensajeDiv.style.color = 'red';
         mensajeDiv.style.fontWeight = 'bold';
         mensajeDiv.style.display = 'block';
+        mensajeDiv.style.textAlign = 'center';
     }
 }
 var eliDDelUsuario = ""
@@ -413,10 +415,11 @@ function Editar() {
     } else {
         // Al menos un campo es un número o el correo no es válido
         var mensajeDiv = document.getElementById('mensaje');
-        var mensaje = ("Por favor, verifica que todos los campos sean texto y que el correo contenga '@'.");
+        var mensaje = ("Por favor, verifica que todos los campos sean texto, que el correo contenga '@' y que no haya ningun campo vacio");
         mensajeDiv.innerText = mensaje;
         mensajeDiv.style.color = 'red';
         mensajeDiv.style.fontWeight = 'bold';
         mensajeDiv.style.display = 'block';
+        mensajeDiv.style.textAlign = 'center';
     }
 }

@@ -158,11 +158,12 @@ class M_Usuarios extends Modelo
         extract($filtros);
 
         // Validación si el nombre ya existe
+        if (!empty($nombre)) {
             $usuarioExistente = $this->DAO->consultar("SELECT * FROM usuarios WHERE nombre='$nombre'");
             if (!empty($usuarioExistente)) {
-                echo '<script>alert("Estás intentando insertar a un usuario que ya existe");</script>';
+                echo '<script>console.log("Estás intentando insertar a un usuario que ya existe");</script>';
             }
-        
+        }
 
         // Validación de datos obligatorios
         if (empty($nombre) || empty($apellido_1) || empty($apellido_2) || empty($sexo) || empty($activo)) {
