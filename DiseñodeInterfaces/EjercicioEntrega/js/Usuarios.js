@@ -188,7 +188,8 @@ function textoMeterUsuarios() {
         </label>
     </div>
         <label for="password">password:</label>
-        <input type="text" id="password" name="password" required>
+        <input type="password" id="password" name="password" required>
+        <div id="mensaje2"></div>
 
         <button type="button" id="textoAñadirUsuarios" onclick="add()">Añadirlos</button>
         <button type="button" id="volver" onclick="Volver()">Volver</button>
@@ -205,8 +206,6 @@ function textoMeterUsuarios() {
 
 };
 function add() {
-
-
 
     var nombre = document.getElementById("nombre").value;
     var apellido1 = document.getElementById("apellido_1").value;
@@ -266,7 +265,12 @@ function add() {
         location.reload(true)
     } else {
         // Al menos un campo es un número o el correo no es válido
-        alert("Por favor, verifica que todos los campos sean texto y que el correo contenga '@'.");
+        var mensajeDiv = document.getElementById('mensaje2');
+        var mensaje = ("Por favor, verifica que todos los campos sean texto y que el correo contenga '@'.");
+        mensajeDiv.innerText = mensaje;
+        mensajeDiv.style.color = 'red';
+        mensajeDiv.style.fontWeight = 'bold';
+        mensajeDiv.style.display = 'block';
     }
 }
 var eliDDelUsuario = ""
@@ -320,6 +324,9 @@ function editarUsuarios(id_Usuario) {
             <label for="modId">ID de Modificación:</label>
             <input type="text" id="modId" name="modId" value="${eliDDelUsuario}" required>
         </div>
+        
+        <div id="mensaje" ></div>
+
 
         <button type="button" id="textoAñadirUsuarios" onclick="Editar()">Editar Usuarios</button>
         <button type="button" id="volver" onclick="Volver()">Volver</button>
@@ -405,6 +412,11 @@ function Editar() {
         location.reload(true)
     } else {
         // Al menos un campo es un número o el correo no es válido
-        alert("Por favor, verifica que todos los campos sean texto y que el correo contenga '@'.");
+        var mensajeDiv = document.getElementById('mensaje');
+        var mensaje = ("Por favor, verifica que todos los campos sean texto y que el correo contenga '@'.");
+        mensajeDiv.innerText = mensaje;
+        mensajeDiv.style.color = 'red';
+        mensajeDiv.style.fontWeight = 'bold';
+        mensajeDiv.style.display = 'block';
     }
 }

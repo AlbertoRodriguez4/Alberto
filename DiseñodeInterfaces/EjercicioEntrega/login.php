@@ -12,10 +12,12 @@ if ($usuario == '' || $pass == '') {
     $datos['pass'] = $pass;
     //$resultado = $objUsuarios->validarUsuario($datos);
 
-    $resultado = $objUsuarios->validarUsuario(array(
-        'usuario' => $usuario,
-        'pass' => $pass
-    ));
+    $resultado = $objUsuarios->validarUsuario(
+        array(
+            'usuario' => $usuario,
+            'pass' => $pass
+        )
+    );
 
     if ($resultado == 'S') {
         header('Location: index.php');
@@ -47,12 +49,14 @@ if ($usuario == '' || $pass == '') {
         }
     </script>
     <style>
-        html{
+        html {
             background-image: url('imagenes/blur.jpg');
-            background-size: cover; /* Opciones: cover, contain, auto */
+            background-size: cover;
+            /* Opciones: cover, contain, auto */
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -64,7 +68,8 @@ if ($usuario == '' || $pass == '') {
             flex-direction: column;
             min-height: 100vh;
             background-image: url('imagenes/blur.jpg');
-            background-size: cover; /* Opciones: cover, contain, auto */
+            background-size: cover;
+            /* Opciones: cover, contain, auto */
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
@@ -161,7 +166,9 @@ if ($usuario == '' || $pass == '') {
         <input type="text" id="usuario" name="usuario" value="<?php echo $usuario; ?>"><br>
 
         <label for="pass">Contraseña:</label><br>
-        <input type="password" id="pass" name="pass" value="<?php echo $pass; ?>"><br>
+        <input type="password" id="pass" name="pass" value="<?php echo $pass; ?>">
+        <div id="mensajeError" style="color: red; font-weight: bold;"></div><br>
+
         <button type="button" id="aceptar" onclick="validar()">Aceptar</button>
         <button type="button" id="volver" onclick="asdf()">Volver</button>
     </form>

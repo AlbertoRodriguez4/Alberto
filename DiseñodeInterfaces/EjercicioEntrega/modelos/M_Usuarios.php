@@ -64,7 +64,7 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
 
 
-        
+
         return $usuarios;
     }
 
@@ -156,21 +156,42 @@ class M_Usuarios extends Modelo
         $password = "";
 
         extract($filtros);
-        $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `pass`)";
-        if ($nombre != "" & $apellido_1 != "" & $apellido_2 != "" & $sexo != "" & $activo != "") {
-            $nombre = addslashes($nombre);
-            $apellido_1 = addslashes($apellido_1);
-            $apellido_2 = addslashes($apellido_2);
-            $sexo = addslashes($sexo);
-            $activo = addslashes($activo);
-            $correo = addslashes($correo);
-            $password = addslashes($password);
 
-            $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$correo','$password')";
+        // Validación si el nombre ya existe
+            $usuarioExistente = $this->DAO->consultar("SELECT * FROM usuarios WHERE nombre='$nombre'");
+            if (!empty($usuarioExistente)) {
+                echo '<script>alert("Estás intentando insertar a un usuario que ya existe");</script>';
+            }
+        
+
+        // Validación de datos obligatorios
+        if (empty($nombre) || empty($apellido_1) || empty($apellido_2) || empty($sexo) || empty($activo)) {
+            return 'Faltan datos obligatorios para insertar el usuario';
         }
+
+        // Limpiar y escapar datos
+        $nombre = addslashes($nombre);
+        $apellido_1 = addslashes($apellido_1);
+        $apellido_2 = addslashes($apellido_2);
+        $sexo = addslashes($sexo);
+        $activo = addslashes($activo);
+        $correo = addslashes($correo);
+        $password = addslashes($password);
+
+        // Construir la consulta SQL
+        $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `pass`) VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$correo','$password')";
+
+        // Ejecutar la consulta SQL
         $usuarios = $this->DAO->insertar($SQL);
-        echo $filtros;
+
+        // Verificar si la inserción fue exitosa
+        if ($usuarios != null) {
+            return 'Insertado correctamente';
+        } else {
+            return 'El usuario no se ha insertado';
+        }
     }
+
     public function Editar($filtros = array())
     {
         $modId = "";
