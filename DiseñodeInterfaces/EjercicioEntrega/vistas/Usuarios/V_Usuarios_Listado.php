@@ -4,8 +4,9 @@ $usuarios = $datos['usuarios'];
 
 <style>
     table {
-        width: 100%;
-        margin: 20px 0;
+        width: 60%;
+        margin: 20px auto;
+        /* Establecer márgenes izquierdo y derecho a auto para centrar */
         border-collapse: collapse;
     }
 
@@ -13,7 +14,7 @@ $usuarios = $datos['usuarios'];
     td {
         padding: 15px;
         border: 1px solid #ddd;
-        text-align: center;
+        text-align: left;
     }
 
     th {
@@ -23,33 +24,51 @@ $usuarios = $datos['usuarios'];
     tr:nth-child(even) {
         background-color: #f9f9f9;
     }
+
+    .centrado {
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
     #ola {
-        width: 10%;
-        height: 10%;
+        width: 35%;
+        height: 35%;
+        
     }
 </style>
 
 <table>
     <thead>
         <tr>
-            <th>Apellido 1</th>
-            <th>Apellido 2</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
             <th>Nombre</th>
-            <th>Sexo</th>
-            <th>Activo</th>
-            <th>Editar Usuarios</th>
+            <th class="centrado">Sexo</th>
+            <th class="centrado">Activo</th>
+            <th class="centrado">Editar Usuarios</th>
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($usuarios as $fila) : ?>
+        <?php foreach ($usuarios as $fila): ?>
             <tr>
-                <td><?php echo $fila['apellido_1']; ?></td>
-                <td><?php echo $fila['apellido_2']; ?></td>
-                <td><?php echo $fila['nombre']; ?></td>
-                <td><?php echo $fila['sexo']; ?></td>
-                <td><?php echo $fila['activo']; ?></td>
                 <td>
-                <img id="ola" src="../../imagenes/editar.png" onclick="editarUsuarios(<?php echo $fila['id_Usuario']?>)" alt="">
+                    <?php echo $fila['apellido_1']; ?>
+                </td>
+                <td>
+                    <?php echo $fila['apellido_2']; ?>
+                </td>
+                <td>
+                    <?php echo $fila['nombre']; ?>
+                </td>
+                <td class="centrado">
+                    <?php echo $fila['sexo']; ?>
+                </td>
+                <td class="centrado">
+                    <?php echo $fila['activo']; ?>
+                </td>
+                <td class="centrado">
+                    <img id="ola" src="../../imagenes/editar.png"
+                        onclick="editarUsuarios(<?php echo $fila['id_Usuario'] ?>)" alt="">
                 </td>
             </tr>
         <?php endforeach; ?>

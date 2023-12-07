@@ -35,6 +35,11 @@
             //echo json_encode($usuarios);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios, array('usuarios'=>$usuarios)));
         }
+        public function buscarTodosUsuarios($filtros = array()) {
+            $usuarios = $this->modelo->buscarUsuarios($filtros);
+            //echo json_encode($usuarios);
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios, array('usuarios'=>$usuarios)));
+        }
         public function buscarPorSexoMasculino($filtros = array()) {
             $usuarios = $this->modelo->buscarPorSexoMasculino($filtros);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios));

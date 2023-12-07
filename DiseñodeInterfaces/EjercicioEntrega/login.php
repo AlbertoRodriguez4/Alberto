@@ -163,7 +163,7 @@ if ($usuario == '' || $pass == '') {
         <label for="pass">Contraseña:</label><br>
         <input type="password" id="pass" name="pass" value="<?php echo $pass; ?>"><br>
         <button type="button" id="aceptar" onclick="validar()">Aceptar</button>
-        <button type="button" id="volver" onclick="asdf()">Volver</button>
+        <button type="button" id="volver" onclick="asdf()">Cancelar el inicio de sesion</button>
     </form>
 </body>
 

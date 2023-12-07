@@ -103,6 +103,15 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
+    public function buscarTodosUsuarios($filtros = array())
+    {
+        extract($filtros);
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
+
+        //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
     public function buscarPorSexoFemenino($filtros = array())
     {
         extract($filtros);

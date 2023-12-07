@@ -19,6 +19,27 @@ function buscarUsuarios() {
     divParaOcultar.style.display = "none";
 
 }
+function buscarTodosUsuarios() {
+    let opciones = { method: "GET" };
+    let parametros = "controlador=Usuarios&metodo=buscarTodosUsuarios";
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log('respuesta ok');
+                return res.text();
+            }
+        })
+        .then(vista => {
+            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
+    var divParaOcultar = document.getElementById('formularioBuscar3');
+    divParaOcultar.style.display = "none";
+
+}
 function buscarPorSexo() {
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=buscarPorSexo";
@@ -192,8 +213,8 @@ function textoMeterUsuarios() {
 
         <div id="mensaje2"></div>
 
-        <button type="button" id="textoAñadirUsuarios" onclick="add()">Añadirlos</button>
-        <button type="button" id="volver" onclick="Volver()">Volver</button>
+        <button type="button" id="textoAñadirUsuarios" onclick="add()">Añadir Usuarios</button>
+        <button type="button" id="Volver a la pagina inicial" onclick="Volver()">Volver</button>
         `;
 
 
@@ -331,7 +352,7 @@ function editarUsuarios(id_Usuario) {
 
 
         <button type="button" id="textoAñadirUsuarios" onclick="Editar()">Editar Usuarios</button>
-        <button type="button" id="volver" onclick="Volver()">Volver</button>
+        <button type="button" id="volver" onclick="Volver()">Volver a la página inicial</button>
     `;
 
     document.body.appendChild(formulario2);
