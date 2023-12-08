@@ -30,16 +30,13 @@
         public function getVistaUsuarios(){
             Vista::render('vistas/Usuarios/V_Usuarios.php');
         }
-        public function validar(){
-            Vista::render('vistas/Usuarios/V_Usuarios.php');
-        }
         public function buscarUsuarios($filtros = array()) {
             $usuarios = $this->modelo->buscarUsuarios($filtros);
             //echo json_encode($usuarios);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios, array('usuarios'=>$usuarios)));
         }
         public function buscarTodosUsuarios($filtros = array()) {
-            $usuarios = $this->modelo->buscarTodosUsuarios($filtros);
+            $usuarios = $this->modelo->buscarUsuarios($filtros);
             //echo json_encode($usuarios);
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios'=>$usuarios, array('usuarios'=>$usuarios)));
         }

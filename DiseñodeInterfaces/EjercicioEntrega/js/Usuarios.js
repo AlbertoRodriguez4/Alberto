@@ -2,21 +2,21 @@ function buscarUsuarios() {
     let opciones = { method: "GET" };
     let parametros = "controlador=Usuarios&metodo=buscarUsuarios";
     parametros += "&" + new URLSearchParams(new FormData(document.getElementById("formularioBuscar"))).toString();
-
     fetch("C_Ajax.php?" + parametros, opciones)
         .then(res => {
             if (res.ok) {
+                console.log('respuesta ok');
                 return res.text();
-            } else {
-                throw new Error('La respuesta no fue exitosa');
             }
         })
-        .then(html => {
-            document.getElementById('capaResultadoBusqueda').innerHTML = html;
+        .then(vista => {
+            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
         })
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
+    var divParaOcultar = document.getElementById('formularioBuscar3');
+    divParaOcultar.style.display = "none";
 
 }
 function buscarTodosUsuarios() {
@@ -36,6 +36,8 @@ function buscarTodosUsuarios() {
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
         });
+    var divParaOcultar = document.getElementById('formularioBuscar3');
+    divParaOcultar.style.display = "none";
 
 }
 function buscarPorSexo() {
