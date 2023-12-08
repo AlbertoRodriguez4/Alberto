@@ -22,32 +22,7 @@ class M_Usuarios extends Modelo
         if ($usuario != "" && $pass != "") {
             $usuario = addslashes($usuario);
             $pass = addslashes($pass);
-
             $SQL .= " AND login = '$usuario' AND pass = '$pass'";
-
-            $usuarios = $this->DAO->consultar($SQL);
-
-            if (empty($usuarios)) {
-                // Usuario no encontrado
-                $alerta = "Usuario no encontrado. Por favor, inténtelo de nuevo.";
-                echo "<script>
-                    alert('$alerta');
-                  </script>";
-            } else {
-                // Usuario encontrado
-                $alerta = "Se ha logueado de forma correcta, bienvenido de nuevo $usuario";
-                echo "<script>
-                    alert('$alerta');
-                    window.location.href = 'http://localhost';
-                  </script>";
-                return $usuarios; // No es necesario continuar con la búsqueda si se encuentra el usuario
-            }
-        } else {
-            // Mostrar alerta si los campos están vacíos
-            $alerta2 = "Usuario o contraseña incorrecta, inténtelo de nuevo";
-            echo "<script>
-                alert('$alerta2');
-              </script>";
         }
 
         if ($b_texto != '') {
@@ -62,13 +37,65 @@ class M_Usuarios extends Modelo
         }
 
         $usuarios = $this->DAO->consultar($SQL);
-
-
-
         return $usuarios;
     }
+    public function buscarTelefono($filtros = array())
+    {
+        $b_texto2 = "";
+        $telefono = "";
+        extract($filtros);
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
+        if ($b_texto2 != '') {
+            $aTexto = explode(' ', $b_texto2);
+            $SQL .= "AND (1=2";
+            foreach ($aTexto as $telefono) {
+                $SQL .= " OR movil LIKE '%$telefono%'";
+            }
+            $SQL .= ' ) ';
+        }
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
+    function buscarTodosUsuarios($filtros = array())
+    {
+        $b_texto = '';
+        $usuario = '';
+        $pass = '';
+        extract($filtros);
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
 
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
+    public function validar($filtros = array())
+    {
+        $b_texto = '';
+        $usuario = '';
+        $pass = '';
+        extract($filtros);
+        $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
 
+        if ($usuario != "" && $pass != "") {
+            $usuario = addslashes($usuario);
+            $pass = addslashes($pass);
+
+            $SQL .= " AND login = '$usuario' AND pass = '$pass'";
+
+            $usuarios = $this->DAO->consultar($SQL);
+        }
+        if ($b_texto != '') {
+            $aTexto = explode(' ', $b_texto);
+            $SQL .= " AND (1=2";
+            foreach ($aTexto as $palabra) {
+                $SQL .= " OR apellido_1 LIKE '%$palabra%'";
+                $SQL .= " OR apellido_2 LIKE '%$palabra%'";
+                $SQL .= " OR nombre LIKE '%$palabra%'";
+            }
+            $SQL .= ' ) ';
+        }
+        $usuarios = $this->DAO->consultar($SQL);
+        return $usuarios;
+    }
 
     public function buscarPorSexo($filtros = array())
     {
@@ -103,15 +130,7 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-    public function buscarTodosUsuarios($filtros = array())
-    {
-        extract($filtros);
-        $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
 
-        //$SQL .= "SELECT * FROM usuarios WHERE 1=1";
-        $usuarios = $this->DAO->consultar($SQL);
-        return $usuarios;
-    }
     public function buscarPorSexoFemenino($filtros = array())
     {
         extract($filtros);
@@ -120,23 +139,7 @@ class M_Usuarios extends Modelo
         $usuarios = $this->DAO->consultar($SQL);
         return $usuarios;
     }
-    public function buscarTelefono($filtros = array())
-    {
-        $b_texto2 = "";
-        $telefono = "";
-        extract($filtros);
-        $SQL = "SELECT * FROM usuarios WHERE 1=1 ";
-        if ($b_texto2 != '') {
-            $aTexto = explode(' ', $b_texto2);
-            $SQL .= "AND (1=2";
-            foreach ($aTexto as $telefono) {
-                $SQL .= " OR movil LIKE '$telefono'";
-            }
-            $SQL .= ' ) ';
-        }
-        $usuarios = $this->DAO->consultar($SQL);
-        return $usuarios;
-    }
+   
     public function buscarPorSiActividad($filtros = array())
     {
         extract($filtros);
