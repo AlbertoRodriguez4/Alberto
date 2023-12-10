@@ -35,9 +35,11 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            gap: 0.5 rem;
         }
 
         #consultar {
@@ -84,6 +86,7 @@
             padding: 10px 20px;
             cursor: pointer;
             margin-top: 10px;
+            flex: 1 0 5rem;
         }
 
         .boton-primario:hover {
@@ -125,6 +128,9 @@
             justify-content: center;
             flex-direction: column;
             text-align: center;
+        }
+        input{
+            flex: 1 0 10 rem;
         }
     </style>
 </head>

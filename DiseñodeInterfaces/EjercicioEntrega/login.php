@@ -32,14 +32,19 @@ if ($usuario == '' || $pass == '') {
         function validar() {
             const usuario = document.getElementById("usuario");
             const pass = document.getElementById("pass");
-            let mensaje = '';
+            var mensaje = document.getElementById("mensaje");
+            var mensajeResupuesta = "";
             if (usuario.value == '' || pass.value == '') {
-                mensaje = 'Desbes completar los campos';
+                mensajeResupuesta = 'Debes completar los campos';
+                console.log(mensajeResupuesta);
             } else {
-                //enviar formulario
                 document.getElementById("formularioLogin").submit();
+                header('Location: index.php');     
             }
-            document.getElementById("msj").innerHTML = mensaje;
+
+            mensaje.innerHTML = mensajeResupuesta;
+            console.log(mensajeResupuesta);
+
         }
 
         function asdf() {
@@ -47,12 +52,14 @@ if ($usuario == '' || $pass == '') {
         }
     </script>
     <style>
-        html{
+        html {
             background-image: url('imagenes/blur.jpg');
-            background-size: cover; /* Opciones: cover, contain, auto */
+            background-size: cover;
+            /* Opciones: cover, contain, auto */
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -64,7 +71,8 @@ if ($usuario == '' || $pass == '') {
             flex-direction: column;
             min-height: 100vh;
             background-image: url('imagenes/blur.jpg');
-            background-size: cover; /* Opciones: cover, contain, auto */
+            background-size: cover;
+            /* Opciones: cover, contain, auto */
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
@@ -137,11 +145,9 @@ if ($usuario == '' || $pass == '') {
             color: #fff;
             border: none;
             border-radius: 20px;
-            /* Más redondo */
             cursor: pointer;
             transition: background-color 0.3s;
             margin-top: 10px;
-            /* Mayor separación desde arriba */
         }
 
         #volver:hover {
@@ -159,9 +165,9 @@ if ($usuario == '' || $pass == '') {
     <form id="formularioLogin" name="formularioLogin" method="post" action="login.php">
         <label for="usuario">Usuario:</label><br>
         <input type="text" id="usuario" name="usuario" value="<?php echo $usuario; ?>"><br>
-
         <label for="pass">Contraseña:</label><br>
         <input type="password" id="pass" name="pass" value="<?php echo $pass; ?>"><br>
+        <p id="mensaje"></p>
         <button type="button" id="aceptar" onclick="validar()">Aceptar</button>
         <button type="button" id="volver" onclick="asdf()">Cancelar el inicio de sesion</button>
     </form>
