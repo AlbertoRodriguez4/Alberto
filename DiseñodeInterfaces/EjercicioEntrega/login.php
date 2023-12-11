@@ -32,19 +32,14 @@ if ($usuario == '' || $pass == '') {
         function validar() {
             const usuario = document.getElementById("usuario");
             const pass = document.getElementById("pass");
-            var mensaje = document.getElementById("mensaje");
-            var mensajeResupuesta = "";
+            let mensaje = '';
             if (usuario.value == '' || pass.value == '') {
-                mensajeResupuesta = 'Debes completar los campos';
-                console.log(mensajeResupuesta);
+                mensaje = 'Desbes completar los campos';
             } else {
+                //enviar formulario
                 document.getElementById("formularioLogin").submit();
-                header('Location: index.php');     
             }
-
-            mensaje.innerHTML = mensajeResupuesta;
-            console.log(mensajeResupuesta);
-
+            document.getElementById("msj").innerHTML = mensaje;
         }
 
         function asdf() {
