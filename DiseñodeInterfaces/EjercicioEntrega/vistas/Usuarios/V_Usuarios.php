@@ -117,8 +117,9 @@
         p {
             text-align: center;
         }
-        #formularioBuscar3{
-            width: 50%;
+
+        #formularioBuscar3 {
+            width: 40%;
             padding: 20px;
             background-color: #fff;
             border: 1px solid #ccc;
@@ -129,8 +130,49 @@
             flex-direction: column;
             text-align: center;
         }
-        input{
+
+        input {
             flex: 1 0 10 rem;
+        }
+
+        #horizontal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #generos,
+        #xd {
+            margin-top: 10px;
+        }
+
+        #mensaje2 {
+            margin-bottom: 10px;
+            text-align: center;
+            color: red;
+            /* Color para los mensajes de error, puedes ajustarlo según tu preferencia */
+        }
+
+        button {
+            background-color: #0074b9;
+            color: #fff;
+            border: 1px solid #00578c;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #00578c;
+        }
+
+        #Volver {
+            background-color: #f44336;
+        }
+
+        #Volver:hover {
+            background-color: #d32f2f;
         }
     </style>
 </head>

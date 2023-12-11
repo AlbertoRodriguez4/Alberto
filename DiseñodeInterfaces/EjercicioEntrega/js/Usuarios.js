@@ -443,4 +443,33 @@ function Editar() {
         mensajeDiv.style.display = 'block';
         mensajeDiv.style.textAlign = 'center';
     }
+
+}
+function introducirUsuarios(event) {
+    event.preventDefault();
+    let opciones = { method: "GET" };
+    let parametros = "controlador=Usuarios&metodo=introducirUsuario";
+
+    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("introducirUsuario"))).toString();
+    console.log(parametros)
+    fetch("C_Ajax.php?" + parametros, opciones)
+        .then(res => res.text())
+        .then(res => {
+            console.log(res)
+            if (res === "ADDED") {
+                // console.log(res.text())
+                document.getElementById("resultadoInsert").innerHTML = "Usuario insertado";
+            } else if (res === 'UPDATED'){
+                document.getElementById("resultadoInsert").innerHTML = "Usuario modificado";
+            } else {
+                document.getElementById("resultadoInsert").innerHTML = "Error al hacer la peticion";
+
+            }
+        })
+
+        .catch(err => {
+                console.log(res.text())
+            console.log("Error al realizar la petición", err.message);
+            document.getElementById("resultadoInsert").innerHTML = "Usuario no insertado";
+        });
 }
