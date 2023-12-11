@@ -235,7 +235,7 @@ function add() {
 
     var sexo;
     var activo;
-    
+
 
     let sonTextos = isNaN(parseFloat(nombre)) && isNaN(parseFloat(apellido1)) && isNaN(parseFloat(apellido2))
         && isNaN(parseFloat(sexo)) && isNaN(parseFloat(activo)) && isNaN(parseFloat(correo));
@@ -308,26 +308,23 @@ function editarUsuarios(id_Usuario, nombre, apellido_1, apellido_2, mail, login)
 <input type="text" id="apellido_2" name="apellido_2" value="${apellido_2}" required>
 
         <div id="horizontal">
-            <label id="xd">
-                <input type="radio" name="activo" id="EstaActivo" value="S">Activo
-            </label>
-
-            <label id="xd">
-                <input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
-            </label>
+        <label for="activo">Estado:</label>
+        <select id="activo" name="activo">
+            <option value="S">Activo</option>
+            <option value="N">Inactivo</option>
+        </select>
         </div>
 
         <label for="correo">Correo:</label>
         <input type="email" id="correo" name="correo" value = "${mail}" required>
 
         <div id="horizontal">
-            <label id="generos">
-                <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
-            </label>
-
-            <label id="generos">
-                <input type="radio" name="sexo" id="sexoFemenino" value="M">Mujer
-            </label>
+        <label for="sexo">Género:</label>
+        <select id="sexo" name="sexo">
+            <option value="H">Hombre</option>
+            <option value="M">Mujer</option>
+        </select>
+        
         </div>
 
         <label for="login">Login:</label>
@@ -365,24 +362,9 @@ function Editar() {
     var apellido1 = document.getElementById("apellido_1").value;
     var apellido2 = document.getElementById("apellido_2").value;
     var correo = document.getElementById("correo").value;
-    var EstaActivo = document.getElementById("EstaActivo");
-    var EstaInactivo = document.getElementById("EstaInactivo");
-    var sexoMasculino = document.getElementById("sexoMasculino");
-    var sexoFemenino = document.getElementById("sexoFemenino");
-
-    var sexo;
-    var activo;
-    if (EstaActivo.checked) {
-        activo = "S";
-    } else if (EstaInactivo.checked) {
-        activo = "N";
-    }
-
-    if (sexoMasculino.checked) {
-        sexo = "h";
-    } else if (sexoFemenino.checked) {
-        sexo = "m";
-    }
+    var activo = document.getElementById("activo").value;
+    var sexo = document.getElementById("sexo").value;
+    
     var formularioBuscar = document.getElementById('formularioBuscar');
     formularioBuscar.style.display = "none";
 

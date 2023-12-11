@@ -232,11 +232,21 @@ class M_Usuarios extends Modelo
         $activo = "";
         $correo = "";
         $login = "";
+
         extract($filtros);
         $usuarioId = addslashes($usuarioId);
+
+        // Obtener valores de los desplegables
+        $activo = addslashes($activo);
+        $sexo = addslashes($sexo);
+
         $SQL = "UPDATE `usuarios` SET `nombre`='$nombre',`apellido_1`='$apellido_1',`apellido_2`='$apellido_2',`sexo`='$sexo',`mail`='$correo',`login`='$login',`activo`='$activo' WHERE id_Usuario=$modId";
+
         $usuarios = $this->DAO->actualizar($SQL);
+        // Puedes retornar algún tipo de respuesta según tus necesidades, por ejemplo, un mensaje de éxito o error
+        return $usuarios;
     }
+
     function generarContrasena($longitud = 12)
     {
         // Caracteres permitidos en la contraseña

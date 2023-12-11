@@ -123,13 +123,14 @@
             padding: 20px;
             background-color: #fff;
             border: 1px solid #ccc;
-                border-radius: 5px;
-                display: flex;
+            border-radius: 5px;
+            display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             text-align: center;
         }
+
         #formularioBuscar2 {
             width: 40%;
             padding: 20px;
@@ -142,6 +143,7 @@
             flex-direction: column;
             text-align: center;
         }
+
         input {
             flex: 1 0 10 rem;
         }
@@ -150,11 +152,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
+            /* Añade un espacio entre los elementos */
         }
 
         #generos,
         #xd {
             margin-top: 10px;
+            text-align: center;
+            /* Centra el texto dentro del contenedor */
+        }
+
+        /* Asegúrate de que el ancho de los desplegables sea suficientemente grande */
+        #generos select,
+        #xd select {
+            width: 150px;
+            /* O ajusta según sea necesario */
         }
 
         #mensaje2 {
@@ -198,22 +211,27 @@
                     <input type="text" class="campo-texto" id="b_texto" oninput="buscarUsuarios()" name="b_texto">
                 </label>
                 <label>
-                    <input type="radio" class="radio" name="opciones" value="opcion1" onclick="buscarPorSexoMasculino()">Hombre
+                    <input type="radio" class="radio" name="opciones" value="opcion1"
+                        onclick="buscarPorSexoMasculino()">Hombre
                 </label>
                 <label>
-                    <input type="radio" class="radio" name="opciones" value="opcion2" onclick="buscarPorSexoFemenino()">Mujer
+                    <input type="radio" class="radio" name="opciones" value="opcion2"
+                        onclick="buscarPorSexoFemenino()">Mujer
                 </label>
                 <label>
                     <p class="consulta">Buscar usuarios por su teléfono</p>
                     <input type="text" class="campo-texto" id="b_texto2" oninput="buscarTelefono()" name="b_texto2">
                 </label>
                 <label>
-                    <input type="radio" class="radio" name="opciones" value="opcion1" onclick="buscarPorSiActividad()">Activos
+                    <input type="radio" class="radio" name="opciones" value="opcion1"
+                        onclick="buscarPorSiActividad()">Activos
                 </label>
                 <label>
-                    <input type="radio" class="radio" name="opciones" value="opcion2" onclick="buscarPorNoActividad()">Inactivos
+                    <input type="radio" class="radio" name="opciones" value="opcion2"
+                        onclick="buscarPorNoActividad()">Inactivos
                 </label>
-                <button type="button" class="boton-primario" onclick="buscarTodosUsuarios()">Buscar todos los usuarios</button>
+                <button type="button" class="boton-primario" onclick="buscarTodosUsuarios()">Buscar todos los
+                    usuarios</button>
                 <button type="button" class="boton-primario" onclick="textoMeterUsuarios()">Añadir Usuarios</button>
             </div>
             <div id="capaResultadoBusqueda" class="resultado-busqueda"></div>
