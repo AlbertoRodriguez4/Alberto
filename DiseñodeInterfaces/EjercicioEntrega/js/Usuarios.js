@@ -177,44 +177,41 @@ function textoMeterUsuarios() {
     formulario.innerHTML = `
     <h1 for="nombre">AÑADIR USUARIO:</h1>
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+<label for="nombre">Nombre:</label>
+<input type="text" id="nombre" name="nombre" required>
 
-        <label for="apellido_1">apellido_1:</label>
-        <input type="text" id="apellido_1" name="apellido_1" required>
+<label for="apellido_1">apellido_1:</label>
+<input type="text" id="apellido_1" name="apellido_1" required>
 
-        <label for="apellido_2">apellido_2:</label>
-        <input type="text" id="apellido_2" name="apellido_2" required>
-        <div id="horizontal">
-        <label id="generos">
-            <input type="radio" name="sexo" id="sexoMasculino" value="H">Hombre
-        </label>
+<label for="apellido_2">apellido_2:</label>
+<input type="text" id="apellido_2" name="apellido_2" required>
 
-        <label id="generos">
-            <input type="radio" name="sexo" id="sexoFemenino" value="M">Mujer
-        </label>
-    </div>
+<div id="horizontal">
+    <label for="sexo">Género:</label>
+    <select name="sexo" id="sexo">
+        <option value="H">Hombre</option>
+        <option value="M">Mujer</option>
+    </select>
+</div>
 
-    
+<label for="correo">correo:</label>
+<input type="email" id="correo" name="correo" required>
 
-        <label for="correo">correo:</label>
-        <input type="email" id="correo" name="correo" required>
-        <div id="horizontal">
-        <label id="xd">
-            <input type="radio" name="activo" id="EstaActivo" value="S">Activo
-        </label>
+<div id="horizontal">
+    <label for="activo">Estado:</label>
+    <select name="activo" id="activo">
+        <option value="S">Activo</option>
+        <option value="N">Inactivo</option>
+    </select>
+</div>
 
-        <label id="xd">
-            <input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
-        </label>
-    </div>
-    <label for="login">Login:</label>
-    <input type="text" id="login" name="login" value="" required>
+<label for="login">Login:</label>
+<input type="text" id="login" name="login" value="" required>
 
-        <div id="mensaje2"></div>
+<div id="mensaje2"></div>
 
-        <button type="button" id="textoAñadirUsuarios" onclick="add()">Añadir Usuarios</button>
-        <button type="button" id="Volver a la pagina inicial" onclick="Volver()">Volver a la pagina de inicio</button>
+<button type="button" id="textoAñadirUsuarios" onclick="add()">Añadir Usuarios</button>
+<button type="button" id="Volver a la pagina inicial" onclick="Volver()">Volver a la pagina de inicio</button>
         `;
 
 
@@ -233,24 +230,12 @@ function add() {
     var apellido1 = document.getElementById("apellido_1").value;
     var apellido2 = document.getElementById("apellido_2").value;
     var correo = document.getElementById("correo").value;
-    var EstaActivo = document.getElementById("EstaActivo");
-    var EstaInactivo = document.getElementById("EstaInactivo");
-    var sexoMasculino = document.getElementById("sexoMasculino");
-    var sexoFemenino = document.getElementById("sexoFemenino");
+    var sexo = document.getElementById("sexo").value;
+    var activo = document.getElementById("activo").value;
 
     var sexo;
     var activo;
-    if (EstaActivo.checked) {
-        activo = "S";
-    } else if (EstaInactivo.checked) {
-        activo = "N";
-    }
-
-    if (sexoMasculino.checked) {
-        sexo = "h";
-    } else if (sexoFemenino.checked) {
-        sexo = "m";
-    }
+    
 
     let sonTextos = isNaN(parseFloat(nombre)) && isNaN(parseFloat(apellido1)) && isNaN(parseFloat(apellido2))
         && isNaN(parseFloat(sexo)) && isNaN(parseFloat(activo)) && isNaN(parseFloat(correo));
@@ -301,8 +286,8 @@ var elApellido1 = ""
 var elApellido2 = ""
 function editarUsuarios(id_Usuario, nombre, apellido_1, apellido_2, mail, login) {
     eliDDelUsuario = id_Usuario;
-    
-    
+
+
     console.log(id_Usuario);
     console.log(nombre)
     console.log(login)

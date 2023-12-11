@@ -200,8 +200,7 @@ class M_Usuarios extends Modelo
         extract($filtros);
 
         // Generar una contraseña aleatoria si no se proporciona una
-            $password = $this->generarContrasena();
-        
+        $password = $this->generarContrasena();
 
         $nombre = addslashes($nombre);
         $apellido_1 = addslashes($apellido_1);
@@ -219,8 +218,10 @@ class M_Usuarios extends Modelo
         }
 
         $usuarios = $this->DAO->insertar($SQL);
-        echo $filtros;
+        // Aquí debes manejar de manera apropiada la respuesta, puede ser un mensaje de éxito o redirección
+        echo $usuarios;
     }
+
     public function Editar($filtros = array())
     {
         $modId = "";
