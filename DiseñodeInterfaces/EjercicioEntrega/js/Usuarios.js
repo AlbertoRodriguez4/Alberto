@@ -214,7 +214,7 @@ function textoMeterUsuarios() {
         <div id="mensaje2"></div>
 
         <button type="button" id="textoAñadirUsuarios" onclick="add()">Añadir Usuarios</button>
-        <button type="button" id="Volver a la pagina inicial" onclick="Volver()">Volver</button>
+        <button type="button" id="Volver a la pagina inicial" onclick="Volver()">Volver a la pagina de inicio</button>
         `;
 
 

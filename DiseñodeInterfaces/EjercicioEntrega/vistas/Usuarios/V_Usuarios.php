@@ -123,6 +123,18 @@
             padding: 20px;
             background-color: #fff;
             border: 1px solid #ccc;
+                border-radius: 5px;
+                display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        #formularioBuscar2 {
+            width: 40%;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
             border-radius: 5px;
             display: flex;
             align-items: center;
@@ -130,7 +142,6 @@
             flex-direction: column;
             text-align: center;
         }
-
         input {
             flex: 1 0 10 rem;
         }
