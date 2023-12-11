@@ -200,9 +200,8 @@ class M_Usuarios extends Modelo
         extract($filtros);
 
         // Generar una contraseña aleatoria si no se proporciona una
-        if (empty($password)) {
             $password = $this->generarContrasena();
-        }
+        
 
         $nombre = addslashes($nombre);
         $apellido_1 = addslashes($apellido_1);

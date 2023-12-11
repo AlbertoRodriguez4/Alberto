@@ -284,7 +284,6 @@ function add() {
         divoculto3.style.display = "none";
         console.log(eliDDelUsuario);
         console.log(parametros);
-        location.reload(true)
     } else {
         // Al menos un campo es un número o el correo no es válido
         var mensajeDiv = document.getElementById('mensaje2');
