@@ -208,8 +208,8 @@ function textoMeterUsuarios() {
             <input type="radio" name="activo" id="EstaInactivo" value="N">Inactivo
         </label>
     </div>
-        <label for="password">password:</label>
-        <input type="password" id="password" name="password" required>
+    <label for="login">Login:</label>
+    <input type="text" id="password" name="login" value="" required>
 
         <div id="mensaje2"></div>
 

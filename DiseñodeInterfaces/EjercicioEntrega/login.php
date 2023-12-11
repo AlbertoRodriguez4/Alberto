@@ -19,6 +19,7 @@ if ($usuario == '' || $pass == '') {
 
     if ($resultado == 'S') {
         header('Location: index.php');
+        
     } else {
         $mensa = 'Datos incorrectos';
     }
@@ -38,6 +39,7 @@ if ($usuario == '' || $pass == '') {
             } else {
                 //enviar formulario
                 document.getElementById("formularioLogin").submit();
+                
             }
             document.getElementById("msj").innerHTML = mensaje;
         }

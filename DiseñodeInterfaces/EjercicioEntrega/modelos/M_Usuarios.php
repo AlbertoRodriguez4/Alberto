@@ -195,20 +195,30 @@ class M_Usuarios extends Modelo
         $activo = "";
         $correo = "";
         $password = "";
+        $login = "";
 
         extract($filtros);
-        $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `pass`)";
-        if ($nombre != "" & $apellido_1 != "" & $apellido_2 != "" & $sexo != "" & $activo != "") {
-            $nombre = addslashes($nombre);
-            $apellido_1 = addslashes($apellido_1);
-            $apellido_2 = addslashes($apellido_2);
-            $sexo = addslashes($sexo);
-            $activo = addslashes($activo);
-            $correo = addslashes($correo);
-            $password = addslashes($password);
 
-            $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$correo','$password')";
+        // Generar una contraseña aleatoria si no se proporciona una
+        if (empty($password)) {
+            $password = $this->generarContrasena();
         }
+
+        $nombre = addslashes($nombre);
+        $apellido_1 = addslashes($apellido_1);
+        $apellido_2 = addslashes($apellido_2);
+        $sexo = addslashes($sexo);
+        $activo = addslashes($activo);
+        $correo = addslashes($correo);
+        $password = addslashes($password);
+        $login = addslashes($login);
+
+        $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `mail`, `pass`)";
+
+        if ($nombre != "" && $apellido_1 != "" && $apellido_2 != "" && $sexo != "" && $activo != "") {
+            $SQL .= " VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$login','$correo','$password')";
+        }
+
         $usuarios = $this->DAO->insertar($SQL);
         echo $filtros;
     }
@@ -226,5 +236,18 @@ class M_Usuarios extends Modelo
         $usuarioId = addslashes($usuarioId);
         $SQL = "UPDATE `usuarios` SET `nombre`='$nombre',`apellido_1`='$apellido_1',`apellido_2`='$apellido_2',`sexo`='$sexo',`mail`='$correo',`login`='$login',`activo`='$activo' WHERE id_Usuario=$modId";
         $usuarios = $this->DAO->actualizar($SQL);
+    }
+    function generarContrasena($longitud = 12)
+    {
+        // Caracteres permitidos en la contraseña
+        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+';
+
+        // Mezclar los caracteres
+        $caracteresMezclados = str_shuffle($caracteres);
+
+        // Obtener la subcadena de la longitud deseada
+        $contrasena = substr($caracteresMezclados, 0, $longitud);
+
+        return $contrasena;
     }
 }
