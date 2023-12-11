@@ -209,7 +209,7 @@ function textoMeterUsuarios() {
         </label>
     </div>
     <label for="login">Login:</label>
-    <input type="text" id="password" name="login" value="" required>
+    <input type="text" id="login" name="login" value="" required>
 
         <div id="mensaje2"></div>
 
