@@ -26,7 +26,7 @@ class M_Usuarios extends Modelo
             $SQL .= " AND login = '$usuario' AND pass = '$pass'";
 
             $usuarios = $this->DAO->consultar($SQL);
-        } 
+        }
 
         if ($b_texto != '') {
             $aTexto = explode(' ', $b_texto);
@@ -142,9 +142,9 @@ class M_Usuarios extends Modelo
         $activo = "";
         $correo = "";
         $password = "";
-    
+
         extract($filtros);
-    
+
         // Validación si el nombre ya existe
         if (!empty($nombre)) {
             $usuarioExistente = $this->DAO->consultar("SELECT * FROM usuarios WHERE nombre='$nombre'");
@@ -152,12 +152,12 @@ class M_Usuarios extends Modelo
                 echo '<script>console.log("Estás intentando insertar a un usuario que ya existe");</script>';
             }
         }
-    
+
         // Validación de datos obligatorios
         if (empty($nombre) || empty($apellido_1) || empty($apellido_2) || empty($sexo) || empty($activo)) {
             return 'Faltan datos obligatorios para gestionar el usuario';
         }
-    
+
         // Limpiar y escapar datos
         $nombre = addslashes($nombre);
         $apellido_1 = addslashes($apellido_1);
@@ -166,7 +166,7 @@ class M_Usuarios extends Modelo
         $activo = addslashes($activo);
         $correo = addslashes($correo);
         $password = addslashes($password);
-    
+
         // Construir la consulta SQL
         if (empty($modId)) {
             // Inserción
@@ -175,15 +175,56 @@ class M_Usuarios extends Modelo
             // Actualización
             $SQL = "UPDATE `usuarios` SET `nombre`='$nombre',`apellido_1`='$apellido_1',`apellido_2`='$apellido_2',`sexo`='$sexo',`mail`='$correo',`login`='$correo',`pass`='$password',`activo`='$activo' WHERE id_Usuario=$modId";
         }
-    
+
         // Ejecutar la consulta SQL
         $usuarios = $this->DAO->insertar($SQL);
-    
+
         // Verificar si la operación fue exitosa
         if ($usuarios != null) {
             return 'Operación realizada correctamente';
         } else {
             return 'La operación no se ha realizado';
         }
+    }
+    public function add($filtros = array())
+    {
+        $nombre = "";
+        $apellido_1 = "";
+        $apellido_2 = "";
+        $sexo = "";
+        $activo = "";
+        $correo = "";
+        $password = "";
+
+        extract($filtros);
+        $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `pass`)";
+        if ($nombre != "" & $apellido_1 != "" & $apellido_2 != "" & $sexo != "" & $activo != "") {
+            $nombre = addslashes($nombre);
+            $apellido_1 = addslashes($apellido_1);
+            $apellido_2 = addslashes($apellido_2);
+            $sexo = addslashes($sexo);
+            $activo = addslashes($activo);
+            $correo = addslashes($correo);
+            $password = addslashes($password);
+
+            $SQL .= "VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$correo','$password')";
+        }
+        $usuarios = $this->DAO->insertar($SQL);
+        echo $filtros;
+    }
+    public function Editar($filtros = array())
+    {
+        $modId = "";
+        $nombre = "";
+        $apellido_1 = "";
+        $apellido_2 = "";
+        $sexo = "";
+        $activo = "";
+        $correo = "";
+        $login = "";
+        extract($filtros);
+        $usuarioId = addslashes($usuarioId);
+        $SQL = "UPDATE `usuarios` SET `nombre`='$nombre',`apellido_1`='$apellido_1',`apellido_2`='$apellido_2',`sexo`='$sexo',`mail`='$correo',`login`='$login',`activo`='$activo' WHERE id_Usuario=$modId";
+        $usuarios = $this->DAO->actualizar($SQL);
     }
 }

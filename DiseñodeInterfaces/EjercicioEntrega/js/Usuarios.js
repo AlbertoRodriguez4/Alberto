@@ -297,10 +297,16 @@ function add() {
     }
 }
 var eliDDelUsuario = ""
-function editarUsuarios(id_Usuario) {
+var elNombre = ""
+var elApellido1 = ""
+var elApellido2 = ""
+function editarUsuarios(id_Usuario, nombre, apellido_1, apellido_2, mail, login) {
     eliDDelUsuario = id_Usuario;
+    
+    
     console.log(id_Usuario);
-
+    console.log(nombre)
+    console.log(login)
     // Mover la declaración del formulario dentro de la función
     var formulario2 = document.createElement('form');
     formulario2.setAttribute('id', 'formularioBuscar3');
@@ -309,13 +315,13 @@ function editarUsuarios(id_Usuario) {
     <h1 for="nombre">EDITAR USUARIO:</h1>
 
     <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <input type="text" id="nombre" name="nombre" value = "${nombre}" required>
 
-        <label for="apellido_1">Apellido 1:</label>
-        <input type="text" id="apellido_1" name="apellido_1" required>
+        <label for="apellido_1">Primer Apellido</label>
+        <input type="text" id="apellido_1" name="apellido_1" value="${apellido_1}" required>
 
-        <label for="apellido_2">Apellido 2:</label>
-        <input type="text" id="apellido_2" name="apellido_2" required>
+        <label for="apellido_2">Segundo Apellido</label>
+<input type="text" id="apellido_2" name="apellido_2" value="${apellido_2}" required>
 
         <div id="horizontal">
             <label id="xd">
@@ -328,7 +334,7 @@ function editarUsuarios(id_Usuario) {
         </div>
 
         <label for="correo">Correo:</label>
-        <input type="email" id="correo" name="correo" required>
+        <input type="email" id="correo" name="correo" value = "${mail}" required>
 
         <div id="horizontal">
             <label id="generos">
@@ -340,8 +346,8 @@ function editarUsuarios(id_Usuario) {
             </label>
         </div>
 
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
+        <label for="login">Login:</label>
+        <input type="text" id="password" name="login" value="${login}" required>
 
         <div id="hiden">
             <label for="modId">ID de Modificación:</label>
@@ -445,31 +451,5 @@ function Editar() {
     }
 
 }
-function introducirUsuarios(event) {
-    event.preventDefault();
-    let opciones = { method: "GET" };
-    let parametros = "controlador=Usuarios&metodo=introducirUsuario";
 
-    parametros += "&" + new URLSearchParams(new FormData(document.getElementById("introducirUsuario"))).toString();
-    console.log(parametros)
-    fetch("C_Ajax.php?" + parametros, opciones)
-        .then(res => res.text())
-        .then(res => {
-            console.log(res)
-            if (res === "ADDED") {
-                // console.log(res.text())
-                document.getElementById("resultadoInsert").innerHTML = "Usuario insertado";
-            } else if (res === 'UPDATED'){
-                document.getElementById("resultadoInsert").innerHTML = "Usuario modificado";
-            } else {
-                document.getElementById("resultadoInsert").innerHTML = "Error al hacer la peticion";
 
-            }
-        })
-
-        .catch(err => {
-                console.log(res.text())
-            console.log("Error al realizar la petición", err.message);
-            document.getElementById("resultadoInsert").innerHTML = "Usuario no insertado";
-        });
-}
