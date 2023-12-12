@@ -211,15 +211,24 @@ class M_Usuarios extends Modelo
         $password = addslashes($password);
         $login = addslashes($login);
 
-        $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `mail`, `pass`)";
+        $password = $this->generarContrasena();
+        $comprobarLogin = $this->DAO->insertar("SELECT COUNT(login) AS numLogins FROM usuarios WHERE login = '$login'");
+        $numLogins = $comprobarLogin[0]['numLogins'];
 
-        if ($nombre != "" && $apellido_1 != "" && $apellido_2 != "" && $sexo != "" && $activo != "") {
-            $SQL .= " VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$login','$correo','$password')";
+        if ($numLogins == 0) {
+            $SQL = "INSERT INTO usuarios(`nombre`, `apellido_1`, `apellido_2`, `sexo`, `activo`, `login`, `mail`, `pass`)";
+
+
+            if ($nombre != "" && $apellido_1 != "" && $apellido_2 != "" && $sexo != "" && $activo != "") {
+                $SQL .= " VALUES ('$nombre','$apellido_1','$apellido_2','$sexo','$activo','$login','$correo','$password')";
+            }
+
+            $usuarios = $this->DAO->insertar($SQL);
+            // Aquí debes manejar de manera apropiada la respuesta, puede ser un mensaje de éxito o redirección
+            echo $usuarios;
+        } else {
+            
         }
-
-        $usuarios = $this->DAO->insertar($SQL);
-        // Aquí debes manejar de manera apropiada la respuesta, puede ser un mensaje de éxito o redirección
-        echo $usuarios;
     }
 
     public function Editar($filtros = array())
