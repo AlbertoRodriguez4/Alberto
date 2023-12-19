@@ -46,7 +46,13 @@ class M_Usuarios extends Modelo
         return $usuarios;
     }
 
+    public function buscarUsuariosPaginador()
+    {
+        $valorSuma = 0;
+        $valorSuma * 10;
+        //sentencia: SELECT * FROM `usuarios` LIMIT 10 OFFSET 10;
 
+    }
 
     public function buscarPorSexo($filtros = array())
     {
@@ -227,7 +233,6 @@ class M_Usuarios extends Modelo
             // Aquí debes manejar de manera apropiada la respuesta, puede ser un mensaje de éxito o redirección
             echo $usuarios;
         } else {
-            
         }
     }
 

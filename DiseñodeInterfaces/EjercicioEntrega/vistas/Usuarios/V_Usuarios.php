@@ -198,6 +198,59 @@
         #Volver:hover {
             background-color: #d32f2f;
         }
+
+        .contenedor {
+            display: flex;
+            height: 50px;
+            /* Altura del rectángulo */
+            width: 300px;
+            /* Ancho del rectángulo */
+            border: 1px solid black;
+        }
+
+        .parte {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid black;
+        }
+
+        .flecha {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            /* Ajusta el ancho de la flecha */
+            height: 30px;
+            /* Ajusta la altura de la flecha */
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 5px;
+            /* Ajusta el espacio interior de la flecha */
+        }
+
+        .flecha-izquierda {
+            transform: rotate(135deg);
+            left: 5px;
+        }
+
+        .flecha-derecha {
+            transform: rotate(-45deg);
+            right: 5px;
+        }
+
+        .parte-central {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            justify-content: center;
+            text-align: center;
+            flex: 2;
+            border: 1px solid black;
+        }
     </style>
 </head>
 
@@ -211,30 +264,37 @@
                     <input type="text" class="campo-texto" id="b_texto" oninput="buscarUsuarios()" name="b_texto">
                 </label>
                 <label>
-                    <input type="radio" class="radio" name="opciones" value="opcion1"
-                        onclick="buscarPorSexoMasculino()">Hombre
+                    <input type="radio" class="radio" name="opciones" value="opcion1" onclick="buscarPorSexoMasculino()">Hombre
                 </label>
                 <label>
-                    <input type="radio" class="radio" name="opciones" value="opcion2"
-                        onclick="buscarPorSexoFemenino()">Mujer
+                    <input type="radio" class="radio" name="opciones" value="opcion2" onclick="buscarPorSexoFemenino()">Mujer
                 </label>
                 <label>
                     <p class="consulta">Buscar usuarios por su teléfono</p>
                     <input type="text" class="campo-texto" id="b_texto2" oninput="buscarTelefono()" name="b_texto2">
                 </label>
                 <label>
-                    <input type="radio" class="radio" name="opciones" value="opcion1"
-                        onclick="buscarPorSiActividad()">Activos
+                    <input type="radio" class="radio" name="opciones" value="opcion1" onclick="buscarPorSiActividad()">Activos
                 </label>
                 <label>
-                    <input type="radio" class="radio" name="opciones" value="opcion2"
-                        onclick="buscarPorNoActividad()">Inactivos
+                    <input type="radio" class="radio" name="opciones" value="opcion2" onclick="buscarPorNoActividad()">Inactivos
                 </label>
                 <button type="button" class="boton-primario" onclick="buscarTodosUsuarios()">Buscar todos los
                     usuarios</button>
                 <button type="button" class="boton-primario" onclick="textoMeterUsuarios()">Añadir Usuarios</button>
             </div>
             <div id="capaResultadoBusqueda" class="resultado-busqueda"></div>
+            <div class="contenedor">
+                <div class="parte">
+                    <img src="../../imagenes/flecha-izquierda.png" width="40px" height="40px" alt="">
+                </div>
+                <div class="parte-central">1</div>
+                <div class="parte">
+                    <img src="../../imagenes/flecha-derecha.png" width="40px" height="40px" alt="">
+                </div>
+            </div>
+            <br>
+            <input class="parte-central" value="cantidad:">
         </form>
     </div>
 </body>
