@@ -286,11 +286,11 @@
             <div id="capaResultadoBusqueda" class="resultado-busqueda"></div>
             <div class="contenedor">
                 <div class="parte">
-                    <img src="../../imagenes/flecha-izquierda.png" width="40px" height="40px" alt="">
+                    <img src="../../imagenes/flecha-izquierda.png" width="40px" height="40px" onclick="bajarNumero()">
                 </div>
                 <div class="parte-central">1</div>
                 <div class="parte">
-                    <img src="../../imagenes/flecha-derecha.png" width="40px" height="40px" alt="">
+                    <img src="../../imagenes/flecha-derecha.png" width="40px" height="40px" onclick="subirNumero()" alt="">
                 </div>
             </div>
             <br>

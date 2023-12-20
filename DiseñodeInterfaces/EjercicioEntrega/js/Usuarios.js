@@ -364,7 +364,7 @@ function Editar() {
     var correo = document.getElementById("correo").value;
     var activo = document.getElementById("activo").value;
     var sexo = document.getElementById("sexo").value;
-    
+
     var formularioBuscar = document.getElementById('formularioBuscar');
     formularioBuscar.style.display = "none";
 
@@ -415,7 +415,44 @@ function Editar() {
         mensajeDiv.style.display = 'block';
         mensajeDiv.style.textAlign = 'center';
     }
+}
+function subirNumero() {
+    var elemento = document.querySelector('.parte-central');
+
+    // Obtener el valor dentro del elemento y convertirlo a un número
+    var valor = parseInt(elemento.innerHTML);
+
+    // Sumar 1 al valor
+    var nuevoValor = valor + 1;
+
+    // Actualizar el valor dentro del elemento
+    elemento.innerHTML = nuevoValor;
+
+
+    // Mostrar el nuevo valor en la consola y en una alerta
+    console.log(nuevoValor);
 
 }
+function bajarNumero() {
+    var elemento = document.querySelector('.parte-central');
 
+    // Obtener el valor dentro del elemento y convertirlo a un número
+    var valor = parseInt(elemento.innerHTML);
+
+    // Sumar 1 al valor
+    var nuevoValor = valor - 1;
+
+    if (nuevoValor < 0) {
+        alert("no se puede bajar el numero a menos de cero")
+    } else {
+        // Actualizar el valor dentro del elemento
+        elemento.innerHTML = nuevoValor;
+
+
+        // Mostrar el nuevo valor en la consola y en una alerta
+        console.log(nuevoValor);
+    }
+
+
+}
 
