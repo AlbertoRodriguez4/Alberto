@@ -62,7 +62,7 @@ class M_Usuarios extends Modelo
 
         // Calcular el nuevo offset basado en $nuevoValor
         $nuevoNuevoValor = $nuevoValor * 10;
-
+       
         // Utilizar $nuevoNuevoValor en tu consulta SQL
         $SQL =  "SELECT * FROM `usuarios` LIMIT 10 OFFSET $nuevoNuevoValor;";
         $usuarios = $this->DAO->consultar($SQL);
@@ -82,9 +82,11 @@ class M_Usuarios extends Modelo
         // Utilizar $nuevoNuevoValor en tu consulta SQL
         $SQL =  "SELECT * FROM `usuarios` LIMIT 10 OFFSET $nuevoNuevoValor;";
         $usuarios = $this->DAO->consultar($SQL);
-
         return $usuarios;
     }
+
+    
+
     public function buscarPorSexo($filtros = array())
     {
         $b_texto = '';

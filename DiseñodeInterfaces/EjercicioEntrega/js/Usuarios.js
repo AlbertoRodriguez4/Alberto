@@ -416,8 +416,11 @@ function Editar() {
         mensajeDiv.style.textAlign = 'center';
     }
 }
-function subirNumero() {
+
+function subirNumero(cantidadUsuarios) {
     var elemento = document.querySelector('.parte-central');
+    var cantidadXd = cantidadUsuarios;
+    console.log("El numero de usuarios que quiere es "+cantidadUsuarios)
 
     // Obtener el valor dentro del elemento y convertirlo a un número
     var valor = parseInt(elemento.innerHTML);
@@ -461,7 +464,9 @@ function subirNumero() {
 }
 
 
-function bajarNumero() {
+function bajarNumero(cantidadUsuarios) {
+    var cantidadXd = cantidadUsuarios;
+    console.log(cantidadXd)
     var elemento = document.querySelector('.parte-central');
 
     // Obtener el valor dentro del elemento y convertirlo a un número
@@ -501,6 +506,44 @@ function bajarNumero() {
             })
             .then(vista => {
                 document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+            })
+            .catch(err => {
+                console.log("Error al realizar la petición", err.message);
+            });
+    }
+}
+function buscarCantidad() {
+    var inputElement = document.getElementById('parte-central2');
+    var valor = inputElement.value.trim();
+    
+    if (valor !== "") {
+        let parametros = new URLSearchParams({
+            controlador: 'Usuarios',
+            metodo: 'buscarCantidad',
+            nuevoValor: valor
+            // Puedes agregar otros parámetros según sea necesario
+        });
+
+        // Configurar las opciones para la solicitud fetch
+        let opciones = {
+            method: 'POST', // Puedes usar 'GET' o 'POST' según tu necesidad
+            body: parametros, // Enviar los parámetros en el cuerpo de la solicitud
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        // Realizar la solicitud fetch
+        fetch("C_Ajax.php", opciones)
+            .then(res => {
+                if (res.ok) {
+                    return res.text();
+                }
+            })
+            .then(vista => {
+                document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+                subirNumero(valor)
+                bajarNumero(valor)
             })
             .catch(err => {
                 console.log("Error al realizar la petición", err.message);

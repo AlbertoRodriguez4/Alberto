@@ -251,6 +251,15 @@
             flex: 2;
             border: 1px solid black;
         }
+        #parte-central2 {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            justify-content: center;
+            text-align: center;
+            flex: 2;
+            border: 1px solid black;
+        }
     </style>
 </head>
 
@@ -294,7 +303,7 @@
                 </div>
             </div>
             <br>
-            <input class="parte-central" value="cantidad:">
+            <input id="parte-central2" type="number" onchange="buscarCantidad()" placeholder="cantidad:">
         </form>
     </div>
 </body>

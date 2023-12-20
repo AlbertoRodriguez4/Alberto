@@ -78,5 +78,6 @@
         
             Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios, 'nuevoValor' => $nuevoValor));
         }
+       
     }
     
