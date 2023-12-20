@@ -53,7 +53,38 @@ class M_Usuarios extends Modelo
         //sentencia: SELECT * FROM `usuarios` LIMIT 10 OFFSET 10;
 
     }
+    function subirNumero($filtros = array())
+    {
+        extract($filtros);
 
+        // Aquí deberías utilizar el nuevo valor en tu consulta SQL o en cualquier lógica necesaria
+        $nuevoValor = isset($_GET['nuevoValor']) ? $_GET['nuevoValor'] : null;
+
+        // Calcular el nuevo offset basado en $nuevoValor
+        $nuevoNuevoValor = $nuevoValor * 10;
+
+        // Utilizar $nuevoNuevoValor en tu consulta SQL
+        $SQL =  "SELECT * FROM `usuarios` LIMIT 10 OFFSET $nuevoNuevoValor;";
+        $usuarios = $this->DAO->consultar($SQL);
+
+        return $usuarios;
+    }
+    function bajarNumero($filtros = array())
+    {
+        extract($filtros);
+
+        // Aquí deberías utilizar el nuevo valor en tu consulta SQL o en cualquier lógica necesaria
+        $nuevoValor = isset($_GET['nuevoValor']) ? $_GET['nuevoValor'] : null;
+
+        // Calcular el nuevo offset basado en $nuevoValor
+        $nuevoNuevoValor = $nuevoValor * 10;
+
+        // Utilizar $nuevoNuevoValor en tu consulta SQL
+        $SQL =  "SELECT * FROM `usuarios` LIMIT 10 OFFSET $nuevoNuevoValor;";
+        $usuarios = $this->DAO->consultar($SQL);
+
+        return $usuarios;
+    }
     public function buscarPorSexo($filtros = array())
     {
         $b_texto = '';

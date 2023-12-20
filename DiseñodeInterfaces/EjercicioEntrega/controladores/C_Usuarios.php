@@ -66,6 +66,17 @@
         public function Editar($filtros = array()) {
             $usuario = $this->modelo->Editar($filtros);
         }
+        public function subirNumero($filtros = array()) {
+            $usuarios = $this->modelo->subirNumero($filtros);
+            $nuevoValor = isset($_GET['nuevoValor']) ? $_GET['nuevoValor'] : null;
         
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios, 'nuevoValor' => $nuevoValor));
+        }
+        public function bajarNumero($filtros = array()) {
+            $usuarios = $this->modelo->bajarNumero($filtros);
+            $nuevoValor = isset($_GET['nuevoValor']) ? $_GET['nuevoValor'] : null;
+        
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios, 'nuevoValor' => $nuevoValor));
+        }
     }
     

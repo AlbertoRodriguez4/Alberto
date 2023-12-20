@@ -428,31 +428,84 @@ function subirNumero() {
     // Actualizar el valor dentro del elemento
     elemento.innerHTML = nuevoValor;
 
-
-    // Mostrar el nuevo valor en la consola y en una alerta
     console.log(nuevoValor);
 
+    // Construir los parámetros para la solicitud
+    let parametros = new URLSearchParams({
+        controlador: 'Usuarios',
+        metodo: 'subirNumero',
+        nuevoValor: nuevoValor,
+        // Agregar otros parámetros según sea necesario
+    });
+
+    // Agregar los parámetros del formulario
+    parametros.append(...new FormData(document.getElementById("formularioBuscar")));
+
+    // Configurar las opciones para la solicitud fetch
+    let opciones = { method: 'GET' };
+
+    // Realizar la solicitud fetch
+    fetch("C_Ajax.php?" + parametros.toString(), opciones)
+        .then(res => {
+            if (res.ok) {
+                console.log("Entre");
+                return res.text();
+            }
+        })
+        .then(vista => {
+            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
 }
+
+
 function bajarNumero() {
     var elemento = document.querySelector('.parte-central');
 
     // Obtener el valor dentro del elemento y convertirlo a un número
     var valor = parseInt(elemento.innerHTML);
 
-    // Sumar 1 al valor
+    // Restar 1 al valor
     var nuevoValor = valor - 1;
 
     if (nuevoValor < 0) {
-        alert("no se puede bajar el numero a menos de cero")
+        alert("No se puede bajar el número a menos de cero.");
     } else {
-        // Actualizar el valor dentro del elemento
         elemento.innerHTML = nuevoValor;
 
-
-        // Mostrar el nuevo valor en la consola y en una alerta
         console.log(nuevoValor);
+
+        // Construir los parámetros para la solicitud
+        let parametros = new URLSearchParams({
+            controlador: 'Usuarios',
+            metodo: 'bajarNumero',
+            nuevoValor: nuevoValor,
+            // Agregar otros parámetros según sea necesario
+        });
+
+        // Agregar los parámetros del formulario
+        parametros.append(...new FormData(document.getElementById("formularioBuscar")));
+
+        // Configurar las opciones para la solicitud fetch
+        let opciones = { method: 'GET' };
+
+        // Realizar la solicitud fetch
+        fetch("C_Ajax.php?" + parametros.toString(), opciones)
+            .then(res => {
+                if (res.ok) {
+                    console.log("Entre");
+                    return res.text();
+                }
+            })
+            .then(vista => {
+                document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+            })
+            .catch(err => {
+                console.log("Error al realizar la petición", err.message);
+            });
     }
-
-
 }
+
 
