@@ -59,15 +59,21 @@ class M_Usuarios extends Modelo
 
         // Aquí deberías utilizar el nuevo valor en tu consulta SQL o en cualquier lógica necesaria
         $nuevoValor = isset($_GET['nuevoValor']) ? $_GET['nuevoValor'] : null;
-
+        $cantidadXd = isset($_GET['paginaContenido']) ? $_GET['paginaContenido'] : null;
+        echo $cantidadXd;
         // Calcular el nuevo offset basado en $nuevoValor
         $nuevoNuevoValor = $nuevoValor * 10;
-       
-        // Utilizar $nuevoNuevoValor en tu consulta SQL
-        $SQL =  "SELECT * FROM `usuarios` LIMIT 10 OFFSET $nuevoNuevoValor;";
-        $usuarios = $this->DAO->consultar($SQL);
 
-        return $usuarios;
+        if ($cantidadXd != "") {
+            // Utilizar $nuevoNuevoValor en tu consulta SQL
+            $SQL = "SELECT * FROM `usuarios` LIMIT $cantidadXd OFFSET $nuevoNuevoValor;";
+            $usuarios = $this->DAO->consultar($SQL);
+            return $usuarios;
+        } else {
+            $SQL = "SELECT * FROM `usuarios` LIMIT 10 OFFSET $nuevoNuevoValor;";
+            $usuarios = $this->DAO->consultar($SQL);
+            return $usuarios;
+        }
     }
     function bajarNumero($filtros = array())
     {
@@ -75,17 +81,24 @@ class M_Usuarios extends Modelo
 
         // Aquí deberías utilizar el nuevo valor en tu consulta SQL o en cualquier lógica necesaria
         $nuevoValor = isset($_GET['nuevoValor']) ? $_GET['nuevoValor'] : null;
+        $cantidadXd = isset($_GET['paginaContenido']) ? $_GET['paginaContenido'] : null;
+        echo $cantidadXd;
 
-        // Calcular el nuevo offset basado en $nuevoValor
+        // Calcular el nuevo ofjfset basado en $nuevoValor
         $nuevoNuevoValor = $nuevoValor * 10;
-
-        // Utilizar $nuevoNuevoValor en tu consulta SQL
-        $SQL =  "SELECT * FROM `usuarios` LIMIT 10 OFFSET $nuevoNuevoValor;";
-        $usuarios = $this->DAO->consultar($SQL);
-        return $usuarios;
+        if ($cantidadXd != "") {
+            // Utilizar $nuevoNuevoValor en tu consulta SQL
+            $SQL = "SELECT * FROM `usuarios` LIMIT $cantidadXd OFFSET $nuevoNuevoValor;";
+            $usuarios = $this->DAO->consultar($SQL);
+            return $usuarios;
+        } else {
+            $SQL = "SELECT * FROM `usuarios` LIMIT 10 OFFSET $nuevoNuevoValor;";
+            $usuarios = $this->DAO->consultar($SQL);
+            return $usuarios;
+        }
     }
 
-    
+
 
     public function buscarPorSexo($filtros = array())
     {

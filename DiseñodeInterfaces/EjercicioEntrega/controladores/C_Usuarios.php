@@ -75,8 +75,9 @@
         public function bajarNumero($filtros = array()) {
             $usuarios = $this->modelo->bajarNumero($filtros);
             $nuevoValor = isset($_GET['nuevoValor']) ? $_GET['nuevoValor'] : null;
+            $cantidadXd = isset($_GET['paginaContenido']) ? $_GET['paginaContenido'] : null; // Agregando el campo cantidadXd
         
-            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios, 'nuevoValor' => $nuevoValor));
+            Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $usuarios, 'nuevoValor' => $nuevoValor, 'cantidadXd' => $cantidadXd));
         }
        
     }

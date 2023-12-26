@@ -297,13 +297,14 @@
                 <div class="parte">
                     <img src="../../imagenes/flecha-izquierda.png" width="40px" height="40px" onclick="bajarNumero()">
                 </div>
-                <div class="parte-central">1</div>
+                <div class="parte-central">0</div>
                 <div class="parte">
                     <img src="../../imagenes/flecha-derecha.png" width="40px" height="40px" onclick="subirNumero()" alt="">
                 </div>
             </div>
             <br>
-            <input id="parte-central2" type="number" onchange="buscarCantidad()" placeholder="cantidad:">
+            <input id="parte-central2" type="number" value="" placeholder="cantidad: ">
+            <div id="BotonSuu" onclick="buscarCantidad()">Hola</div>
         </form>
     </div>
 </body>

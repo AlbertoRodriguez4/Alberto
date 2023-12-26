@@ -417,11 +417,10 @@ function Editar() {
     }
 }
 
-function subirNumero(cantidadUsuarios) {
+function subirNumero() {
     var elemento = document.querySelector('.parte-central');
-    var cantidadXd = cantidadUsuarios;
-    console.log("El numero de usuarios que quiere es "+cantidadUsuarios)
-
+    var paginaContenido =  document.getElementById("parte-central2").value
+    console.log("Valor de cantidadXd: " + paginaContenido); // Alerta mostrando el valor
     // Obtener el valor dentro del elemento y convertirlo a un número
     var valor = parseInt(elemento.innerHTML);
 
@@ -438,6 +437,7 @@ function subirNumero(cantidadUsuarios) {
         controlador: 'Usuarios',
         metodo: 'subirNumero',
         nuevoValor: nuevoValor,
+        paginaContenido: paginaContenido
         // Agregar otros parámetros según sea necesario
     });
 
@@ -464,15 +464,12 @@ function subirNumero(cantidadUsuarios) {
 }
 
 
-function bajarNumero(cantidadUsuarios) {
-    var cantidadXd = cantidadUsuarios;
-    console.log(cantidadXd)
+function bajarNumero() {
+   var paginaContenido =  document.getElementById("parte-central2").value
+    console.log("Valor de cantidadXd: " + paginaContenido); // Alerta mostrando el valor
+
     var elemento = document.querySelector('.parte-central');
-
-    // Obtener el valor dentro del elemento y convertirlo a un número
     var valor = parseInt(elemento.innerHTML);
-
-    // Restar 1 al valor
     var nuevoValor = valor - 1;
 
     if (nuevoValor < 0) {
@@ -482,21 +479,17 @@ function bajarNumero(cantidadUsuarios) {
 
         console.log(nuevoValor);
 
-        // Construir los parámetros para la solicitud
         let parametros = new URLSearchParams({
             controlador: 'Usuarios',
             metodo: 'bajarNumero',
             nuevoValor: nuevoValor,
+            paginaContenido: paginaContenido
             // Agregar otros parámetros según sea necesario
         });
 
-        // Agregar los parámetros del formulario
         parametros.append(...new FormData(document.getElementById("formularioBuscar")));
-
-        // Configurar las opciones para la solicitud fetch
         let opciones = { method: 'GET' };
 
-        // Realizar la solicitud fetch
         fetch("C_Ajax.php?" + parametros.toString(), opciones)
             .then(res => {
                 if (res.ok) {
@@ -512,43 +505,51 @@ function bajarNumero(cantidadUsuarios) {
             });
     }
 }
+
 function buscarCantidad() {
     var inputElement = document.getElementById('parte-central2');
     var valor = inputElement.value.trim();
-    
+
+    // Guardar el valor en el almacenamiento local
     if (valor !== "") {
-        let parametros = new URLSearchParams({
-            controlador: 'Usuarios',
-            metodo: 'buscarCantidad',
-            nuevoValor: valor
-            // Puedes agregar otros parámetros según sea necesario
-        });
-
-        // Configurar las opciones para la solicitud fetch
-        let opciones = {
-            method: 'POST', // Puedes usar 'GET' o 'POST' según tu necesidad
-            body: parametros, // Enviar los parámetros en el cuerpo de la solicitud
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        };
-
-        // Realizar la solicitud fetch
-        fetch("C_Ajax.php", opciones)
-            .then(res => {
-                if (res.ok) {
-                    return res.text();
-                }
-            })
-            .then(vista => {
-                document.getElementById("capaResultadoBusqueda").innerHTML = vista;
-                subirNumero(valor)
-                bajarNumero(valor)
-            })
-            .catch(err => {
-                console.log("Error al realizar la petición", err.message);
-            });
+        localStorage.setItem("cantidadGuardada", valor);
     }
+
+    let parametros = new URLSearchParams({
+        controlador: 'Usuarios',
+        metodo: 'buscarCantidad',
+        nuevoValor: valor
+        // Puedes agregar otros parámetros según sea necesario
+    });
+
+    // Configurar las opciones para la solicitud fetch
+    let opciones = {
+        method: 'POST', // Puedes usar 'GET' o 'POST' según tu necesidad
+        body: parametros, // Enviar los parámetros en el cuerpo de la solicitud
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    };
+
+    // Realizar la solicitud fetch
+    fetch("C_Ajax.php", opciones)
+        .then(res => {
+            if (res.ok) {
+                return res.text();
+            }
+        })
+        .then(vista => {
+            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+            subirNumero();
+            bajarNumero();
+
+            inputElement.value = nuevoValor; 
+            console.log(nuevoValor)
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
 }
+
 
 
