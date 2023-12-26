@@ -109,7 +109,7 @@ class M_Usuarios extends Modelo
         $cantidadUsuarios = count($usuarios2);
 
         $cantidadFinal = floor($cantidadUsuarios / $yoquese);
-        $cantidadFinal2 = $cantidadFinal -1;
+        $cantidadFinal2 = $cantidadFinal -1; //esto hay que cambiarlo
         echo "tu cantidad final es: ";
         echo $cantidadFinal;
         $SQL = "SELECT * FROM USUARIOS LIMIT $yoquese OFFSET $cantidadFinal2";
