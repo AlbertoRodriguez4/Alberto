@@ -260,6 +260,13 @@
             flex: 2;
             border: 1px solid black;
         }
+        #BotonSuu {
+            background-color: aqua;
+            border: 1px solid black;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -295,16 +302,22 @@
             <div id="capaResultadoBusqueda" class="resultado-busqueda"></div>
             <div class="contenedor">
                 <div class="parte">
+                    <img src="../../imagenes/felchas-izquierdas.png" width="40px" height="40px" onclick="primeraPagina()">
+                </div>
+                <div class="parte">
                     <img src="../../imagenes/flecha-izquierda.png" width="40px" height="40px" onclick="bajarNumero()">
                 </div>
                 <div class="parte-central">0</div>
                 <div class="parte">
                     <img src="../../imagenes/flecha-derecha.png" width="40px" height="40px" onclick="subirNumero()" alt="">
                 </div>
+                <div class="parte">
+                    <img src="../../imagenes/flechas-derechas.png" width="40px" height="40px" onclick="ultimaPagina()" alt="">
+                </div>
             </div>
             <br>
             <input id="parte-central2" type="number" value="" placeholder="cantidad: 10">
-            <div id="BotonSuu" onclick="buscarCantidad()">Hola</div>
+            <div id="BotonSuu" onclick="buscarCantidad()">Buscar Usuarios Mediante esa Cantidad</div>
         </form>
     </div>
 </body>

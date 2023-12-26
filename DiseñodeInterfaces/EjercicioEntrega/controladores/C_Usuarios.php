@@ -95,6 +95,16 @@ class C_Usuarios extends Controlador
 
         Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $resultado['usuarios'], 'nuevoValor' => $nuevoValor, 'cantidadXd' => $cantidadXd, 'cantidadFinal' => $resultado['cantidadFinal']));
     }
+    public function primeraPagina($filtros = array())
+    {
+        extract($filtros);
+
+        $resultado = $this->modelo->primeraPagina($filtros);
+        $yoquese = isset($_GET['yoquese']) ? $_GET['yoquese'] : null;
+
+        Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $resultado['usuarios'], 'yoquese' => $yoquese));
+
+    }
 
 }
 

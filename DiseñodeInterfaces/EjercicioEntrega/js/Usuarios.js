@@ -17,7 +17,6 @@ function buscarUsuarios() {
         });
     var divParaOcultar = document.getElementById('formularioBuscar3');
     divParaOcultar.style.display = "none";
-
 }
 function buscarTodosUsuarios() {
     let opciones = { method: "GET" };
@@ -477,16 +476,17 @@ function bajarNumero() {
             metodo: 'bajarNumero',
             nuevoValor: nuevoValor,
             paginaContenido: paginaContenido
-            // Agregar otros parámetros según sea necesario
         });
 
         parametros.append(...new FormData(document.getElementById("formularioBuscar")));
+
+        // Llama a primeraPagina después de haber adjuntado los datos del formulario
+
         let opciones = { method: 'GET' };
 
         fetch("C_Ajax.php?" + parametros.toString(), opciones)
             .then(res => {
                 if (res.ok) {
-                    console.log("Entre");
                     return res.text();
                 }
             })
@@ -544,5 +544,33 @@ function buscarCantidad() {
         });
 }
 
+function primeraPagina() {
+   var yoquese = document.getElementById("parte-central2").value
+    alert(yoquese);
+    let parametros = new URLSearchParams({
+        controlador: 'Usuarios',
+        metodo: 'primeraPagina',
+        yoquese: yoquese,
+    });
+
+    parametros.append(...new FormData(document.getElementById("formularioBuscar")));
+
+    // Llama a primeraPagina después de haber adjuntado los datos del formulario
+
+    let opciones = { method: 'GET' };
+
+    fetch("C_Ajax.php?" + parametros.toString(), opciones)
+        .then(res => {
+            if (res.ok) {
+                return res.text();
+            }
+        })
+        .then(vista => {
+            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
+}
 
 

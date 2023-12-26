@@ -50,15 +50,16 @@ class M_Usuarios extends Modelo
     function subirNumero($filtros = array())
     {
         extract($filtros);
-
         // Aquí deberías utilizar el nuevo valor en tu consulta SQL o en cualquier lógica necesaria
         $nuevoValor = isset($_GET['nuevoValor']) ? $_GET['nuevoValor'] : null;
         $cantidadXd = isset($_GET['paginaContenido']) ? $_GET['paginaContenido'] : null;
         // Calcular el nuevo offset basado en $nuevoValor
-        $nuevoNuevoValor = $nuevoValor * $cantidadXd;
+        if ($cantidadXd == "") {
+            $cantidadXd = 10;
+        }
+        $nuevoNuevoValor = intval($nuevoValor) * intval($cantidadXd);
 
-        // Si cantidadXd está vacío, establecerlo en 10 por defecto
-        $cantidadXd = empty($cantidadXd) ? 10 : $cantidadXd;
+
 
         // Utilizar $nuevoNuevoValor y $cantidadXd en tu consulta SQL
         $SQL = "SELECT * FROM `usuarios` LIMIT $cantidadXd OFFSET $nuevoNuevoValor;"; //error en el offset que no se adapta a la cantidad
@@ -70,6 +71,7 @@ class M_Usuarios extends Modelo
         $cantidadFinal = $cantidadUsuarios / $cantidadXd;
 
         // Retornar tanto la cantidad final como los usuarios
+        echo $cantidadFinal; // tengo que devolver esto de alguna forma
         return ['usuarios' => $usuarios, 'cantidadFinal' => $cantidadFinal];
     }
     function bajarNumero($filtros = array())
@@ -80,12 +82,11 @@ class M_Usuarios extends Modelo
         $nuevoValor = isset($_GET['nuevoValor']) ? $_GET['nuevoValor'] : null;
         $cantidadXd = isset($_GET['paginaContenido']) ? $_GET['paginaContenido'] : null;
         // Calcular el nuevo offset basado en $nuevoValor
-        $nuevoNuevoValor = $nuevoValor * $cantidadXd;
+        if ($cantidadXd == "") {
+            $cantidadXd = 10;
+        }
+        $nuevoNuevoValor = intval($nuevoValor) * intval($cantidadXd);
 
-        // Si cantidadXd está vacío, establecerlo en 10 por defecto
-        $cantidadXd = empty($cantidadXd) ? 10 : $cantidadXd;
-
-        // Utilizar $nuevoNuevoValor y $cantidadXd en tu consulta SQL
         $SQL = "SELECT * FROM `usuarios` LIMIT $cantidadXd OFFSET $nuevoNuevoValor;"; //error en el offset que no se adapta a la cantidad
         $usuarios = $this->DAO->consultar($SQL);
 
@@ -97,7 +98,27 @@ class M_Usuarios extends Modelo
         // Retornar tanto la cantidad final como los usuarios
         return ['usuarios' => $usuarios, 'cantidadFinal' => $cantidadFinal];
     }
+    function primeraPagina($filtros = array())
+    {
+        extract($filtros);
+        $yoquese = isset($_GET['yoquese']) ? $_GET['yoquese'] : null;
 
+
+        $SQL2 = "SELECT * FROM usuarios";
+        $usuarios2 = $this->DAO->consultar($SQL2);
+        $cantidadUsuarios = count($usuarios2);
+
+        $cantidadFinal = floor($cantidadUsuarios / $yoquese);
+        $cantidadFinal2 = $cantidadFinal -1;
+        echo "tu cantidad final es: ";
+        echo $cantidadFinal;
+        $SQL = "SELECT * FROM USUARIOS LIMIT $yoquese OFFSET $cantidadFinal2";
+        $usuarios = $this->DAO->consultar($SQL);
+        echo $SQL;
+        return ['usuarios' => $usuarios, 'cantidadFinal2' => $cantidadFinal2];
+
+
+    }
 
 
     public function buscarPorSexo($filtros = array())
