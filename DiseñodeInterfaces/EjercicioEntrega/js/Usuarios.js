@@ -419,35 +419,28 @@ function Editar() {
 
 function subirNumero() {
     var elemento = document.querySelector('.parte-central');
-    var paginaContenido =  document.getElementById("parte-central2").value
-    console.log("Valor de cantidadXd: " + paginaContenido); // Alerta mostrando el valor
+    var paginaContenido = document.getElementById("parte-central2").value
     // Obtener el valor dentro del elemento y convertirlo a un número
     var valor = parseInt(elemento.innerHTML);
 
-    // Sumar 1 al valor
     var nuevoValor = valor + 1;
 
-    // Actualizar el valor dentro del elemento
     elemento.innerHTML = nuevoValor;
 
     console.log(nuevoValor);
 
-    // Construir los parámetros para la solicitud
     let parametros = new URLSearchParams({
         controlador: 'Usuarios',
         metodo: 'subirNumero',
         nuevoValor: nuevoValor,
         paginaContenido: paginaContenido
-        // Agregar otros parámetros según sea necesario
     });
 
-    // Agregar los parámetros del formulario
+
     parametros.append(...new FormData(document.getElementById("formularioBuscar")));
 
-    // Configurar las opciones para la solicitud fetch
     let opciones = { method: 'GET' };
 
-    // Realizar la solicitud fetch
     fetch("C_Ajax.php?" + parametros.toString(), opciones)
         .then(res => {
             if (res.ok) {
@@ -465,7 +458,7 @@ function subirNumero() {
 
 
 function bajarNumero() {
-   var paginaContenido =  document.getElementById("parte-central2").value
+    var paginaContenido = document.getElementById("parte-central2").value
     console.log("Valor de cantidadXd: " + paginaContenido); // Alerta mostrando el valor
 
     var elemento = document.querySelector('.parte-central');
@@ -543,7 +536,7 @@ function buscarCantidad() {
             subirNumero();
             bajarNumero();
 
-            inputElement.value = nuevoValor; 
+            inputElement.value = nuevoValor;
             console.log(nuevoValor)
         })
         .catch(err => {

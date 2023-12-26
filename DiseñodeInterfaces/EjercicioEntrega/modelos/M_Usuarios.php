@@ -46,13 +46,7 @@ class M_Usuarios extends Modelo
         return $usuarios;
     }
 
-    public function buscarUsuariosPaginador()
-    {
-        $valorSuma = 0;
-        $valorSuma * 10;
-        //sentencia: SELECT * FROM `usuarios` LIMIT 10 OFFSET 10;
 
-    }
     function subirNumero($filtros = array())
     {
         extract($filtros);
@@ -61,20 +55,23 @@ class M_Usuarios extends Modelo
         $nuevoValor = isset($_GET['nuevoValor']) ? $_GET['nuevoValor'] : null;
         $cantidadXd = isset($_GET['paginaContenido']) ? $_GET['paginaContenido'] : null;
         // Calcular el nuevo offset basado en $nuevoValor
-        $nuevoNuevoValor = $nuevoValor * 10;
+        $nuevoNuevoValor = $nuevoValor * $cantidadXd;
 
         // Si cantidadXd está vacío, establecerlo en 10 por defecto
         $cantidadXd = empty($cantidadXd) ? 10 : $cantidadXd;
 
         // Utilizar $nuevoNuevoValor y $cantidadXd en tu consulta SQL
-        $SQL = "SELECT * FROM `usuarios` LIMIT $cantidadXd OFFSET $nuevoNuevoValor;";
+        $SQL = "SELECT * FROM `usuarios` LIMIT $cantidadXd OFFSET $nuevoNuevoValor;"; //error en el offset que no se adapta a la cantidad
         $usuarios = $this->DAO->consultar($SQL);
-        $cantidadUsuarios = count($usuarios);
 
-        echo "Número de usuarios: " . $cantidadUsuarios;
-        return $usuarios;
+        $SQL2 = "SELECT * FROM usuarios";
+        $usuarios2 = $this->DAO->consultar($SQL2);
+        $cantidadUsuarios = count($usuarios2);
+        $cantidadFinal = $cantidadUsuarios / $cantidadXd;
+
+        // Retornar tanto la cantidad final como los usuarios
+        return ['usuarios' => $usuarios, 'cantidadFinal' => $cantidadFinal];
     }
-
     function bajarNumero($filtros = array())
     {
         extract($filtros);
