@@ -303,7 +303,7 @@
                 </div>
             </div>
             <br>
-            <input id="parte-central2" type="number" value="" placeholder="cantidad: ">
+            <input id="parte-central2" type="number" value="" placeholder="cantidad: 10">
             <div id="BotonSuu" onclick="buscarCantidad()">Hola</div>
         </form>
     </div>
