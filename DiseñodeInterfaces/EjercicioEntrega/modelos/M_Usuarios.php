@@ -111,10 +111,13 @@ class M_Usuarios extends Modelo
         $usuarios2 = $this->DAO->consultar($SQL2);
         $cantidadUsuarios = count($usuarios2);
 
-        $cantidadFinal = floor($cantidadUsuarios / $yoquese);
+        $cantidadFinal = floor($cantidadUsuarios / $yoquese); //$cantidad final = numero de la pagina
         $cantidadFinal2 = floor($yoquese * $cantidadFinal); //esto hay que cambiarlo
+        if ($cantidadFinal2 == $cantidadUsuarios) {
+            $cantidadFinal2 = $cantidadFinal2 - 1;
+        }
         echo "tu cantidad final es: ";
-        echo $cantidadFinal;
+        echo $cantidadFinal2;
         $SQL = "SELECT * FROM USUARIOS LIMIT $yoquese OFFSET $cantidadFinal2";
         $usuarios = $this->DAO->consultar($SQL);
         echo $SQL;
