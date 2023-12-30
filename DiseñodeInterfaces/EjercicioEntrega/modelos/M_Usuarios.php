@@ -72,6 +72,7 @@ class M_Usuarios extends Modelo
 
         // Retornar tanto la cantidad final como los usuarios
         echo $cantidadFinal; // tengo que devolver esto de alguna forma
+        echo $SQL;
         return ['usuarios' => $usuarios, 'cantidadFinal' => $cantidadFinal];
     }
     function bajarNumero($filtros = array())
@@ -103,13 +104,15 @@ class M_Usuarios extends Modelo
         extract($filtros);
         $yoquese = isset($_GET['yoquese']) ? $_GET['yoquese'] : null;
 
-
+        if ($yoquese == "") {
+            $yoquese = 10;
+        }
         $SQL2 = "SELECT * FROM usuarios";
         $usuarios2 = $this->DAO->consultar($SQL2);
         $cantidadUsuarios = count($usuarios2);
 
         $cantidadFinal = floor($cantidadUsuarios / $yoquese);
-        $cantidadFinal2 = $cantidadFinal -1; //esto hay que cambiarlo
+        $cantidadFinal2 = floor($yoquese * $cantidadFinal); //esto hay que cambiarlo
         echo "tu cantidad final es: ";
         echo $cantidadFinal;
         $SQL = "SELECT * FROM USUARIOS LIMIT $yoquese OFFSET $cantidadFinal2";
