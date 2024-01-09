@@ -302,7 +302,7 @@
             <div id="capaResultadoBusqueda" class="resultado-busqueda"></div>
             <div class="contenedor">
                 <div class="parte">
-                    <img src="../../imagenes/felchas-izquierdas.png" width="40px" height="40px" onclick="primeraPagina()">
+                    <img src="../../imagenes/felchas-izquierdas.png" width="40px" height="40px" onclick="ultimaPagina()">
                 </div>
                 <div class="parte">
                     <img src="../../imagenes/flecha-izquierda.png" width="40px" height="40px" onclick="bajarNumero()">
@@ -312,7 +312,7 @@
                     <img src="../../imagenes/flecha-derecha.png" width="40px" height="40px" onclick="subirNumero()" alt="">
                 </div>
                 <div class="parte">
-                    <img src="../../imagenes/flechas-derechas.png" width="40px" height="40px" onclick="ultimaPagina()" alt="">
+                    <img src="../../imagenes/flechas-derechas.png" width="40px" height="40px" onclick="primeraPagina()" alt="">
                 </div>
             </div>
             <br>

@@ -103,7 +103,6 @@ class M_Usuarios extends Modelo
     {
         extract($filtros);
         $yoquese = isset($_GET['yoquese']) ? $_GET['yoquese'] : null;
-
         if ($yoquese == "") {
             $yoquese = 10;
         }
@@ -116,17 +115,26 @@ class M_Usuarios extends Modelo
         if ($cantidadFinal2 == $cantidadUsuarios) {
             $cantidadFinal2 = $cantidadFinal2 - 1;
         }
-        echo "tu cantidad final es: ";
-        echo $cantidadFinal2;
         $SQL = "SELECT * FROM USUARIOS LIMIT $yoquese OFFSET $cantidadFinal2";
         $usuarios = $this->DAO->consultar($SQL);
-        echo $SQL;
         return ['usuarios' => $usuarios, 'cantidadFinal2' => $cantidadFinal2];
-
-
     }
 
-
+    function ultimaPagina($filtros = array())
+    {
+        extract($filtros);
+        $yoquese = isset($_GET['yoquese']) ? $_GET['yoquese'] : null;
+        if ($yoquese == "") {
+            $yoquese = 10;
+        }
+        $SQL2 = "SELECT * FROM usuarios";
+        $usuarios2 = $this->DAO->consultar($SQL2);
+        $cantidadUsuarios = count($usuarios2);
+        $cantidadFinal = floor($cantidadUsuarios / $yoquese);
+        $SQL = "SELECT * FROM USUARIOS LIMIT $yoquese OFFSET 0";
+        $usuarios = $this->DAO->consultar($SQL);
+        return ['usuarios' => $usuarios, 'cantidadFinal' => $cantidadFinal];
+    }
     public function buscarPorSexo($filtros = array())
     {
         $b_texto = '';

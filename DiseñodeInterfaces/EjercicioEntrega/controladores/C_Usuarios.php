@@ -105,6 +105,26 @@ class C_Usuarios extends Controlador
         Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $resultado['usuarios'], 'yoquese' => $yoquese));
 
     }
+    public function ultimaPagina($filtros = array())
+    {
+        extract($filtros);
+
+        $resultado = $this->modelo->ultimaPagina($filtros);
+        $yoquese = isset($_GET['yoquese']) ? $_GET['yoquese'] : null;
+
+        $datosParaCliente = [
+            'usuarios' => $resultado['usuarios'],
+            'yoquese' => $yoquese,
+            'cantidadFinal' => $resultado['cantidadFinal']
+        ];
+        echo json_encode($datosParaCliente);
+
+        Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $resultado['usuarios'], 'datosParaCliente' => $datosParaCliente));
+
+        // Devolver datos en formato JSON
+
+    }
+
 
 }
 

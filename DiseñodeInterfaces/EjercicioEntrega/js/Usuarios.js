@@ -503,7 +503,6 @@ function buscarCantidad() {
     var inputElement = document.getElementById('parte-central2');
     var valor = inputElement.value.trim();
 
-    // Guardar el valor en el almacenamiento local
     if (valor !== "") {
         localStorage.setItem("cantidadGuardada", valor);
     }
@@ -512,10 +511,8 @@ function buscarCantidad() {
         controlador: 'Usuarios',
         metodo: 'buscarCantidad',
         nuevoValor: valor
-        // Puedes agregar otros parámetros según sea necesario
     });
 
-    // Configurar las opciones para la solicitud fetch
     let opciones = {
         method: 'POST', // Puedes usar 'GET' o 'POST' según tu necesidad
         body: parametros, // Enviar los parámetros en el cuerpo de la solicitud
@@ -545,8 +542,7 @@ function buscarCantidad() {
 }
 
 function primeraPagina() {
-   var yoquese = document.getElementById("parte-central2").value
-    alert(yoquese);
+    var yoquese = document.getElementById("parte-central2").value
     let parametros = new URLSearchParams({
         controlador: 'Usuarios',
         metodo: 'primeraPagina',
@@ -567,6 +563,38 @@ function primeraPagina() {
         })
         .then(vista => {
             document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+        })
+        .catch(err => {
+            console.log("Error al realizar la petición", err.message);
+        });
+}
+function ultimaPagina() {
+    var yoquese = document.getElementById("parte-central2").value
+    let parametros = new URLSearchParams({
+        controlador: 'Usuarios',
+        metodo: 'ultimaPagina',
+        yoquese: yoquese,
+    });
+
+    parametros.append(...new FormData(document.getElementById("formularioBuscar")));
+
+    // Llama a primeraPagina después de haber adjuntado los datos del formulario
+
+    let opciones = { method: 'GET' };
+
+    fetch("C_Ajax.php?" + parametros.toString(), opciones)
+        .then(res => {
+            if (res.ok) {
+                return res.text();
+            }
+        })
+        .then(vista => {
+            document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+            console.log(vista.cantidadFinal)
+            var cantidadFinal = vista.cantidadFinal;
+
+            // Haz algo con la cantidadFinal, por ejemplo, mostrarla en la consola
+            console.log('Cantidad Final:', cantidadFinal);
         })
         .catch(err => {
             console.log("Error al realizar la petición", err.message);
