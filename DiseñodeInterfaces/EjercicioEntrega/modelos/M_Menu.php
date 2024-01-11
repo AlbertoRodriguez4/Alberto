@@ -12,7 +12,6 @@ class M_Menu extends Modelo
     public function verMenu() {
         $SQL = "SELECT * FROM menus";
         $menu = $this->DAO->consultar($SQL);
-        echo json_encode($menu);
         return $menu;
     }
 }
