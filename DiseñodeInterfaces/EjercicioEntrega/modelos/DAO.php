@@ -52,5 +52,5 @@
 			$this->conexion->query($SQL);
 			return $this->conexion->affected_rows;
 		}
+       
     }
-?>

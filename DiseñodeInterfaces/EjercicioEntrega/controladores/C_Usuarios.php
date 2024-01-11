@@ -112,14 +112,9 @@ class C_Usuarios extends Controlador
         $resultado = $this->modelo->ultimaPagina($filtros);
         $yoquese = isset($_GET['yoquese']) ? $_GET['yoquese'] : null;
 
-        $datosParaCliente = [
-            'usuarios' => $resultado['usuarios'],
-            'yoquese' => $yoquese,
-            'cantidadFinal' => $resultado['cantidadFinal']
-        ];
-        echo json_encode($datosParaCliente);
-
-        Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $resultado['usuarios'], 'datosParaCliente' => $datosParaCliente));
+      
+        echo json_encode($resultado['cantidadFinal']);
+        Vista::render('vistas/Usuarios/V_Usuarios_Listado.php', array('usuarios' => $resultado['usuarios'], $resultado['cantidadFinal']));
 
         // Devolver datos en formato JSON
 
