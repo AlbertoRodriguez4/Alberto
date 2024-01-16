@@ -98,35 +98,11 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
         </div>
     </section>
     <section id="secMenuPagina" class="container-fluid">
-        <nav class="navbar navbar-expand-sm navbar-light" aria-label="Fourth navbar example">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarsExample04">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="http://localhost">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled">Disabled</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">CRUD's</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')">Usuarios</a></li>
-                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Pedidos', 'getVistaPedidos')">Pedidos</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php
+        require_once 'controladores/C_Menus.php';
+        $menu = new C_Menus;
+        $menu->verMenu();
+        ?>
     </section>
     <section id="secContenidoPagina" class="container-fluid"></section>
     <script src="librerias/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
