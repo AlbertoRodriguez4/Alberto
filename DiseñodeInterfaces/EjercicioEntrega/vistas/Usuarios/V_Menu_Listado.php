@@ -1,13 +1,7 @@
 <?php
-session_start();
-if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
-    //esta logeado
-} else {
-    //header('Location: login.php');
-}
-// https://es.cooltext.com/
-?>
+$menu = $datos['menu'];
 
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -76,37 +70,32 @@ if (isset($_SESSION['usuario']) && $_SESSION['usuario'] != '') {
 </head>
 
 <body>
-    <section id="secEncabezadoPagina" class="container-fluid">
-        <div class="row">
-            <div class="divLogotipo col-lg-2 col-md-2 col-sm-10">
-            </div>
-            <div class="divTituloApp col-lg-8 col-md-8 d-none d-md-block">Alberto Rodríguez</div>
-            <div class="divLog col-lg-2 col-md-2 col-sm-2">
-                <?php
-                if (isset($_SESSION['usuario'])) {
-                    echo '<a href="logout.php" title="Salir">';
-                    echo    '<img id="userImage" src="imagenes/logout.png">';
-                    echo $_SESSION['usuario'];
-                    echo '</a>';
-                } else {
-                    echo '<a href="login.php" title="Entrar">';
-                    echo    '<img id="userImage" src="imagenes/user.png">';
-                    echo '</a>';
-                }
-                ?>
-            </div>
-        </div>
-    </section>
     <section id="secMenuPagina" class="container-fluid">
-        <?php
-        require_once 'controladores/C_Menus.php';
-        $menu = new C_Menus;
-        $menu->verMenu();
-        ?>
+        <nav class="navbar navbar-expand-sm navbar-light" aria-label="Fourth navbar example">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="collapse navbar-collapse" id="navbarsExample04">
+                    <?php foreach ($menu as $fila) : ?>
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="http://localhost"><?php echo $fila['TITULO']; ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">CRUD's</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
+                            </ul>
+                        </li>
+                        </ul>
+                    </div>
+            </div>
+        </nav>
     </section>
     <section id="secContenidoPagina" class="container-fluid"></section>
     <script src="librerias/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-    
-</body>
 
+</body>
 </html>

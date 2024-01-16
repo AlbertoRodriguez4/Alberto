@@ -65,10 +65,7 @@ $usuarios = $datos['usuarios'];
                 </td>
                 <td class="centrado">
                     <?php echo $fila['activo']; ?>
-                </td>
-                <td class="centrado">
-                    <img id="ola" src="../../imagenes/editar.png" onclick="editarUsuarios(<?php echo $fila['id_Usuario']; ?>, '<?php echo $fila['nombre']; ?>', '<?php echo $fila['apellido_1']; ?>', '<?php echo $fila['apellido_2']; ?>', '<?php echo $fila['mail']; ?>', '<?php echo $fila['login']; ?>')" alt="">
-                </td>
+                </td> 
             </tr>
         <?php endforeach; ?>
     </tbody>

@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `di23`
 --
+CREATE TABLE `menus` (
+  `ID_MENU` int(5) DEFAULT NULL,
+  `TITULO` varchar(30) DEFAULT NULL,
+  `ACCION` varchar(50) DEFAULT NULL,
+  `PRIVADO` tinyint(1) DEFAULT NULL
+);
+
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (1, 'Inicio', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (2, 'Perfil', 'index.php', 1);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (3, 'Configuración', 'index.php', 1);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (4, 'Mensajes', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (5, 'Galería', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (6, 'Contacto', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (7, 'Noticias', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (8, 'Calendario', 'index.php', 1);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (9, 'Foro', 'index.php', 1);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (10, 'Ayuda', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (11, 'Productos', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (12, 'Servicios', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (13, 'FAQ', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (14, 'Descargas', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (15, 'Comunidad', 'index.php', 1);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (16, 'Eventos', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (17, 'Promociones', 'index.php', 0);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (18, 'Clientes', 'index.php', 1);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (19, 'Pedidos', 'index.php', 1);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ACCION`, `PRIVADO`) VALUES (20, 'Salir', 'index.php', 1);
 
 -- --------------------------------------------------------
 
