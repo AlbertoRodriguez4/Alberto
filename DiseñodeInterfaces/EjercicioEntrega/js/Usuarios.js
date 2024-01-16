@@ -615,6 +615,8 @@ function verMenu() {
         })
         .then(vista => {
             document.getElementById("capaResultadoBusqueda").innerHTML = vista;
+            alert(vista)
+            console.log(vista)
         })
         .catch(err => {
             console.log("Error al realizar la petición", err.message);

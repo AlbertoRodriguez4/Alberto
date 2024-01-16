@@ -16,6 +16,5 @@ class C_Menus extends Controlador
         //echo json_encode($usuarios);
         Vista::render('vistas/Usuarios/V_Menu_Listado.php', array('menu' => $menu, array('menu' => $menu)));
 
-        
     }
 }
