@@ -8,12 +8,21 @@ public class HiloCantante extends Thread {
     }
 
     @Override
-    public void run() {
-        String[] estrofas = cancion.getEstrofas();
-        int longitudCancion = estrofas.length;
-
-        for (int i = 0; i < longitudCancion; i++) {
-            System.out.println("Hilo " + numeroHilo + " canta en la canción '" + cancion.getTitulo() + "': " + estrofas[i]);
+        public void run() {
+            String[] estrofas = cancion.getEstrofas();
+            try {
+                for (int i = numeroHilo - 1; i < estrofas.length; i += 2) {
+                    synchronized (cancion) {
+                        System.out.println("Hilo " + numeroHilo + " canta en la canción '" + cancion.getTitulo() + "': " + estrofas[i]);
+                        cancion.notify(); // Notificar al otro hilo que puede ejecutarse
+                        if (i < estrofas.length - 1) {
+                            cancion.wait(); // Esperar a que el otro hilo termine de cantar
+                            Thread.sleep(1000);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Acabe");
+            }
         }
     }
-}
