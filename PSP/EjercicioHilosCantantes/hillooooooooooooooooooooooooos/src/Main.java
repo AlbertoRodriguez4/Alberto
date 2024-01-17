@@ -59,7 +59,7 @@ public class Main {
 
             for (int i = 0; i < numero; i++) {
                 hilos[i] = new HiloCantante(i + 1, cancion);
-                hilos[i].start();
+                hilos[i].run();
             }
         } else {
             System.out.println("Debe haber al menos un hilo para cantar.");
