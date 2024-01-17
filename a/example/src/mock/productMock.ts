@@ -8,5 +8,13 @@ export const productMock: Product[] = [
         price: 300,
         stock: 20,
         image: 'https://miImagen.com/450'
+    },
+    {
+        id: 2,
+        description: 'oeoe',
+        name: 'Hola',
+        price: 300,
+        stock: 20,
+        image: 'https://miImagen.com/450'
     }
 ]

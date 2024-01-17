@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Product } from 'src/Entities/products.entity';
+import { CreateProductDto, UpdateProductDto } from 'src/dto/product.dto';
 import { productMock } from 'src/mock/productMock';
 @Injectable()
 export class ProductsService {
@@ -9,9 +10,19 @@ export class ProductsService {
         return this.products;
     }
     findOne(id: number) {
-        return this.products.find((item) => item.id === id);
+        // return this.products.find((item) => item.id === id);
+        const product = this.products.find(
+            (item) => 
+                item.id === id
+            
+        )
+        if(!product) {
+            //throw 'Error en el find'
+            throw new NotFoundException ('Product not found');
+        }
+        return product;
     }
-    create(products: any) {
+    create(products: CreateProductDto) {
         this.counterId += 1;
         const newProduct = {
             id: this.counterId,
@@ -20,13 +31,24 @@ export class ProductsService {
         this.products.push(newProduct);
         return newProduct;
     }
-    update(id: number, products: any) {
+    update(id: number, updateProducts: UpdateProductDto) {
         const productsFound = this.findOne(id);
-        if (!productsFound) {
-            return null
+        let message = "";
+        if (productsFound) {
+            const index = this.products.findIndex(
+                (item) => {
+                    item.id === id
+                }
+            );
+          //  this.products[index] = updateProducts;
+            this.products[index] = {
+                ...productsFound,
+                ...updateProducts,
+            }
+            message = "Product updated"
+        } else {
+            message = "Product not found";
         }
-        return productsFound;
-
     }
     delete(id: number) {
         const productsFound = this.products.findIndex(

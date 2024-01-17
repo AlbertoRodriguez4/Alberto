@@ -1,37 +1,39 @@
-import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query, Delete, ParseIntPipe } from '@nestjs/common';
+import { Product } from 'src/Entities/products.entity';
+import { CreateProductDto, UpdateProductDto } from 'src/dto/product.dto';
+import { ProductsService } from 'src/services/products/products.service';
 
 @Controller('products')
 export class ProductsController {
 
-    @Get('products/:idProduct')
-    getProduct(@Param('idProduct') idProduct:number) {
-        return `products ${idProduct}`
+    constructor(private productsService: ProductsService) { }
+
+    @Get(':idProduct')
+    getProduct(@Param('idProduct', ParseIntPipe) idProduct: string) {
+        return this.productsService.findOne(+idProduct);
     }
 
-    @Get('')
-    getProductss(@Query('limit') limit , @Query('offset') offset) {
-      return `product limit=> ${limit} , offset=> ${offset}`
-    }
-    
-    @Post('ruta')
-    create() {
-        return {
-            message: 'crear producto'
-        }
+    @Get()
+    getProducts() {
+        return this.productsService.findall();
     }
     @Post()
-    create2(@Body() products:any) {
-        return {
-            products,
-            message: 'crear producto'
-        }
+    create2(@Body() product: Product) {
+        this.productsService.create(product);
     }
+
     @Put(':id')
-    update(@Param('id') id: number, @Body() products:any) {
-        return {
-            id,
-            products
-        }
+    update(@Param('id') id: number, @Body() product: UpdateProductDto) {
+        return this.productsService.update(+id, product);
     }
-    
+    @Delete(':id')
+    delete(@Param('id') id: number) {
+        return this.productsService.delete(+id);
+    }
+
+    @Get('ruta')
+    create(@Body() newproduct: CreateProductDto) {
+        return this.productsService.create(newproduct);
+    }
+
 }
