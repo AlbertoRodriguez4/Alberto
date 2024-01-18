@@ -6,8 +6,9 @@ $menu = $datos['menu'];
 <html lang="es">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="librerias/bootstrap-5.1.3-dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Agrega esta línea -->
     <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/menu.css">
@@ -76,26 +77,29 @@ $menu = $datos['menu'];
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                    <div class="collapse navbar-collapse" id="navbarsExample04">
-                    <?php foreach ($menu as $fila) : ?>
-                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <div class="collapse navbar-collapse" id="navbarsExample04">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <?php foreach ($menu as $fila) : ?>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="http://localhost"><?php echo $fila['TITULO']; ?></a>
                             </li>
                         <?php endforeach; ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">CRUD's</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">CRUD's</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
+                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
+                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
+                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
+                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
                             </ul>
                         </li>
-                        </ul>
-                    </div>
+                    </ul>
+                </div>
             </div>
         </nav>
     </section>
     <section id="secContenidoPagina" class="container-fluid"></section>
-    <script src="librerias/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
+
 </html>

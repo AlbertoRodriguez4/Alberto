@@ -274,7 +274,6 @@
     <div id="content">
         <h1>Página para hacer consultas</h1>
         <form id="formularioBuscar" name="formularioBuscar">
-        <button type="button" onclick="verMenu()">Ver menu</button>
             <div id="consultar">
                 <label>
                     <p class="consulta">Buscar Usuarios por su nombre</p>
