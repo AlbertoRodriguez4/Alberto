@@ -6,7 +6,7 @@ $menu = $datos['menu'];
 <html lang="es">
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="librerias/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Agrega esta línea -->
     <script src="js/app.js"></script>
@@ -80,19 +80,31 @@ $menu = $datos['menu'];
                 <div class="collapse navbar-collapse" id="navbarsExample04">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <?php foreach ($menu as $fila) : ?>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="http://localhost"><?php echo $fila['TITULO']; ?></a>
-                            </li>
+                            <?php if ($fila['ID_PADRE'] == 0) : ?>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="http://localhost"><?php echo $fila['TITULO']; ?></a>
+                                </li>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">CRUD's</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?php
+                                foreach ($menu as $fila) {
+                                    if ($fila['TITULO'] == 'Cruds') {
+                                        echo 'Cruds';
+                                        break;
+                                    } 
+                                }
+                                ?>
+                            </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
-                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
-                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
-                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
-                                <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['ID_MENU']; ?></a></li>
+                                <?php foreach ($menu as $fila) : ?>
+                                    <?php if ($fila['PRIVADO'] == 1) : ?>
+                                        <li><a class="dropdown-item" href="#" onclick="getVistaMenuSeleccionado('Usuarios', 'getVistaUsuarios')"><?php echo $fila['TITULO']; ?></a></li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                             </ul>
+
                         </li>
                     </ul>
                 </div>
