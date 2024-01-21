@@ -4,12 +4,19 @@ import java.util.Scanner;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
+        // Crear un objeto Scanner para leer la entrada del usuario
         Scanner scanner = new Scanner(System.in);
+
+        // Solicitar al usuario el número de personas que van a cantar
         System.out.println("¿Cuántas personas van a cantar?");
         int numero = scanner.nextInt();
 
+        // Verificar que haya al menos una persona para cantar
         if (numero > 0) {
+            // Crear un arreglo de hilos HiloCantante
             HiloCantante[] hilos = new HiloCantante[numero];
+
+            // Crear un arreglo de estrofas de la canción
             String cancionTexto[] = {
                     "Tú no lo sabes, te estoy vigilando\n",
                     "Desde la distancia me estoy acercando\n",
@@ -57,11 +64,13 @@ public class Main {
 
             Cancion cancion = new Cancion(cancionTexto, "Creeper vs Zombies");
 
+            // Crear y arrancar los hilos para cada persona que va a cantar
             for (int i = 0; i < numero; i++) {
                 hilos[i] = new HiloCantante(i + 1, cancion);
-                hilos[i].run();
+                hilos[i].start();
             }
         } else {
+            // Si no hay personas para cantar, mostrar un mensaje
             System.out.println("Debe haber al menos un hilo para cantar.");
         }
     }
