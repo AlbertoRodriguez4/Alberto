@@ -23,8 +23,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `menus` (
   `ID_MENU` int(5) DEFAULT NULL,
   `TITULO` varchar(30) DEFAULT NULL,
-  `ID_PADRFE` int (5) DEFAULT NULL,
-  `ACCION` varchar(50) DEFAULT NULL,
+  `ID_PADRE` int (5) DEFAULT NULL,
+  `ACCION` varchar(255) DEFAULT NULL,
   `PRIVADO` tinyint(1) DEFAULT NULL
 );
 
@@ -32,11 +32,7 @@ INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUE
 INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (2, 'Link', 0, 'index.php', 1);
 INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (3, 'Disbled', 0, 'index.php', 1);
 INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (4, 'Cruds', 0, 'index.php', 0);
-INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (5, 'Galería', 4, 'index.php', 0);
-INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (6, 'Contacto', 4, 'index.php', 0);
-INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (7, 'Noticias', 4, 'index.php', 0);
-INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (8, 'Calendario', 4, 'index.php', 1);
-INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (9, 'Foro', 4, 'index.php', 1);
+INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (10, 'Usuarios', 4, 'getYoquese(\'Usuarios\',\'getVistaUsuarios\')', 0);
 
 
 -- --------------------------------------------------------
