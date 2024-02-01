@@ -35,6 +35,7 @@ function getYoquese(controlador, metodo) {
             }
         })
         .then(vista => {
+            console.log("Viva willyrex")
             document.getElementById("secContenidoPagina").innerHTML = vista;
             cargarUnScript('js/' + controlador + '.js');
         })
