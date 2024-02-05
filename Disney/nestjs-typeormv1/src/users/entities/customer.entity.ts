@@ -5,13 +5,14 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToOne,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
 import { User } from './user.entity';
 
 @Entity()
 export class Customer {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column({ type: 'varchar', length: 255 })
