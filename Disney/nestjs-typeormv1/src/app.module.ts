@@ -14,8 +14,8 @@ import { Client } from 'pg';
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const client = new Client({
   user: 'postgres',
-  host: 'rds-dam-postgresql.cdc8o82kagmd.us-east-1.rds.amazonaws.com',
-  database: 'dam',
+  host: 'postgredb.c9ck840cwbfh.us-east-1.rds.amazonaws.com',
+  database: 'postgres',
   password: 'LUCASLUCAS',
   port: 5432,
   ssl: true, 
