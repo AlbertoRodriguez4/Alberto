@@ -28,48 +28,50 @@ CREATE TABLE `menus` (
 );
 
 
--- Tabla de Roles
-CREATE TABLE roles (
-  idRol int NOT NULL AUTO_INCREMENT,
-  nombreRol varchar(50) NOT NULL,
-  PRIMARY KEY (idRol)
-);
+
 
 -- Relación N:M entre Roles y Usuarios
 CREATE TABLE roles_usuarios (
   idRol INT NOT NULL,
   id_Usuario INT NOT NULL,
-  FOREIGN KEY (idRol) REFERENCES roles(idRol),
-  FOREIGN KEY (id_Usuario) REFERENCES usuarios(id_Usuario),
   PRIMARY KEY (idRol, id_Usuario)
 );
+ALTER TABLE roles_usuarios 
+ADD FOREIGN KEY (idRol) REFERENCES roles(idRol),
+ADD FOREIGN KEY (id_Usuario) REFERENCES usuarios(id_Usuario);
+
 
 -- Tabla de Permisos
 CREATE TABLE permisos (
   idPermiso int NOT NULL AUTO_INCREMENT,
   nombrePermiso varchar(50) NOT NULL,
   idMenu int NOT NULL,
-  FOREIGN KEY (idMenu) REFERENCES menus(ID_MENU),
   PRIMARY KEY (idPermiso)
 );
+ALTER TABLE permisos
+ADD FOREIGN KEY (idMenu) REFERENCES menus(ID_MENU);
 
--- Relación N:M entre Roles y Permisos
+
+
 CREATE TABLE roles_permisos(
   idRol int NOT NULL,
   idPermiso int NOT NULL,
-  FOREIGN KEY (idRol) REFERENCES roles(idRol),
-  FOREIGN KEY (idPermiso) REFERENCES permisos(idPermiso),
+
   PRIMARY KEY (idRol, idPermiso)
 );
+ALTER TABLE roles_permisos
+ADD   FOREIGN KEY (idRol) REFERENCES roles(idRol),
+ADD  FOREIGN KEY (idPermiso) REFERENCES permisos(idPermiso);
 
--- Relación N:M entre Permisos y Usuarios
 CREATE TABLE permisos_usuarios (
   idPermiso int NOT NULL,
   id_Usuario int NOT NULL,
-  FOREIGN KEY (idPermiso) REFERENCES permisos(idPermiso),
-  FOREIGN KEY (id_Usuario) REFERENCES usuarios(id_Usuario),
   PRIMARY KEY (idPermiso, id_Usuario)
 );
+ALTER TABLE permisos_usuarios
+ADD   FOREIGN KEY (idPermiso) REFERENCES permisos(idPermiso),
+ADD  FOREIGN KEY (id_Usuario) REFERENCES usuarios(id_Usuario);
+
 
 INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (1, 'Home', 0, 'index.php', 0);
 INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (2, 'Link', 0, 'index.php', 1);
