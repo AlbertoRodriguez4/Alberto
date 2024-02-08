@@ -16,7 +16,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Base de datos: `di23`
 --
@@ -26,6 +25,50 @@ CREATE TABLE `menus` (
   `ID_PADRE` int (5) DEFAULT NULL,
   `ACCION` varchar(255) DEFAULT NULL,
   `PRIVADO` tinyint(1) DEFAULT NULL
+);
+
+
+-- Tabla de Roles
+CREATE TABLE roles (
+  idRol int NOT NULL AUTO_INCREMENT,
+  nombreRol varchar(50) NOT NULL,
+  PRIMARY KEY (idRol)
+);
+
+-- Relación N:M entre Roles y Usuarios
+CREATE TABLE roles_usuarios (
+  idRol INT NOT NULL,
+  id_Usuario INT NOT NULL,
+  FOREIGN KEY (idRol) REFERENCES roles(idRol),
+  FOREIGN KEY (id_Usuario) REFERENCES usuarios(id_Usuario),
+  PRIMARY KEY (idRol, id_Usuario)
+);
+
+-- Tabla de Permisos
+CREATE TABLE permisos (
+  idPermiso int NOT NULL AUTO_INCREMENT,
+  nombrePermiso varchar(50) NOT NULL,
+  idMenu int NOT NULL,
+  FOREIGN KEY (idMenu) REFERENCES menus(ID_MENU),
+  PRIMARY KEY (idPermiso)
+);
+
+-- Relación N:M entre Roles y Permisos
+CREATE TABLE roles_permisos(
+  idRol int NOT NULL,
+  idPermiso int NOT NULL,
+  FOREIGN KEY (idRol) REFERENCES roles(idRol),
+  FOREIGN KEY (idPermiso) REFERENCES permisos(idPermiso),
+  PRIMARY KEY (idRol, idPermiso)
+);
+
+-- Relación N:M entre Permisos y Usuarios
+CREATE TABLE permisos_usuarios (
+  idPermiso int NOT NULL,
+  id_Usuario int NOT NULL,
+  FOREIGN KEY (idPermiso) REFERENCES permisos(idPermiso),
+  FOREIGN KEY (id_Usuario) REFERENCES usuarios(id_Usuario),
+  PRIMARY KEY (idPermiso, id_Usuario)
 );
 
 INSERT INTO `menus` (`ID_MENU`, `TITULO`, `ID_PADRE`, `ACCION`, `PRIVADO`) VALUES (1, 'Home', 0, 'index.php', 0);
